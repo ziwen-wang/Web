@@ -1,0 +1,37 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+.sogo-mune {
+	position: absolute;
+	top:-32px;
+	right: 13px;
+}
+.sogo-mune a{
+	margin-left: 17px;
+	font-family: arial,'pingfang sc',stheiti,simsun,sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    color: #383252;
+    line-height: 100px;
+    text-decoration: none;
+    /*display: block;
+    height: 100px;
+    float: left;*/
+
+}
+.sogo-mune a i {
+	background-image: url(../img/spy_h.png);
+	/*height: 50px;*/
+	/*display: block;*/
+	
+}
+.sogo-mune a i.a1{
+	background-position: 148px 0px;
+}
+.sogo-mune a i.b2{
+	background-position: 90px 0px;
+}
+.sogo-mune a i.c3{
+	background-position: 18px 0px;
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;padding: 0;
+		}
+		ul,li{
+			list-style:none;
+		}
+		/*
+		*    		垂直
+		*/
+		.news{
+			width: 200px;
+			height: 300px;
+			border:  1px solid #db3652;
+			overflow: hidden;
+		}
+
+		.news li{
+			width: 100%;
+			height: 100px;
+			border-bottom: 1px dotted #db3652;
+		}
+		/*
+		**** 水平***
+		*/
+		.news2{
+			width: 500px;
+			height: 100px;
+			border:  1px solid #d8f97b;
+			overflow: hidden;
+		}
+		.news2 ul{
+			width: 2500px;
+		}
+		.news2 li{
+			width: 500px;
+			height: 100px;
+			float: left;
+			background-color:  #fffccc;
+		}
+
+		/*
+		***** 点击切换*****
+		*/
+		.imgs{
+			width: 1000px;
+			height: 202px;
+			margin-top: 0 auto;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.imgs ul{
+			/*overflow: auto;*/
+			width: 2500px;
+		}
+		.imgs li{
+			width: 248px;
+			height: 200px;
+			background-color: #fffccc;
+			float: left;
+			border: 1px dotted #db3652;
+		}
+		.imgs .prev,.imgs .next{
+			position: absolute;
+			top: 50%;
+			width: 40px;
+			height: 40px;
+			margin-top: -20px;
+			cursor:pointer;
+			color: red;
+			background-color: #fff;
+		}
+		.imgs .prev{
+			left: 0;
+		}
+
+		.imgs .next{
+			right: 0;
+		}
+		.imgs .disabled{
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- 垂直 -->
+	<div class="news">
+		<ul id="myUl">
+			<li>测试文字1测试文字1测试文字1测试文字1</li>
+			<li>测试文字2测试文字2测试文字2测试文字2</li>
+			<li>测试文字3测试文字3测试文字3测试文字3</li>
+			<li>测试文字4测试文字4测试文字4测试文字4</li>
+			<li>测试文字5测试文字5测试文字5测试文字5</li>
+		</ul>
+	</div>
+	<br>
+	<hr>
+	<br>
+	<!--水平  -->
+	<div class="news2">
+		<ul id="myUl2">
+			<li>测试文字1测试文字1测试文字1测试文字1</li>
+			<li>测试文字2测试文字2测试文字2测试文字2</li>
+			<li>测试文字3测试文字3测试文字3测试文字3</li>
+			<li>测试文字4测试文字4测试文字4测试文字4</li>
+			<li>测试文字5测试文字5测试文字5测试文字5</li>
+		</ul>
+	</div>
+	<br>
+	<hr>
+	<br>
+	<!-- 点击切换 非轮播 -->
+	<div class="imgs" id="imgs">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+		</ul>
+		<div class="prev disabled">prev</div>
+		<div class="next">next</div>
+	</div>
+<script src="../js/jquery-3.0.0.js"></script>
+<script>
+	 /*
+	 *			垂直
+	 */
+	 !function(window,document,$,undefined){
+	 	var $myUl = $('#myUl'),
+	 		$li = $myUl.find('li'),
+	 		liHeight = $li.height(),
+	 		timer;
+
+	 	function doScroll(){
+	 		$myUl.stop().animate({
+	 			'margin-top':- liHeight
+	 		},500,function(){
+	 			$myUl.append($myUl.find('li:first-child')).css('margin-top',0);
+	 		})
+	 	}
+	 	timer = setInterval(doScroll,2000);
+	}(window,document,jQuery);
+	/*
+	******水平*****
+	*/ 
+	!function(window,document,$,undefined){
+		var $myUl2 = $('#myUl2'),
+			$li = $myUl2.find('li'),
+			liWidth = $li.width(),
+			timer;
+		function doScroll(){
+			$myUl2.stop().animate({'margin-left':-liWidth},500,function(){
+				$myUl2.append($myUl2.find('li:first-child')).css('margin-left',0);
+			})
+		}
+
+		timer = setInterval(doScroll,1000);
+		$myUl2
+			.on('mouseenter',function(){
+				clearInterval(timer);
+			})
+			.on('mouseleave',function(){
+				timer = setInterval(doScroll,2000);
+			})
+
+
+
+
+	}(window,document,jQuery)
+	/*
+	*****点击切换
+	*/
+	!function(window,document,$,undefined){
+		var $imgs = $('#imgs');
+		$imgs.on('click','.prev, .next',function(){
+			var $this = $(this),
+				$onLi = $imgs.find('li.active'),
+				onIndex = $onLi.index(),
+				liWidth = $onLi.width(),
+				len = $imgs.find('li').length;
+			if ($this.hasClass('disabled')) {
+				return;
+			}
+			if ($this.hasClass('next')) {
+				onIndex++;
+				if (onIndex == len - 4) {
+					$imgs.find('.next').addClass('disabled');
+				}
+				$imgs.find('.prev.disabled').removeClass('disabled');
+			}else{
+				onIndex--;
+				if (onIndex<1) {
+					$imgs.find('.prev').addClass('disabled');
+				}
+				$imgs.find('.next.disabled').removeClass('disabled')
+			}
+			$imgs.find('li:eq('+onIndex+')').addClass('active').siblings('.active').removeClass('active');
+			$imgs.find('ul').animate({'margin-left':-(liWidth +2)*onIndex},500,function(){
+
+			})
+			console.log(onIndex)
+		})
+	}(window,document,jQuery)
+</script>
+</body>
+</html>

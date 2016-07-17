@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+			wp{margin:30px auto 0px auto;width:800px;height:400px;}
+	        .imgs{margin:0px auto;width:800px;height:400px;overflow:hidden;position:relative;}
+	        .myUl_view{width:800px;overflow:hidden;list-style:none;}
+
+	        .myUl_view li { position: absolute;top: 0;left: 0;z-index: 0;}
+	        .myUl_btn li.active{z-index: 1}
+	        .myUl_btn{left:0;bottom:-16px;position:absolute;z-index: 10;}
+	        .myUl_btn li{width:152px;height:30px;float:left;overflow: hidden;list-style: none; }
+	        .op li{background:#999999;filter:alpha(opacity=60);opacity:0.6;}
+	        .op li.active{background: #666666;color: #fff;}
+	        a{width: 40px;height: 40px;position: absolute;top: 50%;left: 40px;margin-top: -20px;background-color: #000;display: none}
+	        a.next{right: 0;left: auto;}
+	        .imgs:hover a{display: block;opacity: .6;color: #fff;text-align: center;line-height: 40px}
+	        .myUl_btn li{
+	            font-weight: bolder;line-height: 30px;text-align: center;
+	        }
+            .myUl_view li:first-child{display: block;}
+	</style>
+
+</head>
+<body>
+	 <div class="wp">
+        <div class="imgs">
+            <ul class="myUl_view">
+                <li><img src="img/hsq.jpg" alt="" width="800" height="400"></li>
+                <li><img src="img/jm.jpg" alt="" width="800" height="400"></li>
+                <li><img src="img/zh.jpg" alt="" width="800" height="400"></li>
+                <li><img src="img/db.jpg" alt="" width="800" height="400"></li>
+                <li><img src="img/bg.jpg" alt="" width="800" height="400"></li>
+            </ul>
+
+            <ul class="myUl_btn op">
+                <li class="active">哈士奇</li>
+                <li>金毛</li>
+                <li>藏獒</li>
+                <li>杜宾</li>
+                <li>八哥</li>
+            </ul>
+            <a href="javascript:;" class="next">next</a>
+            <a href="javascript:;" class="prov">prov</a>
+        </div>
+    </div>
+    <script src = "../js/jquery-3.0.0.js"></script>
+    <script>
+    		!function(window,document,$,undinfed){
+    			function Scrollpicture(imgWp){
+    				var $targer = $(imgWp),
+    					$btn = $('.myUl_btn > li'),
+    					$view = $('.myUl_view >li'),
+    					a_Index = 0;
+
+    				$.each($view,function(i){
+    					$(this).attr('index',i);
+    				})
+    				$('.myUl_view >li:gt(0)').hide();
+
+    				$btn.on('click',function(){
+    					$(this).addClass('active').siblings('.active').removeClass('active');
+    					var addIndex = $(this).index(this),
+    						oldIndex = $(this).siblings('.active').index();
+
+    					$view.eq(addIndex).hide().fadeIn('slow').siblings('active').show().fadeOut('slow')
+    					a_Index = addIndex;
+    				})
+
+    			}
+    			Scrollpicture('.imgs');
+    		}(window,document,jQuery)
+    </script>
+
+<!--     <script>
+	  	$(document).ready(function() {
+			var fadeTransition = function(selector) {
+				var $target = $(selector),
+					$slideLi = $target.find('.myUl_btn > li'),
+					$sliderPic = $target.find('.myUl_view > li');
+				$sliderPic.each(function(i) {
+					$(this).attr('index', i);
+				});
+				$slideLi.on('click', function() {
+					var $this = $(this),
+						currIndex = $this.index(),
+						oldIndex = $this.siblings('.active').index();
+					$this.addClass('active').siblings('.active').removeClass('active');
+					$sliderPic.eq(oldIndex).before($sliderPic.eq(currIndex));
+					$target.find('.myUl_view > li').each(function(i) {
+						$(this).css('z-index', $sliderPic.length - i - 1);
+					});
+					$sliderPic.eq(oldIndex).show().fadeOut(1000);
+					$target.find('.myUl_view').find('li[index='+currIndex+']').hide().fadeIn(1000);
+					// console.log($target.find('.slide-pic').find('li[index='+currIndex+']'));
+					// console.log('currIndex: ' + currIndex);
+					// console.log('oldIndex: ' + oldIndex);
+				});
+			};
+			fadeTransition('.imgs');
+		});
+    </script> -->
+</body>
+</html>

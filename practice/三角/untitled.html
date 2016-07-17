@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		span {
+		    display: inline-block;
+		    width: 20px;
+		    height: 20px;
+		    color: red;
+		    line-height: 20px;
+		    text-align: center;
+			}
+	</style>
+</head>
+<body>
+<!-- 	<button onclick="zsj()">正三角</button>
+	<button onclick="dsj()">倒三角</button>
+	<div id="div"></div> -->
+
+
+
+
+	<script>
+	zsj();
+	function zsj(){
+		    for(var i=0; i<10; i++)
+		    {
+		        for(var j=0; j<10-i-1; j++){
+		            document.write("<span>&nbsp</span>");
+		        }
+		        for(var k=0; k<i*2+1; k++){
+		            document.write("<span>*</span>");
+		        }
+		        document.write("<br>");
+		    }
+
+		}
+		function dsj(){
+		    for(var i=0; i<10; i++)
+		    {
+		        for(var e=0; e<(i*2); e++)
+		        {
+		            document.write("<span>&nbsp</span>");
+		        }
+		        for(var x=0; x<10-i-1; x++)
+		        {
+		            document.write("<span>*</span>");
+		        }
+		        document.write("<br>")
+		    }
+		}
+	</script>
+</body>
+</html>

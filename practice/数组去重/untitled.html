@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+<script>
+	var a = [1,1,1,1,2,3,4,5,3,2,21];
+/*
+* 利用对象方法 数组去重
+*/
+	// function asd(arr){
+	// 	var b ={},i,len=arr.length,key;
+
+	// 	for(i=0;i<len;i++){
+	// 		b[arr[i]] = arr[i];
+		
+	// 	}
+	// 	arr.length = 0;
+	// 	for(key in b){
+	// 		arr.push(b[key]);
+	// 	}
+		
+	// 	return arr;
+	// }
+	// var c = asd(a);
+	// console.log(c);
+/*
+* 新建数组用数组遍历 对比 
+*/
+
+function asd(a){
+	var awq =[];
+	for (var i = 0; i < a.length; i++) {
+		if (!isInArray(awq,a[i])) {
+			awq.push(a[i]);
+		}
+	}
+	return awq;
+}
+function isInArray(a,b){
+	for (var i = 0; i < a.length; i++) {
+		if (a[i] == b) {
+			return true;
+		}
+	}
+	return false;
+}
+var c = asd(a);
+console.log(c)
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul,li{
+	list-style: none;
+}
+body{
+	background-color: #333;
+}
+.accordion{
+	background-color: #fff;
+	width: 300px;
+	margin: 50px auto;
+}
+.accordion li:hover{
+	background-color: #db3652;
+}
+.accordion li{
+	background-color: #666;
+	
+	color: #fff;
+}
+.itme ul{
+	display: none;
+}

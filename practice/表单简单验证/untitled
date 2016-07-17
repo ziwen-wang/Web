@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>注册表单</h1>
+	<hr style=" height:2px;border:none;border-top:2px dotted #185598;" />
+	<form action="">
+		<label for="">账号: <input type="text" id="username"></label>
+		<br>
+		<br>
+		<label for="">密码: <input type="password"></label>
+		<br>
+		<br>
+		<label for="sex">男: <input type="radio" name="sex" checked></label> <label for="">女: <input type="radio" name="sex"></label>
+		<br>
+		<br>
+		<label for="">邮箱: <input type="text"></label>
+		<br>
+		<br>
+		<label for="">爱好:</label>
+		<label for=""> <input type="checkbox">游泳</label>
+		<label for=""> <input type="checkbox">跑步</label>
+		<label for=""> <input type="checkbox">健身</label>
+		<label for=""> <input type="checkbox">阅读</label>
+		<br>
+		<br>
+			<label for="">学历: 
+					<select name="" id="">
+						<option value="">请选择</option>
+						<option value="">大专</option>
+						<option value="">本科</option>
+						<option value="">硕士</option>
+						<option value="">博士</option>
+					</select>
+			</label>
+		<br>
+		<br>
+		<label for="">自我介绍: <textarea name="" id="" cols="30" rows="10"></textarea>
+		<br>
+		<br>
+
+		<button id="myBtn" type="button">提交</button> <input type="reset">
+	</form>
+	<script>
+		var myBtn = $('myBtn');
+		var checkForm = function() {
+			console.log(1)
+			var username = $('username');
+			if (username.value == '') {
+				console.log('不能输入为空');
+				return false;
+			}
+			if (username.value.length < 6) {
+				console.log('输入长度不能低于6');
+				return false;
+			}			
+		}
+
+
+		function $(id){
+			if (id == 'string') {
+				return document.getElementById(id);
+			}else{
+				return id;
+			}
+		}
+	</script>
+</body>
+</html>

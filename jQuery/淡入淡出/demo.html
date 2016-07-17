@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>淡入淡出效果</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        .wp{margin:30px auto 0px auto;width:800px;height:400px;}
+        .imgs{margin:0px auto;width:800px;height:400px;overflow:hidden;position:relative;}
+        .myUl_view{width:800px;overflow:hidden;list-style:none;}
+        .myUl_view li { position: absolute;top: 0;left: 0;}
+        /*.myUl_view li.on{}*/
+        .myUl_view li:first-child{z-index: 5}
+        .myUl_btn li.active{z-index: 1}
+        .myUl_btn{left:0;bottom:0px;position:absolute;z-index: 10;}
+        .myUl_btn li{width:160px;height:30px;float:left;overflow: hidden;list-style: none; }
+        .op li{background:#999999;filter:alpha(opacity=60);opacity:0.6;}
+        .op li.active{background: #666666;color: #fff;}
+        a{width: 40px;height: 40px;position: absolute;top: 50%;left: 0px;margin-top: -20px;background-color: #000;display: none}
+        a.next{right: 0;left: auto;}
+        .imgs:hover a{display: block;opacity: .6;color: #fff;text-align: center;line-height: 40px;z-index: 10;}
+        .myUl_btn li{
+            font-weight: bolder;line-height: 30px;text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="wp">
+        <div class="imgs">
+            <ul class="myUl_view">
+                <li class="on"><img src="img/hsq.jpg" alt="" width="800" height="400"></li>
+                <li><img src="img/jm.jpg" alt="" width="800" height="400"></li>
+                <li><img src="img/zh.jpg" alt="" width="800" height="400"></li>
+                <li><img src="img/db.jpg" alt="" width="800" height="400"></li>
+                <li><img src="img/bg.jpg" alt="" width="800" height="400"></li>
+            </ul>
+
+            <ul class="myUl_btn op">
+                <li class="active">哈士奇</li>
+                <li>金毛</li>
+                <li>藏獒</li>
+                <li>杜宾</li>
+                <li>八哥</li>
+            </ul>
+            <a href="javascript:;" class="next">next</a>
+            <a href="javascript:;" class="prov">prov</a>
+        </div>
+    </div>
+    <script src="../js/jquery-3.0.0.js"></script>
+    <script>
+        !function (window,document,$,undefined) {
+            var $img_div = $('.imgs');
+            function fadeTransition(selector) {
+                var $target = $(selector),
+                    $myUl_btn_li = $('.myUl_btn > li'),
+                    $myUl_view_li = $('.myUl_view > li'),
+                    timer;
+
+                $.each($myUl_view_li,function (i){
+                    $(this).attr('index',i);
+                })
+                $myUl_btn_li.on('click',function () {
+                    var $this = $(this),
+                            newIndex = $this.index(),
+                            oldIndex = $this.siblings('.active').index();
+
+                    $this.addClass('active').siblings('.active').removeClass('active');
+
+                    $myUl_view_li.eq(oldIndex).before($myUl_view_li.eq(newIndex));
+
+                    $target.find('.myUl_view > li').each(function (i) {
+                        var $newThis=$(this);
+                        $newThis.css('z-index',$myUl_view_li.length-i-1);
+                    });
+
+                    $myUl_view_li.eq(oldIndex).show().stop().fadeOut(1000);
+
+//                    $target.find('.myUl_view').find('li[index='+newIndex+']').hide().stop().fadeIn(1000);
+                    $myUl_view_li.eq(newIndex).hide().stop().fadeIn(1000);
+
+                })
+                $('a').on('click',function () {
+                    var $this = $(this),
+                            addIndex = $('.myUl_btn').find('li.active').index();
+                    if($this.hasClass('next')){
+                        addIndex++;
+                        addIndex > 4 ? addIndex =0:addIndex;
+                    }else {
+                        addIndex--;
+                        addIndex < 0 ? addIndex =4 :addIndex;
+                    }
+//                    console.log(addIndex)
+                    $myUl_btn_li.eq(addIndex).trigger('click');
+                })
+
+            }
+            $img_div.on('mouseover',function () {
+                clearInterval(timer);
+           });
+            $img_div.on('mouseout',function(){
+                run();
+            });
+            function run() {
+                timer = setInterval(function () {
+                    $('a.next').trigger('click');
+                },2000)
+            }
+           run();
+
+            fadeTransition('.imgs');
+        }(window,document,jQuery)
+    </script>
+
+</body>
+</html>

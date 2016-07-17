@@ -1,0 +1,89 @@
+/*div{*/
+	
+/*	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	border: 10px dashed red;
+	margin: 220px auto ;
+	text-align: center;*/
+
+
+
+	/*border-top: 5px solid red;*/
+
+/*}*/
+/*span,div {
+	background-color: yellow;
+	margin: 50px 0 20px 30px;
+
+}*/
+
+div span{
+	color: red;
+
+}
+
+.my-span{
+	width: 300px;
+	height: 200px;
+	background-color :red;
+	display: block;
+}
+/*.my-btn{
+	background-color: #8ac007;
+	text-decoration: none;;
+	color: #fff;
+	border: 1px solid #aaa;
+	padding: 8px 15px;
+	font-size:12px;
+	font-weight: bold;
+	border-radius: 10px;
+	margin-left:500px;
+
+}*/
+
+.my-btn{
+	background-color: #8ac007;
+	text-decoration: none;;
+	color: #fff;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	/*margin-left: 500px;*/
+	display: block;
+	width: 86px;
+	height:25px;
+	text-align: center;
+	line-height: 25px;
+
+/*	position: fixed;
+*/
+	position: absolute;
+	/*top:50px;*/
+	bottom: 50px;
+	right: 50px;
+
+}
+.my-btn:hover{
+	color: #8ac007;
+	background-color: #fff;
+}
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+*{
+	margin: 0;
+	padding: 0;
+}

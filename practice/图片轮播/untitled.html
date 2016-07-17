@@ -1,0 +1,166 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>标题</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" href="reset.css">
+<style>
+#out{
+	width:386px;height:262px;
+	overflow:hidden;
+	border:1px solid red;
+	margin:10px auto;
+	position:relative;
+}
+#inner{
+	width:386px;height:262px;
+	overflow:hidden;
+}
+#con{
+	width:3000px;height:262px;
+	overflow:hidden;
+}
+#con img{
+	width:386px;height:262px;
+	float:left;
+}
+#zuo{
+	width:25px;height:25px;
+	background:url(images/fx1.png) 0 0 no-repeat;
+	position:absolute;
+	left:5px;top:125px;
+}
+#you{
+	width:25px;height:25px;
+	background:url(images/fx2.png) 0 0 no-repeat;
+	position:absolute;
+	right:5px;top:125px;
+}
+#list{
+	width:200px;
+	position:absolute;
+	overflow:hidden;
+	bottom:10px;left:75px;
+}
+#list li{
+	width:30px;
+	line-height:30px;
+	text-align:center;
+	background:#ccc;
+	margin-left:10px;
+	float:left;
+}
+#list .show{
+	background:#fff;color:red
+}
+li{
+	list-style: none;
+}
+</style>
+</head>
+<body>
+<div id="out">
+<div id="inner">
+<div id="con">
+<img src="images/01.jpg" alt="">
+<img src="images/02.jpg" alt="">
+<img src="images/03.jpg" alt="">
+<img src="images/04.jpg" alt="">
+<img src="images/05.jpg" alt="">
+</div>
+</div>
+<p id="zuo"></p>
+<p id="you"></p>
+<ul id="list">
+<li class="show">1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+</ul>
+</div>
+</body>
+<script>
+var inner=document.getElementById('inner');
+var con=document.getElementById('con');
+var zuo=document.getElementById('zuo');
+var you=document.getElementById('you');
+var list=document.getElementById('list');
+var imgs=con.getElementsByTagName('img');
+var lis=list.getElementsByTagName('li');
+var x=0,timer1=null,timer2=null;
+function automove(){
+clearInterval(timer1);
+timer1=setInterval(function(){
+x++;
+if (x>=imgs.length) {
+x=0;
+};
+// inner.scrollLeft=imgs[0].offsetWidth*x;
+move();
+blis();
+},2000)
+}
+automove();
+function move(){//每张图的滚动
+clearInterval(timer2);
+var start=inner.scrollLeft;
+var end=imgs[0].offsetWidth*x;
+var step=0;
+var stepm=20;
+var evestep=(end-start)/20;
+timer2=setInterval(function(){
+step++;
+if (step==stepm) {
+step=0;
+clearInterval(timer2);
+};
+start+=evestep;
+inner.scrollLeft=start;
+},20)
+}
+
+function blis(){
+for (var i = 0; i < lis.length; i++) {
+lis[i].className='';
+};
+lis[x].className='show';
+}
+zuo.onclick=function(){
+clearInterval(timer1);
+x++;
+if (x>=imgs.length) {
+x=0;
+};
+move();
+blis();
+automove();
+}
+you.onclick=function(){
+clearInterval(timer1);
+x--;
+if (x<0) {
+x=imgs.length-1;
+};
+move();
+blis();
+automove();
+}
+
+for (var i = 0; i < lis.length; i++) {
+lis[i].onclick=function(){
+for (var i = 0; i < lis.length; i++) {
+if(lis[i]==this){
+x=i;
+move();
+blis();
+automove();
+}
+};
+}
+};
+</script>
+</html>

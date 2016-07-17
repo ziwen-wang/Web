@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		 #myDiv{
+			height: 150px;
+			width: 250px;
+			text-align: center;
+			line-height: 150px;
+			margin: 100px auto 0;
+		}
+		div{
+			width: 280px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="myDiv">00:00:00</div>
+	<div>
+		<input type="text" id="myText">
+		<select name="" id="mySelect">
+			<option value="Hours">Hours</option>
+			<option value="Minutes">Minutes</option>
+			<option value="Seconds">Seconds</option>
+		</select>
+		<button id="myBtn">start</button>
+	</div>
+
+
+<script>
+	var myDiv = document.getElementById('myDiv');
+	var myText = document.getElementById('myText');
+	var myBtn = document.getElementById('myBtn');
+	var mySelect = document.getElementById('mySelect');
+	var Hours;
+	var	Minutes;
+	var Seconds;
+	var timer;
+	var num;
+
+	
+	myBtn.onclick = function(){
+		if(isNaN(myText.value)){
+			alert('输入数字')
+		}else{
+			if(num == undefined || num == 0){
+				if(mySelect.value =='Hours'){
+					num = myText.value*3600;
+				}else if(mySelect.value == 'Minutes'){
+					num = myText.value*60;
+				}else if(mySelect.value == 'Seconds'){
+					num = myText.value;
+				}
+			}
+			 num = parseInt(num);
+			 if(timer == undefined){
+				 timer = setInterval(function(){
+				 	num--;
+				 	Hours = Math.floor(num/60/60);
+				 	Minutes = Math.floor(num/60%60);
+				 	Seconds = Math.floor(num%60);
+				 	myDiv.innerHTML = ($jion(Hours)+':'+$jion(Minutes)+':'+$jion(Seconds));
+				 	if(num <=0){
+				 		clearInterval(timer);
+				 		alert('时间到')
+				 		timer = undefined;
+				 	}
+				 },1000);
+			}
+		}
+	}
+
+	function $jion(nu){
+		nu<10? nu='0'+ nu : nu=nu;
+		return nu;
+	}
+
+</script>	
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wp{
+			width: 300px;
+			height: 200px;
+			background-color: #eee;
+			margin: 20px auto;
+			position: relative;
+		}
+
+		.tip{
+			background-color: red;
+			border-radius: 5px;
+			padding:10px;
+			position: absolute;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="wp" data-info = "测试第一段跟随效果"></div>
+	<hr/>
+	<div class="wp" data-info = "测试第二段跟随效果"></div>
+
+	<div class="tip"></div>
+
+
+
+<script src="../js/jquery-3.0.0.js"></script>	
+<script>
+	// !function(window,document,$,undefind){
+	// 	var $tip = $('.tip');
+	// 	$('.wp')
+	// 		.on('mousemove',function(e){
+	// 			var $this = $(this),
+	// 				text = $this.attr('data-info'),
+	// 				x = e.pageX,
+	// 				y = e.pageY;
+
+	// 			$tip.html(text).show();
+	// 			$tip.css({
+ //                            left: x + 20,
+ //                            top: y + 20
+ //                        });
+
+	// 	})
+	// 		.on('mouseleave',function(){
+	// 			$tip.hide();
+	// 		})
+
+	// }(window,document,jQuery);
+
+
+	$(function(){
+		var $tip = $('.tip');
+		$('.wp')
+			.on('mousemove',function(e){
+				var $this = $(this),
+					text = $this.attr('data-info'),
+					x = e.pageX,
+					y = e.pageY;
+				$tip.html(text).show();
+				$tip.css({
+					left:x + 20,
+					top:y + 20
+				})
+
+			})
+			.on('mouseout',function(){
+				$tip.hide();
+			})
+	})
+</script>
+</body>
+</html>

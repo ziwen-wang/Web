@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	省：<select name="1" id="sheng">
+		<option value="">请选择</option>
+	</select>
+	市：<select name="" id="shi">
+		<option value="">请选择</option>
+	</select>
+	县：<select name="" id="xian">
+		<option value="">请选择</option>
+	</select>
+
+	<script src = "Js/city_1.js"></script>
+	<script>
+		function province(obj){
+			var sheng = document.getElementById('sheng');
+			var shi = document.getElementById('shi');
+			var xian = document.getElementById('xian');
+			var province = [];
+			for (var i = 0; i < obj.length; i++) {
+				// province.push('<option value="',obj[i].value,'">',obj[i].text,'</option>');
+				province.push(isOption(obj[i].value,obj[i].text));
+			}
+			sheng.innerHTML += province.join('');
+			sheng.onchange = function(){
+					children = judge(this.value,obj);
+				var province1 = ['<option value="">请选择</option>'];
+				for (var j = 0; j < children.length; j++) {
+					// province1.push('<option value="',children[j].value,'">',children[j].text,'</option>');
+					province1.push(isOption(children[j].value,children[j].text));
+				}
+				shi.innerHTML = province1.join('');
+			}
+			shi.onchange = function(){
+				var children1 = judge(this.value,children);
+				var province2 =['<option value="">请选择</option>'];
+				for (var z = 0; z < children1.length; z++) {
+					province2.push('<option value="',children1[z].value,'">',children1[z].text,'</option>')
+					// province2.push(isOption(children1[z].value,children1[z].text));
+				}
+				xian.innerHTML = province2.join('');
+			}
+		}
+	/*
+	* 判断value
+	*/
+		function judge(val,obj){
+			for (var i = 0; i < obj.length; i++) {
+				if(obj[i].value == val){
+					return obj[i].children;
+				}
+			}
+
+		}
+		function isOption(val,tx){
+			var c = '<option value="'+val+'">'+tx+'</option>';
+			return c;
+
+		} 
+		province(cityData3);
+	</script>
+</body>
+</html>

@@ -1,0 +1,1488 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+boby{
+	font-size: 12px;
+    font-family: arial,Verdana, Geneva, Helvetica;
+    color: #131313;
+    line-height: 20px;
+}
+
+.head{
+	height: 115px;
+	position: relative;
+}
+
+
+.GOP{
+	background-image: url(../img/el_com.png);
+}
+
+.head .top{
+	width: 1200px;
+    margin: 0 auto;
+    padding: 12px;
+    position: relative;
+}
+
+.head .top .logo{
+	background-position: -650px 0px;
+	width: 130px;
+	height: 48px;
+	float: left;
+}
+.head .top .top_centent ul{
+	width: 350px;
+	height: 21px;
+	float: left;
+	margin-top: 20px;
+}
+.GOP1{
+	background-image: url(../img/phone.gif);
+}
+.GOP2{
+	background-image: url(../img/icon_2015.png);
+}
+.GOP3{
+	background-image: url(../img/icon_index.png);
+}
+.head .top .top_centent{
+	position: absolute;
+    top: 3px;
+    left: 461px;
+}
+	
+.head .top .top_centent b{
+	border-width: 0 1px 0 0;
+    border-color: #c5c5c5;
+    border-style: solid;
+    float: left;
+    height: 10px;
+    margin: 0px 10px;
+
+}
+
+.nav .nav_left li:hover{
+	background-color: #0053AC;
+}
+.head .top .top_centent li{
+	color: #c5c5c5;
+	font-size: 12px;
+	float: left;
+	list-style-type: none;
+	/*margin-left: 15px;
+	/*position: relative;*/
+}
+.head .top .top_centent li:hover{
+	color: red;
+	cursor: pointer;
+}
+
+.pitch_on{
+	background-color: #00367A;
+}
+.dazhe{
+	background-position: -509px 0;
+    width: 21px;
+    height: 20px;
+    float: right;
+    position: absolute;
+    right: 722px;
+    top: -10px;
+}
+.head .top .vip{
+	width: 150px;
+    height: 42px;
+    float: right;
+    position: absolute;
+    top: 10px;
+    right: 170px;
+}
+.head .top .vip .iphone{
+	width: 40px;
+	height: 40px;
+	background-position: 0px 0px;
+	float: left;
+}
+.changzhusheng{
+	background-position: -470px -28px;
+    width: 39px;
+    height: 26px;
+    float: right;
+    position: absolute;
+    right: 622px;
+    top: -10px;
+}
+
+.xin{
+	background-position: -487px 0;
+    width: 21px;
+    height: 20px;
+    float: right;
+    position: absolute;
+    right: 334px;
+    top: -10px;
+}
+.keyuding{
+	background-position: -469px 0;
+    width: 21px;
+    height: 20px;
+    float: right;
+    position: absolute;
+    right: 388px;
+    top: -10px;
+}
+.head .top .vip span{
+	color: #ff6a6a;
+	float: left;
+	font: 14px/18px Microsoft yahei;
+	margin-left: 10px;
+}
+
+.head .top .service{
+    width: 180px;
+    height: 42px;
+    float: right;
+    position: absolute;
+    top: 10px;
+    right: -10px;
+}
+
+.head .top .service .iphone2{
+	width: 42px;
+    height: 42px;
+    background-position: -42px -2px;
+    float: left;
+}
+.head .top .service .number1{
+	float: left;
+    color: #999;
+    font: 14px/18px Microsoft yahei;
+    margin-left: 10px;
+ 	margin-top: 3px;
+}
+.clear{
+	clear: both;
+}
+.head .top .service .number2
+{
+	color: #2064c8;
+    font-size: 16px;
+    border: 1px solid #fff;
+    width: 124px;
+    float: left;
+    margin-left: 10px;
+}
+.head .top .service .triangle{
+	height: 0;
+    width: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #2064c8 transparent transparent transparent;
+    position: absolute;
+    top: 27px;
+    right: 7px;
+}
+
+.nav{
+	height: 39px;
+	width: 1280px;
+	background-color: #2064c8;
+	margin-top: 10px;
+}
+.nav .nav_left{
+	margin: 0 auto;
+    width: 1200px;
+    position: relative;
+}
+.nav .nav_left li{
+	float: left;
+	line-height: 39px;
+	list-style: none;
+	color: #fff;
+	border-width: 0 1px 0 0;
+	border-style: solid;
+	border-color: #3774ce;
+	padding: 0 12px;
+	font-size: 14px;
+}
+.nav .nav_left ul .left{
+	border-width: 0 1px;
+}
+.nav_right{
+	width: 100px;
+    background-color:#00367A;
+    height: 39px;
+    float: right;
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    right: 80px;
+
+}	
+.nav .nav_right span{
+
+	font-family:Tahoma,Geneva,sans-serif;	
+	line-height: 39px;
+
+}
+
+.nav .nav_right .denglu{
+	margin-left: 16px;
+}
+
+.nav .nav_right span:hover{
+	color: yellow;
+	cursor: pointer;
+}
+
+.nav .nav_left li:hover{
+	cursor: pointer;
+}
+
+.among{
+	height: 380px;
+	width: 1280px;
+	margin-top: 6px;
+	background-image: url(../img/banner1.jpg);
+	background-position: -300px 0px;
+	position: relative;
+}
+
+.among .among_box{
+	width: 600px;
+    height: 300px;
+    background-color: #fff;
+    position: absolute;
+    top: 40px;
+    left: 60px;
+
+}
+
+.among .among_box .among_left{
+	height:300px;
+	width: 100px;
+	background-color: #F3F3F3;
+	position: relative;
+	border-right: 1px solid #E1E1E1;
+}
+.among .among_box .among_left ul{
+	/*background-color: #F3F3F3;*/
+	cursor: pointer;
+	position: absolute;
+	top:0px;
+	left: 0px;
+	color: #555;
+}
+
+.among .among_box .among_left li{
+	font-size: 14px;
+	
+	height: 59px;
+	width: 100px;
+	line-height: 59px;
+	text-align: center;
+	list-style-type: none;
+	border-bottom: 1px solid #E1E1E1;
+	position: relative;
+	/*border-right:  1px solid #E1E1E1;*/
+}
+
+.iphone{
+	/*height: 120px;*/
+	/*border-bottom: 1px solid #F3F3F3;*/
+	/*line-height: 120px;*/
+}
+
+
+/*.among .among_box .among_left li:hover{
+	background-color: #fff;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #E1E1E1;
+
+}*/
+
+.among .among_box .among_left .click{
+	background-color: #fff;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #E1E1E1;
+	color: #37D;
+	background-position: -556px -317px;
+	
+}
+
+.among .among_box .among_left .blank{
+	/*border-top: 1px solid #fff;*/
+}
+
+.among .among_box .iphoto{
+	width: 454px;
+    height: 276px;
+    background-image: url(../img/mobile_bg.png);
+    background-position: 3px 0px;
+    position: absolute;
+    bottom: 0px;
+    right: 25px;
+}
+.among .among_box .among_left .wineshop{
+	background-position: -584px -344px;
+    width: 13px;
+    height: 17px;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+.among .among_box .among_left .air_ticket{
+	background-position: -582px -366px;
+    width: 15px;
+    height: 17px;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+.among .among_box .among_left .railway_ticket{
+	background-position: -584px -386px;
+    width: 13px;
+    height: 17px;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+.mobile{
+	background-position: -583px -317px;
+    width: 11px;
+    height: 17px;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
+
+.among_btn{
+	height: 20px;
+	width: 180px;
+	border:1px solid #ccc;
+	border-radius: 20px;
+	font-size: 14px;
+	padding: 5px 20px;
+	margin-top: 20px;
+	margin-left: 60px;
+	line-height: 20px;
+}
+
+.among_btn .heart_photo{
+	background-position: -583px -16px;
+	height: 14px;
+	width: 14px;
+	float: left;
+	margin-top: 4px;
+	margin-left: 0px;
+	margin-right: 7px;
+}
+.among_btn p{
+	float: right;
+}
+
+.among_btn a{
+	color:#37e;
+	text-decoration: none;
+}
+
+.trends{
+	height: 260px;
+	margin-top: 20px;
+	border: 1px solid red;
+}
+
+
+.purpose{
+	height: 800px;
+	font-size: 12px;
+    font-family: arial,Verdana, Geneva, Helvetica;
+    color: #131313;
+    line-height: 20px;
+}
+
+.purpose .purpose_title{
+	width: 1200px;
+	height: 36px;
+	margin:0 auto;
+	margin-top: 20px;
+	border-bottom: 2px solid #f55;
+	padding: 5px 0;
+}
+
+.purpose .purpose_title div{
+	font: 24px/30px Microsoft yahei;
+    color: #f55;
+    width: 130px;
+    height: 24px;
+    float: left;
+}
+
+.purpose .purpose_title span{
+	float: left;
+	font: 14px/30px Microsoft yahei;
+    color: #999;
+}
+
+.purpose .purpose1 .laber1 .laber_photo{
+	width: 29px;
+	height: 24px;
+	background-position: -575px -101px;	
+	float: left;
+	/*border: 1px solid red;*/
+}
+.purpose .purpose1{
+	height: 48px;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 10px 0px;
+	
+}
+.purpose .purpose1 span{
+	float: left;
+	font: 18px/26px Microsoft yahei;
+    color: #555;
+}
+
+
+.purpose .purpose1 .laber2{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose1 .laber3{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+
+.purpose .purpose1 .laber4{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+.purpose .purpose1 .laber5{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+.purpose .purpose1 .laber6{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose1 .laber7{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose1 .laber8{
+    font: 14px/24px Microsoft yahei;
+    float: right;
+    margin: 2px 0px 0px 30px;
+    color: #555;
+    text-decoration: none;
+}
+.purpose .purpose1 div:hover{
+	border:1px solid #F66;
+	cursor: pointer;
+	border-radius: 12px;
+}
+.tab_theme{
+	width: 1200px;
+    height: 202px;
+    margin:0 auto;
+
+}
+.purpose .tab_theme li{
+	width: 290px;
+	height: 200px;
+	float: left;
+	margin-right: 3px;
+	list-style-type: none;
+}
+.purpose div{
+	height: 160px;
+}
+.purpose .tab_theme .hs{
+	background-image: url(../img/dgtq-hs.jpg);
+	position: relative;
+}
+.purpose .tab_theme .hs span{
+	font: 24px/30px Microsoft yahei;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.purpose .tab_theme .ems{
+	background-image: url(../img/dgtq-ems.jpg);
+	position: relative;
+}
+.purpose .tab_theme .ems span{
+	font: 24px/30px Microsoft yahei;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.purpose .tab_theme .wts{
+	background-image: url(../img/dgtq-wts.jpg);
+	position: relative;
+}
+.purpose .tab_theme .wts span{
+	font: 24px/30px Microsoft yahei;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.purpose .tab_theme .ls{
+	background-image: url(../img/dgtq-ls.jpg);
+	position: relative;
+}
+
+.purpose .tab_theme .ls span{
+	font: 24px/30px Microsoft yahei;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.purpose .tab_theme .text{
+	height: 30px;
+	width: 280px;
+	color: #555;
+    font: 14px/30px Microsoft yahei;
+    background: #f7f7f7;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.purpose .tab_theme li:hover .text {
+    border-bottom: 2px solid #F66;
+    margin-bottom: 0;
+}
+.purpose .tab_theme li:hover{
+	cursor: pointer;
+}
+
+
+
+.purpose .purpose2 .laber1 .laber_photo{
+	width: 29px;
+    height: 25px;
+    background-position: -575px -131px;
+    float: left;
+}
+.purpose .purpose2{
+	height: 48px;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 10px 0px;
+	margin-top: 40px;
+	
+}
+.purpose .purpose2 span{
+	float: left;
+	font: 18px/26px Microsoft yahei;
+    color: #555;
+}
+
+
+.purpose .purpose2 .laber2{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose2 .laber3{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+
+.purpose .purpose2 .laber4{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+.purpose .purpose2 .laber5{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+.purpose .purpose2 .laber6{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose2 .laber8{
+    font: 14px/24px Microsoft yahei;
+    float: right;
+    margin: 2px 0px 0px 30px;
+    color: #555;
+    text-decoration: none;
+}
+
+.purpose .tab_theme2 li:hover .text{
+    border-bottom: 2px solid #F66;
+    margin-bottom: 0;
+}
+.click1{
+	background-color: #F66;
+	color: #fff;
+	border-radius: 12px;
+}
+/**/
+
+.tab_theme2{
+	width: 1200px;
+    height: 202px;
+    margin:0 auto;
+
+}
+.purpose .tab_theme2 li{
+	width: 290px;
+	height: 200px;
+	float: left;
+	margin-right: 3px;
+	list-style-type: none;
+}
+
+
+
+
+.purpose .tab_theme2 div{
+	height: 160px;
+	width: 290px;
+}
+.purpose .tab_theme2 .ld{
+	background-image: url(../img/dgtq-ld.jpg);
+	position: relative;
+}
+.purpose .tab_theme2 .ld span{
+	font: 24px/30px Microsoft yahei;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.purpose .tab_theme2 .qm{
+	background-image: url(../img/dgtq-qm.jpg);
+	position: relative;
+}
+.purpose .tab_theme2 .qm span{
+	font: 24px/30px Microsoft yahei;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.purpose .tab_theme2 .jzd{
+	background-image: url(../img/dgtq-jzd.jpg);
+	position: relative;
+}
+.purpose .tab_theme2 .jzd span{
+	font: 24px/30px Microsoft yahei;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.purpose .tab_theme2 .lm{
+	background-image: url(../img/dgtq-lm.jpg);
+	position: relative;
+}
+
+.purpose .tab_theme2 .lm span{
+	font: 24px/30px Microsoft yahei;
+    color: #fff;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.purpose .tab_theme2 .text{
+	height: 30px;
+	width: 280px;
+	color: #555;
+    font: 14px/30px Microsoft yahei;
+    background: #f7f7f7;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+/**/
+.purpose .purpose_title1{
+	width: 1200px;
+	height: 36px;
+	margin:0 auto;
+	margin-top: 20px;
+	border-bottom: 2px solid #49f;
+	padding: 5px 0;
+}
+
+.purpose .purpose_title1 div{
+    font: 24px/30px Microsoft yahei;
+    color: #49f;
+    width: 130px;
+    height: 24px;
+    float: left;
+}
+
+/**/
+
+.purpose .purpose3 .laber1 .laber_photo{
+	width: 29px;
+    height: 25px;
+    background-position: -573px -190px;
+    float: left;
+}
+.purpose .purpose3{
+	height: 48px;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 10px 0px;
+	
+}
+.purpose .purpose3 span{
+	float: left;
+	font: 18px/26px Microsoft yahei;
+    color: #555;
+}
+
+
+.purpose .purpose3 .laber2{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose3 .laber3{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+
+.purpose .purpose3 .laber4{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+.purpose .purpose3 .laber5{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+.purpose .purpose3 .laber6{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose3 .laber8{
+    font: 14px/24px Microsoft yahei;
+    float: right;
+    margin: 2px 0px 0px 30px;
+    color: #555;
+    text-decoration: none;
+}
+.purpose .purpose3 div:hover{
+	border:1px solid #49f;
+	border-radius: 14px;
+}
+.click2{
+	background-color: #49f;
+	color: #fff;
+	border-radius: 12px;
+}
+.purpose .plane li{
+	width: 198px;
+	height: 98px;
+	float: left;
+	border: 1px solid #d8e8fe;
+	list-style-type: none;
+	margin-left: -1px;
+	position: relative;
+	background: #f4f9ff;
+}
+.purpose .plane li:hover{
+	border:1px solid #49f;
+	z-index: 3;
+}
+.purpose .train li:hover{
+	border:1px solid #49f;
+	z-index: 3;
+}
+.purpose .plane{
+	width: 1200px;
+	height: 100px;
+	margin:0 auto;
+}
+
+.purpose .plane .plane-first{
+	width: 198px;
+	height: 98px;
+	float: left;
+	border: 1px solid #d8e8fe;
+	list-style-type: none;
+}
+.purpose .plane .left{
+	position: absolute;
+	top: 20px;
+    left: 10px;
+}
+.purpose .plane .on{
+	position: absolute;
+	top: 30px;
+    left: 75px;
+}
+.purpose .plane .right{
+	position: absolute;
+	top: 20px;
+    right: 20px;
+}
+.purpose .plane .left1{
+	position: absolute;
+	bottom: 10px;
+    left: 20px;
+    font: 12px/30px Microsoft yahei;
+    text-align: center;
+    line-height: 20px;
+}
+.purpose .plane .on1{
+	position: absolute;
+	bottom: 10px;
+    left: 84px;
+    background: #090;
+    border-radius: 8px;
+    color: #fff;
+    padding: 0 3px;
+}
+.purpose .plane .right1{
+	position: absolute;
+	bottom: 10px;
+    right: 40px;
+    color: #fc6622;
+    font-size: 14px;
+}
+.purpose .plane i{
+	display: block;
+	width: 30px;
+	height: 20px;
+	background-position: -568px -169px;
+}
+.purpose .plane li div{
+	width: 70px;
+	height: 30px;
+	font: 14px/30px Microsoft yahei;
+	text-align: center;
+}
+
+/**/
+.purpose .purpose4 .laber1 .laber_photo{
+	width: 29px;
+    height: 25px;
+    background-position: -573px -221px;
+    float: left;
+}
+.purpose .purpose4{
+	height: 48px;
+	width: 1200px;
+	margin: 0 auto;
+	padding: 10px 0px;
+	margin-top: 40px;
+	
+}
+.purpose .purpose4 span{
+	float: left;
+	font: 18px/26px Microsoft yahei;
+    color: #555;
+}
+
+
+.purpose .purpose4 .laber2{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose4 .laber3{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+
+.purpose .purpose4 .laber4{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+.purpose .purpose4 .laber5{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+.purpose .purpose4 .laber6{
+	width: 56px;
+	height: 22px;
+	padding: 1px 10px;
+	float: left;
+	font: 14px/22px Microsoft yahei;
+	margin: 2px 0px 0px 30px;
+	border:1px solid transparent;
+}
+
+.purpose .purpose4 .laber8{
+    font: 14px/24px Microsoft yahei;
+    float: right;
+    margin: 2px 0px 0px 30px;
+    color: #555;
+    text-decoration: none;
+}
+.purpose .purpose4 div:hover{
+	border:1px solid #49f;
+	border-radius: 14px;
+}
+/**/
+/*.purpose .train li{
+	width: 198px;
+	height: 98px;
+	float: left;
+	border: 1px solid #d8e8fe;
+	list-style-type: none;
+	margin-left: -1px;
+	position: relative;
+}
+
+.purpose .train{
+	width: 1200px;
+	height: 100px;
+	margin:0 auto;
+}
+
+.purpose .train .train-first{
+	width: 198px;
+	height: 98px;
+	float: left;
+	border: 1px solid #d8e8fe;
+	list-style-type: none;
+}*/
+
+/**/
+
+.purpose .train li{
+	width: 198px;
+	height: 98px;
+	float: left;
+	border: 1px solid #d8e8fe;
+	list-style-type: none;
+	margin-left: -1px;
+	position: relative;
+	background: #f4f9ff;
+}
+
+.purpose .train{
+	width: 1200px;
+	height: 100px;
+	margin:0 auto;
+}
+
+.purpose .train .plane-first{
+	width: 198px;
+	height: 98px;
+	float: left;
+	border: 1px solid #d8e8fe;
+	list-style-type: none;
+}
+.purpose .train .left{
+	position: absolute;
+	top: 20px;
+    left: 10px;
+}
+.purpose .train .on{
+	position: absolute;
+	top: 30px;
+    left: 75px;
+}
+.purpose .train .right{
+	position: absolute;
+	top: 20px;
+    right: 20px;
+}
+.purpose .train .left1{
+	position: absolute;
+	bottom: 10px;
+    left: 20px;
+    font: 12px/30px Microsoft yahei;
+    text-align: center;
+    line-height: 20px;
+}
+.purpose .train .on1{
+	position: absolute;
+	bottom: 10px;
+    left: 84px;
+    background: #090;
+    border-radius: 8px;
+    color: #fff;
+    padding: 0 3px;
+}
+.purpose .train .right1{
+	position: absolute;
+	bottom: 10px;
+    right: 40px;
+    color: #fc6622;
+    font-size: 14px;
+}
+.purpose .train i{
+	display: block;
+    width: 35px;
+    height: 20px;
+    background-position: -524px -169px;
+}
+.purpose .train li div{
+	width: 70px;
+	height: 30px;
+	font: 14px/30px Microsoft yahei;
+	text-align: center;
+}
+/**/
+.purpose .purpose_title2{
+	width: 1200px;
+	height: 36px;
+	margin:0 auto;
+	margin-top: 20px;
+	border-bottom: 2px solid #77cc11;
+	padding: 5px 0;
+}
+
+.purpose .purpose_title2 div{
+    font: 24px/30px Microsoft yahei;
+    color: #49f;
+    width: 130px;
+    height: 24px;
+    float: left;
+}
+
+.purpose .raiders{
+	height: 270px;
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.purpose .raiders .tab_nav li{
+    text-decoration: none;
+    list-style-type: none;
+    padding: 0 10px 1px 10px;
+    font: 14px/57px Microsoft yahei;
+    width: 200px;
+    height: 53px;
+    line-height: 57px;
+    border-bottom: 1px solid #ccc;
+}
+.purpose .raiders .tab_nav{
+	margin-top: 10px;
+}
+.click3{
+	background: #89ca00;
+    color: #fff;
+}
+
+.purpose .raiders .div1{
+	width: 380px;
+	height: 220px;
+	background-image: url(../img/1.jpg);
+	position: absolute;
+	top: 0px;
+	left: 220px;
+}
+.purpose .raiders .div1 div{
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-color: transparent transparent transparent #89ca00;
+	border-width: 17px;
+    position: absolute;
+    top: 10px;
+    left: -2px;
+}
+
+.purpose .raiders .div2{
+	width: 290px;
+	height: 180px;
+	position: absolute;
+	top: 0px;
+	right: 300px;
+	background-image: url(../img/3.jpg);
+}
+.purpose .raiders span{
+	/*display: block;*/
+	height: 40px;
+	width: 280px;
+    font: 14px/40px Microsoft yahei;
+    padding: 0 5px;	
+    color: #37e;
+    background: #f7f7f7;
+    position: absolute;
+    bottom: -40px;
+    border-bottom: 1px solid #ccc;
+}
+.purpose .raiders .div3{
+	width: 290px;
+	height: 180px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-image: url(../img/2.jpg);
+
+}
+
+.purpose .raiders .tab_nav:hover{
+	cursor: pointer;
+}
+.purpose .raiders .div1{
+	cursor: pointer;
+
+}
+.purpose .raiders .div2:hover span {
+ 	border-bottom: 1px solid #89ca00;
+}
+.purpose .raiders .div3:hover span {
+ 	border-bottom: 1px solid #89ca00;
+}
+
+.purpose .bottm1{
+	width: 1160px;
+	height: 60px;
+	padding: 20px;
+	margin: 0 auto;
+	background-color: #f7f7f7;
+	position: relative;
+	border-bottom: 1px solid #ccc;
+}
+.purpose .bottm1 li{
+	width: 290px;
+	height: 60px;
+	float: left;
+	list-style-type: none;
+
+}
+.purpose .bottm1 .ul .div1{
+	width: 62px;
+    height: 62px;
+    background-position: -90px -3px;
+    float: left;
+}
+.purpose .bottm1 .ul span{
+	line-height: 60px;
+    font: 16px/60px Microsoft yahei;
+    float: left;
+    margin-left: 10px;
+}
+
+.purpose .bottm1 .ul .div2{
+	width: 62px;
+    height: 62px;
+    background-position: -158px -3px;
+    float: left;
+}
+
+.purpose .bottm1 .ul .div3{
+	width: 62px;
+    height: 62px;
+    background-position: -226px -3px;
+    float: left;
+}
+
+
+.purpose .bottm1 .ul .div4{
+	width: 62px;
+    height: 62px;
+    background-position: -294px -5px;
+    float: left;
+}
+
+.purpose .service_us .bottm2{
+	width: 1200px;
+	height: 80px;
+	margin: 0 auto;
+	background-color: #f7f7f7;
+	overflow: hidden;
+	position: relative;
+}
+
+.purpose .service_us .bottm2 .laber1{
+	width: 110px;
+	height: 80px;
+	background-position: -401px -15px;
+	float: left;
+
+}
+.purpose .service_us .bottm2 span{
+	font: 16px/30px Microsoft yahei;
+    color: #71829d;
+    padding: 0 5px;
+    float: left;
+    position: absolute;
+    bottom: 0px;
+    left: 290px;
+    line-height: 80px;
+}
+.purpose .service_us .bottm2 a{
+	font: 14px/80px Microsoft yahei;
+	color: #37e;
+	float: right;
+	margin-right: 77px;
+	text-decoration: none;
+}
+
+.purpose .service_us .text{
+	width: 200px;
+    height: 28px;
+    padding: 0 3px;
+    border: 1px solid #ccc;
+    position: absolute;
+    float: left;
+    top: 25px;
+    left: 475px;
+}
+
+.purpose .service_us .subtext{
+	height: 30px;
+    width: 80px;
+    background: #3377dd;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    position: absolute;
+    top: 25px;
+    right: 437px;
+}
+.purpose .service_us .text:focus{
+	outline: none;
+}
+
+.purpose .footer{
+	width: 1280px;
+	height: 269px;
+	padding: 20px 0;
+	margin-top: 20px;
+	position: relative;
+}
+
+
+.purpose .footer .div dt{
+	width: 167px;
+    height: 18px;
+    font: 18px/1 Microsoft Yahei;
+    padding: 0 0 0 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid #5D96C7;
+}
+
+.purpose .footer .div dd{
+	width: 166px;
+	height: 24px;
+	padding: 0 0 0 14px;
+	color: #333;
+    text-decoration: none;
+}
+.purpose .footer .div1{
+	float: left;
+	position: absolute;
+    left: 240px;
+   	float: left;
+    width: 180px;
+    padding-left: 70px;
+}
+
+.purpose .footer .div2{
+	float: left;
+	position: absolute;
+    left: 460px;
+   	float: left;
+    width: 180px;
+    padding-left: 70px;
+}
+
+.purpose .footer .div3{
+	float: left;
+	position: absolute;
+    left: 690px;
+   	float: left;
+    width: 180px;
+    padding-left: 70px;
+}
+.purpose .footer dd:hover{
+	cursor: pointer;
+	color: red;
+}
+.purpose .footer .div3 dd div{
+	width: 100px;
+	height: 100px;
+	background-position: 100px 0;
+}
+
+.purpose .footer .div4{
+	float: left;
+	position: absolute;
+    left: 970px;
+   	float: left;
+    width: 180px;
+    padding-left: 70px;
+}
+.purpose .footer .div4 dd div{
+	width: 100px;
+	height: 100px;
+	background-position: 100px -100px;
+}
+.purpose .footer .div5 span{
+    position: absolute;
+    bottom: 40px;
+    left: 400px;
+    margin: 20px 0;
+}
+.purpose .footer .div5 .icp1{
+    position: absolute;
+    bottom: 60px;
+    left: 730px;
+    color: #333;
+    text-decoration: none;
+}
+.purpose .footer .div5 .icp2{
+	position: absolute;
+    bottom: 60px;
+    left: 830px;
+    color: #333;
+    text-decoration: none;
+}
+.purpose .bottm_nav{
+	width: 1280px;
+	height: 40px;
+	background-color: #7c8fa2;
+	line-height: 40px;
+	position: relative;
+	min-width: 1000px;
+}
+.purpose .bottm_nav li{
+	width: 166px;
+    height: 40px;
+    color: #fff;
+    list-style-type: none;
+    float: left;
+    text-align: center;
+}
+.purpose .bottm_nav .fs{
+	margin-left: 150px;
+}
+
+.purpose .bottm_nav li:hover{
+	background-color: #8da1b5;
+}
+
+.purpose .bottm_nav .click5{
+	color:#333;
+	background-color:#8da1b5;
+}
+
+
+
+
+

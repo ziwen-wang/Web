@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #444;
+		}
+		ul,li,ol{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		div{
+			width: 300px;
+			height: 150px;
+			position: relative;
+			margin: 100px auto;
+			background-color: #fff;
+			overflow: hidden;
+		}
+		li{
+			width: 300px;
+			height: 150px;
+			float: left;
+		}
+		div:hover a{
+			display: block;
+		}
+		a{
+			width: 30px;
+			height: 30px;
+			position: absolute;
+			top: 50%;
+			left: 0;
+			margin-top: -15px;
+			background-color: yellow;
+			opacity: .3;
+			display: none;
+		}
+		a.right{
+			left: auto;
+			right: 0;
+		}
+		ol{
+			position: absolute;
+			width: 60px;
+			height: 10px;
+			margin: auto auto;
+			bottom: 10px;
+			left: 0;
+			right: 0;
+			background-color: #fff;
+			padding-left: -2px;
+		}
+		ol>li{
+			width: 10px;
+			height: 10px;
+			background-color: #ccc;
+			margin-left: 2px;
+			border-radius: 5px;
+		}
+		ol>li.onclick{
+			background-color: #000;
+		}
+		.a1{
+			background-color: red;
+		}
+		.a2{
+			background-color: blue;
+		}
+		.a3{
+			background-color: green;
+		}
+		.a4{
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li class="a1">1</li>
+			<li class="a2">2</li>
+			<li class="a3">3</li>
+			<li class="a4">4</li>
+			<li class="a5">5</li>
+		</ul>
+
+		<ol>
+			<li class="onclick"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+		<a href="javascript:void(0);" class="left"></a>
+		<a href="javascript:;" class="right"></a>
+	</div>
+
+	<script src="../js/jquery-3.0.0.js"></script>
+	<script>
+	$(function(){
+		var $ul = $('ul'),
+			$ol = $('ol'),
+			liLen = $ul.find('li').length,
+			timer = null;
+			liWidth = $ul.find('li').width();
+			ulWidth = liWidth*liLen;
+			$ul.width(ulWidth);
+
+
+		$ol.find('li').on('click',function(){
+			$this = $(this),
+			index = $this.index();
+			$ul.animate({marginLeft: -liWidth * index},500,function(){
+				$this.addClass('onclick').siblings('.onclick').removeClass();
+			})
+		})	
+
+		$('a').on('click',function(){
+			var $this = $(this),
+				addIndex = $ol.find('li.onclick').index();
+				if($this.hasClass('right')){
+					addIndex++;
+					addIndex =(addIndex == liLen) ? 0 :addIndex;
+				}else{
+					addIndex--;
+					addIndex < 0 ? addIndex = liLen - 1 :addIndex;
+				}
+				$ol.find('li').eq(addIndex).trigger('click');
+
+		})
+		$('div')
+				.on('mouseover',function(){
+					clearInterval(timer);
+				})
+				.on('mouseout',function(){
+					run();
+				})
+		function run(){
+			timer = setInterval(function(){
+				$('div').find('a.right').trigger('click');
+			},2000)
+		}
+		run();
+	})
+
+
+
+
+
+
+
+		// $(function(){
+		// 	$('div a').on('click',function(){
+		// 		var $this = $(this);
+		// 		var $ul = $('div ul')
+		// 		if ($this.hasClass('left')) {
+		// 			$ul.append($ul.find('li:first'));
+		// 		}else{
+		// 			$ul.prepend($ul.find('li:last'));
+		// 		}
+		// 	})
+
+		// 	// timer = setInterval(function(){
+		// 	// 	var $ul = $('div ul');
+		// 	// 	$ul.append($ul.find($ul.find('li:first')))
+		// 	// },2000)
+		// })
+
+		// 自己写的不带tag 的图片轮播
+		// $(function(){
+		// 	var $ul = $('ul');
+		// 	var liLen = $ul.find('li').length;
+		// 	var liWidth = $ul.find('li').width();
+		// 	var ulWidth = liLen * liWidth;
+		// 		$ul.width(ulWidth);
+		// 	$('a').on('click',function(){
+		// 		var $this = $(this);
+		// 		if ($('ul:animated').length > 0) {
+		// 			return;
+		// 		}
+		// 		if ($this.hasClass('left')) {
+		// 			$ul.animate({marginLeft:-liWidth},500,function(){
+		// 					$ul
+		// 						.append($ul.find('li:first'))
+		// 						.css('margin-left',0)
+		// 				})
+			// 	}else{
+			// 		$ul
+			// 			.prepend($ul.find('li:last'))
+			// 			.css('margin-left',-liWidth);
+			// 		$ul.animate({marginLeft:0},500);
+
+			// 	}
+			// })
+			// var timer = null;
+			// timer = setInterval(function a(){
+			// 	$ul.animate({marginLeft:-liWidth},500,function(){
+			// 		$ul
+			// 			.append($ul.find('li:first'))
+			// 			.css('margin-left',0)
+			// 	})
+			// },1000)
+
+			// div = $('div')[0];
+			// div.onmouseover = function(){
+			// 	clearInterval(timer);
+			// 	timer = undefined;
+			// }
+			// div.onmouseout = function(){
+			// 	if (timer == undefined) {
+			// 		timer = setInterval(function a(){
+			// 			$ul.animate({marginLeft:-liWidth},500,function(){
+			// 				$ul
+			// 					.append($ul.find('li:first'))
+			// 					.css('margin-left',0)
+			// 			})
+			// 		},1000)}
+			// }
+		// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+
+
+</body>
+</html>

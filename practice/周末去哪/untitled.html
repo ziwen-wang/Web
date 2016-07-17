@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		 #hehe{
+		 	width: 300px;
+		 	height: 150px;
+		 	border: 1px solid red;
+		 	margin-bottom: 10px;
+		 	line-height: 150px;
+		 	text-align: center;
+		 }
+	</style>
+</head>
+<body>
+	<div id="hehe">请输入地点名，可多行输入用'-'隔开</div>
+	<div>
+		<input type="text" id="text">
+		<button id="btn">添加</button>
+	</div>
+	<div>
+		<button id="start">开始</button>
+		<button id="stop">停止</button>
+	</div>
+
+	<select name="" id="mysel">
+		<option value="0">请选择</option>
+	</select>
+	<button id="myBtn">生成</button>
+	
+
+	<script>
+		var  spot = ['北京','上海','山西'];
+		// console.log(spot.length);
+		var btn = document.getElementById('btn');
+		var text = document.getElementById('text');
+		var start = document.getElementById('start');
+		var hehe = document.getElementById('hehe');
+		var stop = document.getElementById('stop');
+		var timer = null;
+
+		btn.onclick = function(){
+			var $val = text.value;
+			text.placeholder = '已添加';
+			$val = $val.split('-');
+			// 删除输入框中重复项
+			function quchong(a){
+				var n = []; //一个新的临时数组
+				for(var i = 0; i < a.length; i++){ //遍历当前数组
+						
+					if (n.indexOf(a[i]) == -1) n.push(a[i]);//如果当前数组的第i已经保存进了临时数组，那么跳过，
+															//否则把当前项push到临时数组里面
+				}
+				return n;
+			};
+			$val = quchong($val);
+			if($val ==""){
+					alert('未输入');
+
+			}else{
+					//检查重复数组
+					for(var a =0;a<$val.length;a++){
+						for(var b=0;b< spot.length;b++){
+							if($val[a] == spot[b]) $val.splice(a,1);
+							// if(!$val[a] == spot[b]) spot.push($val[a]);
+						}
+					}
+					spot=spot.concat($val);
+						console.log(spot);
+					
+				}
+				text.value="";
+				
+		};
+
+		stop.onclick = function(){
+			clearInterval(timer);
+			timer = undefined;
+			// start.disabled = ''; //让按钮可以点击
+		};
+
+		start.onclick = function(){
+
+			if (timer) return;
+			timer = setInterval(function(){
+				var r = parseInt(Math.random() *(spot.length-1+0)+0);
+				hehe.innerHTML = (spot[r]);
+			},1000);
+			// start.disabled = 'disabled'; //让按钮不可以点击
+		};
+
+		/*
+		* 数组生成下拉菜单
+		*/
+		var myBtn = document.getElementById('myBtn');
+		var mysel = document.getElementById('mysel');
+		myBtn.onclick = function(){
+			var	asd = '<option value="0">请选择</option>';
+			for (var i = 0; i < spot.length; i++) {
+				asd += '<option value = "'+(i+1)+'">'+spot[i]+'</option>';
+				console.log(asd)
+			}
+			mysel.innerHTML = asd;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

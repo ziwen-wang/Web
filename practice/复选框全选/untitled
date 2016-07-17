@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" onclick="asd()" id="asd">全选</input>
+	<input type="checkbox" id="qwe">复选框1</input>
+	<input type="checkbox" id="qwe">复选框2</input>
+	<input type="checkbox" id="qwe">复选框3</input>
+	<input type="checkbox" id="qwe">复选框4</input>
+
+	<script>
+		function asd(){
+			var a = document.getElementsByTagName('input');
+			if(a[0].checked){
+				for(var i = 0;i<a.length;i++){
+					if(a[i].type == 'checkbox') a[i].checked =false;
+				}
+			}else{
+				for(var b = 0;b<a.length;b++){
+					if(a[b].type == 'checkbox') a[b].checked = true;
+				}
+			}
+			
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#zx{
+			width: 300px;
+			height: 150px;
+			margin: 0 auto;
+			position: relative;
+			border: 1px solid red;
+			overflow: hidden;
+
+		}
+		#zxc{
+			width: 2000px;
+			height: 150px;
+			position: relative;
+			margin-left: -200px;
+		}
+		li{
+			float: left;
+			width: 20px;
+			height: 20px;
+			list-style-type: none;
+			background-color: #ccc;
+			margin-left: 5px;
+			
+		}
+		ul{
+			position: absolute;
+			bottom: 5px;
+			margin: 0 auto;
+			overflow:hidden;
+		}
+		#zxc img{
+			float: left;
+		}
+	</style>
+</head>
+<body>
+<div id="zx">
+	<div id="zxc">
+		<img src="img/01.jpg" alt="" width="300" height="150">
+		<img src="img/02.jpg" alt="" width="300" height="150">
+		<img src="img/03.jpg" alt="" width="300" height="150">
+		<img src="img/04.jpg" alt="" width="300" height="150">
+	</div>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>	
+
+	<script>
+		var zx = document.getElementById('zx');
+		var zxc = document.getElementById('zxc');
+					var i = 0;
+	
+		setTimeout(function(){
+			setInterval(function(){
+				i+=50;
+				zxc.style.left = i +'px';
+			},1000);
+		},1000)
+	</script>
+</body>
+</html>

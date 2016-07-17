@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var a =[];
+		// function panduan(a){
+		// 	if(typeof(a) == 'object'){
+		// 		if(typeof(a) instanceof Array){
+		// 			return 'array';
+		// 		}else{
+		// 			return typeof(a);
+		// 		}
+		// 	}return typeof(a);
+		// }
+	
+		/*
+		* 简写
+		*/
+		function panduan(a){
+			var type =typeof(a);
+			if(type == 'object' && a instanceof Array){
+				return 'array';
+			}else{
+				return type;
+			}
+		}
+		var c = panduan(a);
+		console.log(c)
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .wp{
+            width: 500px;
+            margin:50px auto;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="wp">
+        <laber>
+            <select name="" id="sheng">
+                <option value="">请选择</option>
+            </select> 省
+        </laber>
+        <laber>
+            <select name="" id="shi">
+                <option value="">请选择</option>
+            </select> 市
+        </laber>
+        <laber>
+            <select name="" id="qu">
+                <option value="">请选择</option>
+            </select> 区
+        </laber>
+    </div>
+
+    <script src="js/city_1.js"></script>
+    <script src="../js/jquery-3.0.0.js"></script>
+    <script>
+        !function (window,document,$,undefined) {
+
+            var currData = cityData3,provData;
+
+            $('#sheng,#shi,#qu').on('change',function () {
+                var $this = $(this),
+                    map = {sheng:'shi',shi:'qu'}, 
+                    currVla = $this.val(), 
+                    id = this.id;
+                if(id == 'sheng'){
+                    currData = provData = getChildrenByVal(cityData3,currVla);
+                    $('#shi').html('<option value="0">请选择</option>');  
+                }else if(id == 'shi') {
+                    currData = getChildrenByVal(provData,currVla);
+                }
+                renderSel(currData,map[id]);
+
+            });
+                renderSel(currData,'sheng');
+            function getChildrenByVal(data,val) {
+                var childern = [];
+                $.each(data,function (index,obj) {
+                    if(obj.value == val){
+                        childern = obj.children;
+                        return false;
+                    }
+                })
+                return childern;
+            }
+            
+            function renderSel(data,selId) {
+                var options = ['<option value="0">请选择</option>'];
+                $.each(data,function (index,obj) {
+                    options.push('<option value="', obj.value, '">', obj.text, '</option>');
+                });
+
+                $('#' + selId).html(options.join(''));
+            }
+
+
+        }(window,document,jQuery)
+    </script>
+
+</body>
+</html>

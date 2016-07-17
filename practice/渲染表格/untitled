@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table th,table td,table{
+			border: 1px solid red;
+			border-collapse: collapse;
+		}
+		table{
+			width: 60%;
+		}
+		table th,table td{
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+		}
+		tbody tr:hover{
+			background-color: #ccc;
+		}
+		.eee{
+			background-color: #eee;
+		}
+/*		I8不支持
+
+		tbody tr:nth-child(even){
+			background-color: #eee;
+		}
+		tbody tr:nth-child(even):hover{
+			background-color: #ccc;
+		}*/
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th >姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+				<th>邮箱</th>
+				<th>电话</th>
+				<th>学历</th>
+			</tr>
+		</thead>
+		<tbody>
+	<!-- 		<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+			</tr> -->
+		</tbody>
+	</table>
+<script>
+	var tableCell =[
+		{name:'aaa',age:11,sex:'男',email:'aaa@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'bbb',age:11,sex:'女',email:'bbb@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'ccc',age:11,sex:'男',email:'ccc@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'ddd',age:11,sex:'男',email:'ddd@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'eee',age:11,sex:'女',email:'eee@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'fff',age:11,sex:'男',email:'fff@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'ggg',age:11,sex:'女',email:'ggg@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'hhh',age:11,sex:'男',email:'hhh@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'iii',age:11,sex:'男',email:'iii@sina.cn',phone:123456789,experience:'研究僧'},
+		{name:'kkk',age:11,sex:'女',email:'kkk@sina.cn',phone:123456789,experience:'研究僧'}
+	]
+	var tbody = document.getElementsByTagName('tbody')[0];
+	function asd(){
+		var tableArr = [];
+		var myClass = 'eee';
+		for (var i = 0; i < tableCell.length; i++){
+			tableArr.push(
+				'<tr class ="',i%2==0? myClass:"",'">',
+					'<td>',tableCell[i].name,'</td>',
+					'<td>',tableCell[i].age,'</td>',
+					'<td>',tableCell[i].sex,'</td>',
+					'<td>',tableCell[i].email,'</td>',
+					'<td>',tableCell[i].phone,'</td>',
+					'<td>',tableCell[i].experience,'</td>',
+				'</tr>');
+		}
+		tbody.innerHTML = tableArr.join('');
+	}
+	asd();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+*{
+	margin:0;
+	padding: 0;
+}
+
+boby{
+	font=:13px arial;
+	overflow:hidden;
+}
+.my-nav{
+	width: 430px;
+	position: absolute;
+	top: 20px;
+	right:-5px;
+	/*float: right;
+	margin-left: 20px 15px 0 0;*/
+}
+.my-nav ul li{
+	float: left;
+	list-style: none;
+	font-weight: bold;
+	font-size: 13px;
+	margin-right: 20px;
+}
+.my-ulstyle.text-normal{
+	font-weight: normal;
+}
+.my-nav li a{
+	color: #333;
+}
+.my-nav li.more a{
+	background-color: #38f;
+	color: #fff;
+	text-decoration:none;
+	padding: 4px;
+	/*font-weight: normal;*/
+/*	display: block;
+	width: 60px;
+	height: 23px;*/
+}
+/*.text-normal.more:hover{
+	background-color: #fff;
+	color: #38f;
+
+}*/
+.my-nav li.more a:hover{
+	background-color: #fff;
+	color: #38f;
+}
+.main{
+	width: 645px;
+	height: 150px;
+	margin: 85px auto 0;
+}
+.main img{
+	display: block;
+	margin: 0 auto;
+}
+.search-wp{
+	border: 1px solid #b6b6b6;
+	width: 539px;
+	height: 34px;
+	display: inline-block;
+}
+.search-wp input{
+	border: none;
+	height: 22px;
+	width: 500px;
+	margin-top: 6px;
+	margin-left: 8px;
+}
+.search-wp input:focus{
+	outline: none;
+}
+.search-btn{
+	background-color: #317ef3;
+	border: none;
+	width: 100px;
+	height: 36px;
+	font-size: 15px;
+	color: #fff;
+	position: relative;
+	left: -5px;
+	top: 2px;
+}
+.search-btn:hover{
+	background-color: #2868c8;
+}
+.search-main-wp{
+	margin-top: 30px;
+}
+.down{
+	color: #999;
+	font:12px arial;
+	width: 645px;
+	margin: 100px auto 0;
+
+}
+.down ul{
+	overflow: hidden;
+	margin: 370px 130px 0;
+
+}
+.down li{
+		list-style: none;
+		float: left;
+		margin-left: 4px;
+		color: #999;
+}
+.down  li a{
+	color: #999;
+	display: block;
+}
+.down > a{
+	color: #999;
+	display: block;
+	text-decoration: none;
+	background-image: url(https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/icon-police.png?v=md5);
+	background-repeat: no-repeat;
+	text-indent: 20px;
+	width: 200px;
+	height: 14px;
+	margin: 0px 220px;
+}
+
+.mask-wp .mask{
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #000;
+	opacity:0.15;
+	position: absolute;
+}
+
+.mask-wp .dlalog{
+	height: 448px;
+	width: 393px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-color: #fff;
+}
+.mask-wp .dlalog .dlalog-head{
+	height: 46px;
+	line-height: 46px;
+	background:#f7f7f7 url(../img/baidu_logo_24_056405eb.png) no-repeat 18px 8px;
+	background-image:-webkit-image-set(url(../img/baidu_logo_24_056405eb.png) 1x,url(../img/baidu_logo_48_cbe2e538.png) 2x);
+	font-size: 16px;
+    font-family: '宋体';	
+    font-weight: bold;
+    color: #666;
+    text-indent: 50px;
+
+}
+.icons{
+	background-image: url(../img/pass_login_icons_retina_8c9991c6.png);
+}
+.mask-wp .dlalog .dlalog-head .close{
+	width: 15px;
+    height: 15px;
+    background-position: -89px -58px;
+    float: right;
+    margin-top: 15px;
+    margin-right: 18px;
+}
+.mask-wp .dlalog .dlalog-head .close:hover{
+	background-position: -89px -89px;
+}
+.mask-wp .dlalog .dlalog-body{
+	width: 351px;
+	height: 260px;
+	margin: 0 auto;
+}
+.mask-wp .dlalog .text-wp{
+	width: 325px;
+	margin: 0 auto;
+	position: relative;
+	height: 45px;
+}
+.mask-wp .dlalog .text-wp a{
+	font-size: 12px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, STHeiti,"宋体";
+    position: absolute;
+    right: 0;
+    top: 24px;
+    color: #666;
+}
+.mask-wp .dlalog .text-wp a:hover{
+	color: #2e7fdb;
+	text-decoration: underline;
+}
+
+.mask-wp .dlalog .text-wp i{
+	display: inline-block;	
+	width: 9px;
+    height: 14px;
+	background-image: url(../img/smsSwitchPhone_296e835b.png);
+	float: left;
+	margin-right: 5px;
+}
+.mask-wp .dlalog .dlalog-body .text1 input,.mask-wp .dlalog .dlalog-body .text2 input{
+	padding: 12px 50px 12px 38px;
+	width: 260px;
+}
+.mask-wp .dlalog .dlalog-body input:focus{
+	outline:none;
+}
+.mask-wp .dlalog .dlalog-body .text1{
+	margin-bottom: 10px;
+}
+.mask-wp .dlalog label{
+	color: #666;
+    font-size: 12px;
+}
+.mask-wp .dlalog .dlalog-body .xuanze a{
+	font-size: 12px;
+    text-decoration: none;
+    color: #1b66c7;
+    font-family: Arial, Helvetica, STHeiti,"宋体";
+    float: right;
+}
+.mask-wp .dlalog .dlalog-body .xuanze{
+	margin-top: 10px;
+}
+
+.mask-wp .dlalog .dlalog-body .denglu{
+	height: 48px;
+	font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    background: #3f89ec;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 48px;
+    border-radius: 3px;
+}
+.mask-wp .dlalog .dlalog-body .zhuce{
+	overflow: hidden;
+}
+.mask-wp .dlalog .dlalog-body .zhuce a{
+	font-size: 12px;
+    text-decoration: none;
+    color: #1b66c7;
+    font-family: Arial, Helvetica, STHeiti,"宋体";
+    float: right;
+    margin-top: 10px;
+}
+.mask-wp .dlalog .dlalog-body .denglu:hover{
+	background-color: #4490f7;
+}
+
+.mask-wp .dlalog .dlalog-body .xuanze a:hover{
+	text-decoration: underline;
+}
+
+
+.mask-wp .dlalog .end {
+	/*width: 100%;*/
+	margin-top: 8px;
+	border-top: 1px solid #eee;
+	padding: 15px 0 20px 15px;
+	overflow: hidden;
+}
+
+.mask-wp .dlalog .end .wp{
+	overflow: hidden;
+	position: relative;
+}
+.mask-wp .dlalog .end .qq{
+	overflow: hidden;
+	display: block;
+	background: -64px 0px;
+	background-repeat: no-repeat;
+	background-image: -webkit-image-set(url(../img/pass_login_icons_7241098f.png) 1x,url(../img/pass_login_icons_retina_8c9991c6.png) 2x);
+	padding-left: 24px;
+	height: 24px;
+	width: 0;
+	float: left;
+	margin: 15px 15px 0 0;
+}
+.mask-wp .dlalog .end .weibo{
+	overflow: hidden;
+	display: block;
+	background: -90px 0px;
+	background-repeat: no-repeat;
+	background-image: -webkit-image-set(url(../img/pass_login_icons_7241098f.png) 1x,url(../img/pass_login_icons_retina_8c9991c6.png) 2x);
+	padding-left: 24px;
+	height: 24px;
+	width: 0;
+	float: left;
+	margin: 15px 15px 0 0;
+}
+.mask-wp .dlalog .end .right{
+	background-image: url(../img/pass_login_icons_7241098f.png);
+	background-position: -47px 44px;
+	width: 44px;
+	height: 44px;
+	position: absolute;
+	bottom: 0;
+	right: -1px;	
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
