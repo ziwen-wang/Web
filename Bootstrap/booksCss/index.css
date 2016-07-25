@@ -1,3 +1,42 @@
 .mt-10{
 	margin-bottom: 20px;
 }
+.masker_wp{
+	display: none;
+}
+
+.mtop-10{
+	margin-top: 25px;
+}
+.mr-10{
+	margin-right: 10px;
+}
+/********************************/
+.masker_wp .loading{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 200px;
+	height: 100px;
+	margin:-50px 0 0 -100px;
+	background-image: url(../img/loading_2.gif);
+	background-position: 0px -40px;
+	background-repeat: no-repeat;
+}
+.asking{
+	background-image: url(../img/loading.gif);
+	background-position: 2px center;
+	background-repeat: no-repeat;
+	background-size:15px 15px;
+}
+
+.masker_wp> .masker{
+	position: fixed;
+	background-color: #fff;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: .5;
+
+}

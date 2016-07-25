@@ -6,11 +6,24 @@
 
 	$name = $_GET["name"];
 	$author = $_GET["author"];
+    $publisher = $_GET["publisher"];
+    $price = $_GET["price"];
+    $p_date = $_GET["p_date"];
+    $classify = $_GET["classify"];
+    $status = $_GET["status"];
+    $borrow_status = $_GET["borrow_status"];
+
 
 	// $now = date("Y-m-d h:i:s");
 
 	$data = Array (
         "name" => $name,
+        "publisher" => $publisher,
+        "price" => $price,
+        "p_date" => $p_date,
+        "classify" => $classify,
+        "status" => $status,
+        "borrow_status" => $borrow_status,
         "author" => $author
     );
 

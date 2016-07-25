@@ -10,11 +10,11 @@
 
 
 
-	<!-- 导航条 -->
+	<!-- 导航条 -->	
 	<div class="">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
+				<!-- Brand and toggle get grouped for better mobile display -->	
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
@@ -25,7 +25,7 @@
 					<a class="navbar-brand" href="#">图书管理系统</a>
 				</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
+				<!-- Collect the nav links, forms, and other content for toggling -->	
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li class="active">
@@ -98,7 +98,7 @@
 			</div>
 		</nav>
 	</div>
-	<!-- 导航按钮 -->
+	<!-- 导航按钮 -->	
 	<div class="col-lg-12 mt-10">
 		<ul class="nav nav-pills">
 			<li role="presentation" class="active">
@@ -113,7 +113,7 @@
 		</ul>
 	</div>
 
-	<!-- table -->
+	<!-- table -->	
 	<div class="col-lg-12">
 		<table class="table table-striped table-bordered table-hover" id="innerTable">
 			<thead>
@@ -126,13 +126,18 @@
 				<th>上架/下架</th>
 				<th>借出状态</th>
 			</thead>
-			<tbody>
-			</tbody>
+			<tbody></tbody>
 		</table>
 	</div>
 
+	<!-- loading -->	
 
-	<!-- 模态框 -->
+	<div class="masker_wp">
+		<div class="masker"></div>
+		<div class="loading"></div>
+	</div>
+
+	<!-- 模态框 -->	
 	<div class="modal fade" id="myModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -143,65 +148,79 @@
 					<h4 class="modal-title">图书入库</h4>
 				</div>
 				<div class="modal-body">
-					<!-- 模态框内容 -->
-					<form class="row">
-					 <div class="col-lg-12 mt-10">
-					    <div class="input-group">
-					      <div class="input-group-btn">
-					        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">选择分类 <span class="caret"></span></button>
-					        <ul class="dropdown-menu">
-					          <li><a href="#">历史</a></li>
-					          <li><a href="#">小说</a></li>
-					          <li><a href="#">国内文学</a></li>
-					          <li><a href="#">国外文学</a></li>
-					        </ul>
-					      </div>
-					      <input type="text" class="form-control" aria-label="..." id="booksName">
-					    </div>
-					  </div>
-						
+					<!-- 模态框内容 -->	
+					<form class="row" id="booksForm">
+						<div class="col-lg-12">
+							<div class="col-lg-12">
+								<div class="input-group col-lg-12 mt-10">
+									<label for="exampleInputEmail1 col-lg-12">书名</label>
+									<!-- <input type="email" class="form-control col-lg-12" id="booksName" placeholder="书名">	
+									-->
+									<input type="email" class="form-control" id="booksName" placeholder="书名"></div>
+							</div>
+						</div>
+						<div class="form-group col-lg-12">
+							<div class=" col-lg-3">
+								<label for="exampleInputEmail1">国内文学</label>
+								<input type="checkbox" name="classify" value="0"></div>
 
+							<div class="col-lg-3">
+								<label for="exampleInputEmail1">国外文学</label>
+								<input type="checkbox" name="classify" value="1"></div>
 
-					<div class="form-group col-lg-3">
-					    <label for="exampleInputEmail1">作者</label>
-					    <input type="email" class="form-control" id="booksAuthor" placeholder="作者">
-					  </div>
+							<div class="col-lg-3">
+								<label for="exampleInputEmail1">国内历史</label>
+								<input type="checkbox" name="classify" value="2"></div>
 
-					    <div class="form-group col-lg-5">
-					    <label for="exampleInputEmail1">出版社</label>
-					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="出版社">
-					  </div>
-					
-					<div class="form-group col-lg-4">
-					    <label for="exampleInputEmail1">上架</label>
-					 	<input type="checkbox"  checked="">
-					</div>
+							<div class="col-lg-3">
+								<label for="exampleInputEmail1">国外历史</label>
+								<input type="checkbox" name="classify" value="3"></div>
+						</div>
 
-					<div class="form-group col-lg-4">
-					    <label for="exampleInputEmail1">未借出</label>
-					 	<input type="checkbox"  checked="">
-					</div>
+						<div class="col-lg-12">
+							<div class="form-group col-lg-3">
+								<label for="exampleInputEmail1">作者</label>
+								<input type="email" class="form-control" id="booksAuthor" placeholder="作者"></div>
 
-					   <div class="form-group col-lg-4">
-					    <label for="exampleInputEmail1">价格</label>
-					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="价格">
-					  </div>
+							<div class="form-group col-lg-5">
+								<label for="exampleInputEmail1">出版社</label>
+								<input type="email" class="form-control" id="booksPublisher" placeholder="出版社"></div>
 
-					<div class="form-group col-lg-4">
-					    <label for="exampleInputEmail1">出版日期</label>
-					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="年/月/日">
-					</div>
-			
+							<div class="form-group col-lg-4 mtop-10">
+								<label for="exampleInputEmail1">上架</label>
+								<input type="radio"  checked="" name="status" value="0">	
+								<label for="exampleInputEmail1">下架</label>
+								<input type="radio" name="status" value="1"></div>
+						</div>
+
+						<div class="col-lg-12">
+							<div class="form-group col-lg-4">
+								<label for="exampleInputEmail1">价格</label>
+								<input type="email" class="form-control" id="booksPrice" placeholder="价格"></div>
+
+							<div class="form-group col-lg-4">
+								<label for="exampleInputEmail1">出版日期</label>
+								<input type="email" class="form-control" id="booksDate" placeholder="年/月/日"></div>
+
+							<div class="form-group col-lg-4 mtop-10">
+								<label for="exampleInputEmail1">未借出</label>
+								<input type="radio"  checked="" name="b_status" value="0">	
+								<label for="exampleInputEmail1">已借出</label>
+								<input type="radio" name="b_status" value="1"></div>
+						</div>
+
 					</form>
 
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="saveBooksBtn">Save Books</button>
+					<button type="button" class="btn btn-primary" id="saveBooksBtn">&nbsp;&nbsp;Save Books</button>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 	<script src="booksJs/jquery-3.0.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="booksJs/index.js"></script>
