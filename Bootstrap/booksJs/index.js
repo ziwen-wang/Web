@@ -8,6 +8,7 @@
 	impactBtn();
 	changeBooksBtn();
 	deleteBooksBtn();
+	verificationForm();
 
 	
 }(jQuery);
@@ -39,8 +40,9 @@ function addBtnClick() {
 //模态框按钮 增加图书到数据库
 function saveBtnClick(){
 	$('#saveBooksBtn').on('click',function(){
-		verificationForm()
-			
+		$('#booksForm').trigger('submit')
+		// verificationForm();		
+		// upLoad();//如果不用框架注释这句话
 	})
 }
 
@@ -56,7 +58,7 @@ function ask(){
 				var date = obj.p_date.split(' ')[0],
 					booksStatus = {0:'上架',1:'下架'},
 					b_status_map = {0:'未借出',1:'已借出'};
-				var select_map = {1:'国内历史',2:'国外历史',3:'国内文学',4:'国外文学',5:'小说',0:'未分类'};
+				var select_map = {1:'国内历史',2:'国外历史',3:'国内文学',4:'国外文学',5:'计算机与科学',0:'未分类'};
 				newArray.push(
 						'<tr>',
 							'<td class="first_checkbox"><input type="checkbox" class="checkBox_children"></td>',
@@ -98,6 +100,8 @@ function upLoad(){
 			return;
 		}
 		$saveBooksBtn.addClass('asking');
+
+		// console.log('保存成功')
 	$.get('../api/books_add.php',data,function(a){
 		if (a.success) {
 			resetForm();
@@ -136,7 +140,7 @@ function renderSelect(){
 		{"id": 4, name: "国外文学"},
 		{"id": 5, name: "计算机与科学"}
 	], //此数据当作后台请求来的  booksClassify
-		data_2 = ['<option value="','0','">','请选择分类','</option>'];
+		data_2 = ['<option value="','-1','">','请选择分类','</option>'];
 	$.each(data_1,function(i, obj) {
 		data_2.push(
 			'<option value="',obj.id,'">',obj.name,'</option>'
@@ -230,32 +234,96 @@ function trOrBtn(){
 }
 
 //表单验证
-function verificationForm(){
-	if ($('#booksName').val().length == 0) {
-		alert('请输入书名');
-		return false;
-	}
-	if ($('#booksAuthor').val().length == 0) {
-		alert('请输入作者');
-		return false;
-	}
+// function verificationForm(){
+// 	if ($('#booksName').val().length == 0) {
+// 		alert('请输入书名');
+// 		return false;
+// 	}
+// 	if ($('#booksAuthor').val().length == 0) {
+// 		alert('请输入作者');
+// 		return false;
+// 	}
 
-	if ($('#booksPublisher').val().length == 0) {
-		alert('请输入出版社');
-		return false;
-	}
-	if ($('#booksPrice').val().length == 0) {
-		alert('请输入价格');
-		return false;
-	}
-		if ($('#booksDate').val().length == 0) {
-		alert('请选择日期');
-		return false;
-	}
-	if ($('#booksClassify').val() == 0) {
-		alert('请选择分类');
-		return false;
-	}
-	$("#booksForm").submit(upLoad());
+// 	if ($('#booksPublisher').val().length == 0) {
+// 		alert('请输入出版社');
+// 		return false;
+// 	}
+// 	if ($('#booksPrice').val().length == 0) {
+// 		alert('请输入价格');
+// 		return false;
+// 	}
+// 		if ($('#booksDate').val().length == 0) {
+// 		alert('请选择日期');
+// 		return false;
+// 	}
+// 	if ($('#booksClassify').val() == 0) {
+// 		alert('请选择分类');
+// 		return false;
+// 	}
+// 	$("#booksForm").submit(upLoad());
 	
+// }
+
+//插件表单验证
+function verificationForm(){
+	$("#booksForm").validate({   
+   
+		rules:{
+			booksName: "required",
+			booksClassify:{
+				required : true,
+				min: 1
+			},
+			booksAuthor:{
+				required: true,
+        		minlength: 2
+			},
+			booksPublisher:{
+				required: true,
+				minlength: 4
+			},
+			booksPrice:{
+				required: true,
+				number:true
+			},
+			booksDate:{
+				required: true,
+				date: true
+			}
+		},
+		messages: {
+			booksName:"请输入书名",
+			booksClassify:{
+				required : "请选择分类" ,
+				min: "请选择分类"
+
+
+		},
+			booksAuthor: {
+				required:"请输入作者",
+				minlength:"长度大于2"
+			},
+			booksPublisher:{
+				required:"请输入出版社",
+				minlength:"长度大于3"
+			},
+			booksPrice:{
+				required:"请输入价格",
+				number:"有效数字"
+			},
+			booksDate:{
+				required:"请选择日期",
+				date:"注意日期格式"
+			}
+
+		},
+		submitHandler: function(form) {
+
+			upLoad();
+			// form.submit(); //form.submit(); 或者$(form).ajaxSubmit();  
+
+		}
+		
+		
+	});
 }

@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="datetimepicker/css/bootstrap-datetimepicker.min.css">
 	<link rel="stylesheet" href="booksCss/index.css">
+	<link rel="stylesheet" href="booksCss/validation.css">
 </head>
 <body>
 
@@ -156,63 +157,60 @@
 				<div class="modal-body">
 					<!-- 模态框内容 -->	
 					<form class="row" id="booksForm">
-						<div class="col-lg-12">
+						 <fieldset>
 							<div class="col-lg-12">
-								<div class="input-group col-lg-12 mt-10">
-									<label for="exampleInputEmail1 col-lg-12">书名</label>
-									<!-- <input type="email" class="form-control col-lg-12" id="booksName" placeholder="书名">	
-									-->
-									<input type="email" class="form-control" id="booksName" placeholder="书名"></div>
+								<div class="col-lg-12">
+									<div class="input-group col-lg-12 mt-10">
+										<label for="booksName">书名</label>
+										<input type="text" class="form-control" id="booksName" placeholder="书名" minlength="2"  name="booksName" required></div>
+								</div>
 							</div>
-						</div>
-						<div class="form-group col-lg-12">
+							<div class="form-group col-lg-12">
+								<div class="col-lg-12">
+									<div>
+									<label for="booksClassify">图书分类</label>
+									<select class="form-control" id="booksClassify" name="booksClassify">
+									  <!-- <option>1</option> -->
+									</select>
+									</div>
+								</div>
+							</div>
+
 							<div class="col-lg-12">
-								<label for="exampleInputEmail1 col-lg-12">图书分类</label>
-								<select class="form-control" id="booksClassify">
-								  <!-- <option>1</option> -->
-								</select>
-							</div>
-						</div>
+								<div class="form-group col-lg-3">
+									<label for="booksAuthor">作者</label>
+									<input type="text" class="form-control" id="booksAuthor" placeholder="作者"  name="booksAuthor" required></div>
 
-						<div class="col-lg-12">
-							<div class="form-group col-lg-3">
-								<label for="exampleInputEmail1">作者</label>
-								<input type="email" class="form-control" id="booksAuthor" placeholder="作者"></div>
+								<div class="form-group col-lg-5">
+									<label for="booksPublisher">出版社</label>
+									<input type="text" class="form-control " id="booksPublisher" placeholder="出版社"  name="booksPublisher"></div>
 
-							<div class="form-group col-lg-5">
-								<label for="exampleInputEmail1">出版社</label>
-								<input type="email" class="form-control" id="booksPublisher" placeholder="出版社"></div>
-
-							<div class="form-group col-lg-4 mtop-10">
-								<label for="exampleInputEmail1">上架</label>
-								<input type="radio"  checked="" name="status" value="0">	
-								<label for="exampleInputEmail1">下架</label>
-								<input type="radio" name="status" value="1"></div>
-						</div>
-
-						<div class="col-lg-12">
-							<div class="form-group col-lg-4">
-								<label for="exampleInputEmail1">价格</label>
-								<input type="email" class="form-control" id="booksPrice" placeholder="价格"></div>
-
-							<div class="form-group col-lg-4">
-								<label for="exampleInputEmail1">出版日期</label>
-								<input type="text" class="form-control" id="booksDate">
-								<!-- <div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-								    <input class="span2 form-control" size="16" type="text" value="请选择出版日期">
-								    <span class="add-on"><i class="icon-th"></i></span>
-								</div>  -->
+								<div class="form-group col-lg-4 mtop-10">
+									<label for="exampleInputEmail1">上架</label>
+									<input type="radio"  checked="" name="status" value="0">	
+									<label for="exampleInputEmail1">下架</label>
+									<input type="radio" name="status" value="1"></div>
 							</div>
 
-								
+							<div class="col-lg-12">
+								<div class="form-group col-lg-4">
+									<label for="booksPrice">价格</label>
+									<input type="number" class="form-control required" id="booksPrice" placeholder="价格"  name="booksPrice"></div>
 
-							<div class="form-group col-lg-4 mtop-10">
-								<label for="exampleInputEmail1">未借出</label>
-								<input type="radio"  checked="" name="b_status" value="0">	
-								<label for="exampleInputEmail1">已借出</label>
-								<input type="radio" name="b_status" value="1"></div>
-						</div>
+								<div class="form-group col-lg-4">
+									<label  for="booksDate">出版日期</label>
+									<input type="text" class="form-control required" id="booksDate"  name="booksDate">
+								</div>
 
+									
+
+								<div class="form-group col-lg-4 mtop-10">
+									<label for="exampleInputEmail1">未借出</label>
+									<input type="radio"  checked="" name="b_status" value="0">	
+									<label for="exampleInputEmail1">已借出</label>
+									<input type="radio" name="b_status" value="1"></div>
+							</div>
+						</fieldset>
 					</form>
 
 				</div>
@@ -226,6 +224,8 @@
 
 
 	<script src="booksJs/jquery-3.0.0.js"></script>
+	<script src="booksJs/jquery.validate.min.js"></script>
+	<script src="booksJs/messages_zh.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
