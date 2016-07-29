@@ -1,10 +1,9 @@
 <?php
+    date_default_timezone_set("Asia/Shanghai");
+    require_once ('util/db.php');
 
-	date_default_timezone_set("Asia/Shanghai");
-
-	require_once ('util/db.php');
-
-	$name = $_GET["name"];
+    $id = $_GET['id'];
+    $name = $_GET["name"];
     $author = $_GET["author"];
     $publisher = $_GET["publisher"];
     $price = $_GET["price"];
@@ -13,9 +12,10 @@
     $status = $_GET["status"];
 	$borrow_status = $_GET["borrow_status"];
 
-	// $now = date("Y-m-d h:i:s");
+    // $now = date("Y-m-d h:i:s");
 
-	$data = Array (
+    $data = Array (
+    	"id" => $id,
         "name" => $name,
         "author" => $author,
         "publisher" => $publisher,
@@ -26,14 +26,14 @@
         "borrow_status" => $borrow_status
     );
 
-    $id = $db->insert ('books', $data);
+    $db->where ('id', $id);
 
     sleep(2);
 
-    if ($id > 0) {
-        echo json_encode(array("success" => true, "message" => "图书保存成功"));
+    if ($db->update ('books', $data)) {
+        echo json_encode(array("success" => true, "message" => "修改成功"));
     } else {
-        echo json_encode(array("success" => false, "message" => "保存失败"));
+        echo json_encode(array("success" => false, "message" => "修改失败"));
     }
-
+    
 ?>

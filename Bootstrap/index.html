@@ -101,22 +101,34 @@
 		</nav>
 	</div>
 	<!-- 导航按钮 -->	
-	<div class="col-lg-12 mt-10">
-		<ul class="nav nav-pills">
-			<li role="presentation" class="active">
-				<button type="button" class="btn  btn-default">图书列表</button>
-			</li>
-			<li role="presentation" >
-				<button type="button" class="btn btn-info" id="addBooksBtn">管理图书</button>
-			</li>
-			<li role="presentation">
-				<button type="button" class="btn btn-warning" id="changeBooksBtn">修改图书</button>
-			</li>
-			<li role="presentation">
-				<button type="button" class="btn btn-danger" id="deleteBooksBtn">删除图书</button>
-			</li>
-			
-		</ul>
+
+
+	<div class="row col-lg-12">
+		<div class=" mt-10 col-lg-6">
+			<ul class="nav nav-pills">
+				<li role="presentation" class="active">
+					<button type="button" class="btn  btn-default">图书列表</button>
+				</li>
+				<li role="presentation" >
+					<button type="button" class="btn btn-info" id="addBooksBtn">添加图书</button>
+				</li>
+				<li role="presentation">
+					<button type="button" class="btn btn-warning" id="changeBooksBtn">修改图书</button>
+				</li>
+				<li role="presentation">
+					<button type="button" class="btn btn-danger" id="deleteBooksBtn">删除图书</button>
+				</li>
+				
+			</ul>
+		</div>
+	  <div class="col-lg-6">
+	    <div class="input-group p_300">
+	      <input type="text" class="form-control w_300" placeholder="Search for..." id="searchInput">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="button" id="searchBtn">Go!</button>
+	      </span>
+	    </div>
+	  </div>
 	</div>
 
 	<!-- table -->	
@@ -158,6 +170,7 @@
 					<!-- 模态框内容 -->	
 					<form class="row" id="booksForm">
 						 <fieldset>
+						 <input type="hidden" id="form_hide">
 							<div class="col-lg-12">
 								<div class="col-lg-12">
 									<div class="input-group col-lg-12 mt-10">
@@ -214,13 +227,26 @@
 					</form>
 
 				</div>
+				<!-- loading -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-primary" id="saveBooksBtn">&nbsp;&nbsp;Save Books</button>
 				</div>
+
+
 			</div>
 		</div>
 	</div>
+
+				<!-- 未找到搜索图书 模态 -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" style="display:none"  id="seacherBtn_1">Small modal</button>
+				<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="search_view" >
+				  <div class="modal-dialog modal-sm">
+				    <div class="modal-content text">
+				      抱歉，没找到您需要的书籍
+				    </div>
+				  </div>
+				</div>
 
 
 	<script src="booksJs/jquery-3.0.0.js"></script>

@@ -9,10 +9,13 @@
 	changeBooksBtn();
 	deleteBooksBtn();
 	verificationForm();
+	searchBtnClick();
+	searchInputClick();
+	SeacherViewClose();
 
 	
 }(jQuery);
-
+var booksAllArray = {},searchVal = {};
 //模态框中 radio的逻辑
 function radioClick(){
 		// 下架不能点击已借出
@@ -29,10 +32,13 @@ function radioClick(){
 }
 
 
-//导航栏按钮 显示隐藏模态框
+//导航栏增加按钮 显示隐藏模态框
 function addBtnClick() {
 	$('#addBooksBtn').on('click', function() {
-		$('#myModal').modal();
+		resetForm();
+
+		$('#myModal').find('.modal-title').html('增加图书').end()
+					.find('#saveBooksBtn').html('Save Books').removeClass('upLoadBtn').end().modal();
 	
 	})
 }
@@ -40,7 +46,9 @@ function addBtnClick() {
 //模态框按钮 增加图书到数据库
 function saveBtnClick(){
 	$('#saveBooksBtn').on('click',function(){
-		$('#booksForm').trigger('submit')
+		$('.masker').show();
+
+		$('#booksForm').trigger('submit');
 		// verificationForm();		
 		// upLoad();//如果不用框架注释这句话
 	})
@@ -48,10 +56,13 @@ function saveBtnClick(){
 
 // 请求数据
 function ask(){
-	var $masker = $('.masker_wp');
+	var $masker = $('.masker_wp'),
+		text = $('#form_hide').val();
 	$masker.show();
 
-	$.get('../api/books_ask.php',{},function(a){
+		// console.log(text)
+	// return;
+	$.get('../api/books_ask.php',{query:text||''},function(a){
 		if (a.success) {
 			var newArray = [];
 			$.each(a.data,function(i, obj) {
@@ -61,28 +72,45 @@ function ask(){
 				var select_map = {1:'国内历史',2:'国外历史',3:'国内文学',4:'国外文学',5:'计算机与科学',0:'未分类'};
 				newArray.push(
 						'<tr>',
-							'<td class="first_checkbox"><input type="checkbox" class="checkBox_children"></td>',
+							'<td class="first_checkbox"><input type="checkbox" class="checkBox_children" id="',obj.id,'"></td>',
 							'<td>',obj.name,'</td>',
 							'<td>',obj.author,'</td>',
 							'<td>',obj.publisher,'</td>',
 							'<td>',date,'</td>',
-							'<td>','$',obj.price.toFixed(2),'</td>',
+							'<td>','￥',obj.price.toFixed(2),'</td>',
 							'<td>',select_map[obj.classify||0],'</td>',
 							'<td>',booksStatus[obj.status],'</td>',
 							'<td>',b_status_map[obj.borrow_status],'</td>',
 						'</tr>'
 					)
+				booksAllArray[obj.id] = obj;				
 			});
 			$('#innerTable tbody').html(newArray.join(''))
 			$masker.hide();
 			checkBoxChildrenBtn();
 			checkBoxAllBtn();
 			trOrBtn();
+			IfSearchResult(a.total);
+			// console.log(a.total)
 		}
 	},'json');
 }
 
+//判断是否有搜索结果
+function IfSearchResult(result){
+	if (result == 0) {
+		$('#seacherBtn_1').trigger('click');
+	}
+}
 
+function SeacherViewClose(){
+	$('#search_view').on('hidden.bs.modal',function(){
+		console.log(1)
+		$('#searchInput').val('');
+		$('#searchBtn').trigger('click')
+	})
+	
+}
 //保存数据
 function upLoad(){
 	var data = {
@@ -94,15 +122,21 @@ function upLoad(){
 		classify: $('#booksClassify').val(),
 		status: $('input[name = status]:checked').val(),
 		borrow_status:$('input[name = b_status]:checked').val()},
-		$saveBooksBtn = $('#saveBooksBtn');
-
+		$saveBooksBtn = $('#saveBooksBtn'),
+		url;
 		if ($saveBooksBtn.hasClass('asking')) {
 			return;
 		}
 		$saveBooksBtn.addClass('asking');
-
-		// console.log('保存成功')
-	$.get('../api/books_add.php',data,function(a){
+		if ($('#saveBooksBtn').hasClass('upLoadBtn')) {
+			url = '../api/books_update.php'
+			data['id'] = $('input.checkBox_children:checked')[0].id;
+		}else{
+			url = '../api/books_add.php'
+		}
+		// console.log(data)
+		// return;
+	$.get(url,data,function(a){
 		if (a.success) {
 			resetForm();
 			$('#myModal').modal('hide');
@@ -172,12 +206,13 @@ function checkBoxAllBtn() {
 		})
 	})
 }
-//checkbox 后台生成的点击事件
+//checkbox 未来元素的点击事件
 function checkBoxChildrenBtn(){
-	$('.checkBox_children').each(function(i, obj) {
-		$(obj).on('click',function(){
+	$('input.checkBox_children').each(function(i, obj) {
+		$(obj).on('click',function(e){
 			$(this).toggleClass('click_on');
 			impactBtn();
+			e.stopPropagation();
 		})
 		
 	})
@@ -194,15 +229,12 @@ function impactBtn(){
 	if ($('.click_on').length == 0) {
 		$deleteBooksBtn.attr('disabled',true);
 		$changeBooksBtn.attr('disabled',true);
-		console.log(0)
 	} else if($('.click_on').length == 1){
 		$deleteBooksBtn.attr('disabled',false);
 		$changeBooksBtn.attr('disabled',false);
-		console.log(1)
 	}else{
 		$deleteBooksBtn.attr('disabled',false);
 		$changeBooksBtn.attr('disabled',true);
-		console.log(3)
 	}
 	
 } 
@@ -210,13 +242,62 @@ function impactBtn(){
 //修改图书按钮
 function changeBooksBtn(){
 	$('#changeBooksBtn').on('click',function(){
-		console.log('我是修改按钮')
+		var books_Id = $('input.checkBox_children:checked')[0].id;
+		console.log(booksAllArray)
+		var $booksForm = $('#booksForm');
+		$booksForm.find('#booksName').val(booksAllArray[books_Id].name);
+		$booksForm.find('#booksAuthor').val(booksAllArray[books_Id].author);
+		$booksForm.find('#booksPublisher').val(booksAllArray[books_Id].publisher);
+		$booksForm.find('#booksPrice').val(booksAllArray[books_Id].price.toFixed(2));
+		$booksForm.find('#booksDate').val(booksAllArray[books_Id].p_date.split(' ')[0]);
+		$booksForm.find('#booksClassify').val(booksAllArray[books_Id].classify);
+		$booksForm.find('input[name = status][value="'+booksAllArray[books_Id].status+'"]').trigger('click');
+		$booksForm.find('input[name = b_status][value="'+booksAllArray[books_Id].borrow_status+'"]').trigger('click');
+
+		$('#myModal').find('.modal-title').html('修改图书').end()
+					.find('#saveBooksBtn').html('Change Books').addClass('upLoadBtn').end().modal();
+					console.log(booksId);
 	})
 }
 
 function deleteBooksBtn(){
 	$('#deleteBooksBtn').on('click',function(){
-		console.log('我是删除按钮')
+		if(!confirm('确定删除么')){
+			return;
+		}
+		$('.masker_wp').show();
+		var checkBox_checked = $('input.checkBox_children:checked');
+		var checkBoxId = [];
+		checkBox_checked.each(function(i,obj){
+			// console.log(obj.id)
+			checkBoxId.push(obj.id)
+		})
+
+		$.get('../api/books_del.php',{ids:checkBoxId.join(',')},function(a){
+			if (a.success) {
+				ask();
+			}else{
+				alert(a.messages);
+			}
+		},'json')
+	})
+}
+
+//搜索框按钮
+function searchBtnClick(){
+	$('#searchBtn').on('click', function() {
+		var searchInputVal = $('#searchInput').val();
+		$('#form_hide').val(searchInputVal);
+		ask();
+	});
+}
+//搜索input回车点击事件
+function searchInputClick(){
+	$('#searchInput').on('keypress',function(){
+		// console.log(event.keyCode)  获取键盘位置
+		if (event.keyCode == 13) {
+			$('#searchBtn').trigger('click');
+		}
 	})
 }
 
@@ -227,7 +308,8 @@ function trOrBtn(){
 
 		$(obj).on('click',function(){
 			// $(this).parent().children().children().trigger('click');
-			$(this).parent().find('.checkBox_children').trigger('click')
+			$(this).parent().find('.checkBox_children').trigger('click');
+
 			
 		})
 	})	
@@ -318,7 +400,6 @@ function verificationForm(){
 
 		},
 		submitHandler: function(form) {
-
 			upLoad();
 			// form.submit(); //form.submit(); 或者$(form).ajaxSubmit();  
 

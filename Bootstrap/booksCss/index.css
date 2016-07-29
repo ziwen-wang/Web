@@ -24,7 +24,7 @@
 	background-repeat: no-repeat;
 }
 .asking{
-	background-image: url(../img/loading.gif);
+	background-image: url(../img/btnloading2.gif);
 	background-position: 2px center;
 	background-repeat: no-repeat;
 	background-size:15px 15px;
@@ -43,4 +43,14 @@
 /*****************/
 .th_first{
 	width: 30px;
+}
+
+input.w_300{
+	width: 300px!important;
+}
+.p_300{
+	margin-left: 348px;
+}
+.text{
+	font-size: 20px;
 }
