@@ -1,3 +1,4 @@
+var booksAllArray = {},booksAsk = {page:0,size:8},allTotal,allSize;
 !function($){
 	
 	addBtnClick();
@@ -12,10 +13,13 @@
 	searchBtnClick();
 	searchInputClick();
 	SeacherViewClose();
+	pageLeftClick();
+
+	
 
 	
 }(jQuery);
-var booksAllArray = {},searchVal = {};
+
 //模态框中 radio的逻辑
 function radioClick(){
 		// 下架不能点击已借出
@@ -57,12 +61,14 @@ function saveBtnClick(){
 // 请求数据
 function ask(){
 	var $masker = $('.masker_wp'),
-		text = $('#form_hide').val();
+		text = $('#form_hide').val(),
+		pag = $('#pagingUl li:checked').val();
+	var askquery = $.extend(booksAsk,{query: text||''});
 	$masker.show();
 
-		// console.log(text)
+		console.log(askquery)
 	// return;
-	$.get('../api/books_ask.php',{query:text||''},function(a){
+	$.get('../api/books_ask.php',askquery,function(a){
 		if (a.success) {
 			var newArray = [];
 			$.each(a.data,function(i, obj) {
@@ -83,19 +89,151 @@ function ask(){
 							'<td>',b_status_map[obj.borrow_status],'</td>',
 						'</tr>'
 					)
-				booksAllArray[obj.id] = obj;				
+				booksAllArray[obj.id] = obj;
+								
 			});
+		
+			// 
 			$('#innerTable tbody').html(newArray.join(''))
 			$masker.hide();
 			checkBoxChildrenBtn();
 			checkBoxAllBtn();
 			trOrBtn();
-			IfSearchResult(a.total);
-			// console.log(a.total)
+			IfSearchResult();
+			allTotal = a.total;
+			paging();
+
 		}
 	},'json');
 }
 
+//生成分页
+function paging(){
+	var newPagArray=[],currPag;
+	allSize  = Math.ceil(allTotal/(booksAsk.size));
+	console.log(allTotal);
+	if (booksAsk.page == 0) {
+		newPagArray.push(
+			'<li class="pagingFirst disabled">',
+				'<a href="javascript:" aria-label="Previous">',
+					'<span aria-hidden="true">&laquo;</span>',
+				'</a>',
+			'</li>',
+			'<li class="prev disabled">',
+				'<a href="javascript:" aria-label="Previous">',
+					'<span aria-hidden="true">&lsaquo;</span>',
+				'</a>',
+			'</li>'
+		)
+	}else{
+		newPagArray.push(
+			'<li class="pagingFirst">',
+				'<a href="javascript:" aria-label="Previous">',
+					'<span aria-hidden="true">&laquo;</span>',
+				'</a>',
+			'</li>',
+			'<li "class=prev">',
+				'<a href="javascript:" aria-label="Previous">',
+					'<span aria-hidden="true">&lsaquo;</span>',
+				'</a>',
+			'</li>'
+		)
+	}
+	
+		for (i=0; i<allSize; i++) {
+		if (i == booksAsk.page) {
+			newPagArray.push('<li value="', i, '" class="active"><a href="javascript:;">', (i + 1), '</a></li>');
+		} else {
+			newPagArray.push('<li value="', i, '"><a href="javascript:;">', (i + 1), '</a></li>');
+		}
+	}
+
+	if (booksAsk.page == allSize-1) {
+		newPagArray.push(
+			'<li class="next disabled">',
+				'<a href="javascript:" aria-label="Previous">',
+					'<span aria-hidden="true">&rsaquo;</span>',
+				'</a>',
+			'</li>',
+		    '<li class="pagingLast disabled">',
+		      '<a href="#" aria-label="Next">',
+		        '<span aria-hidden="true">&raquo;</span>',
+		      '</a>',
+		    '</li>'
+		)
+	}else{
+		newPagArray.push(
+			'<li class=next>',
+				'<a href="javascript:" aria-label="Previous">',
+					'<span aria-hidden="true">&rsaquo;</span>',
+				'</a>',
+			'</li>',
+		    '<li class=pagingLast>',
+		      '<a href="#" aria-label="Next">',
+		        '<span aria-hidden="true">&raquo;</span>',
+		      '</a>',
+		    '</li>'
+		)
+	}
+	
+	$('#pagingUl').html(newPagArray.join(''));
+	//li点击事件
+	$('#pagingUl li').each(function(i, obj) {
+		$(obj).on('click',function(){
+			var $this = $(this);
+			if ($this.hasClass('disabled')) {
+				return;
+			}
+
+
+			if ($this.hasClass('pagingFirst')) {
+				currPag = 0;
+			}else if($this.hasClass('pagingLast')){
+				currPag = allSize-1;
+			}else if ($this.hasClass('prev')) {
+				currPag = --booksAsk.page
+			}else if ($this.hasClass('next')) {
+				currPag = ++booksAsk.page
+			}else{
+				currPag = $(this).val();
+			}
+			booksAsk.page = currPag;
+			console.log(booksAsk)
+			ask()
+		})
+	});
+
+
+}
+
+
+function pageLeftClick(){
+
+	$('.pagBtn').on('click',function(){
+
+		var pagVal = $('.pagInput').val()*1+1;
+		if ($('.pagInput').val()=='') {
+			return
+		}
+		
+		if (isNaN(pagVal)) {
+			alert('输入数字')
+			$('.pagInput').select();
+		}
+		booksAsk.page = pagVal;
+		console.log(allSize)
+		if (pagVal>allSize) {
+			booksAsk.page = allSize-1;
+		}
+		if (pagVal<0) {
+			booksAsk.page = 0;
+		}
+		
+		ask();
+	
+
+	})
+}
 //判断是否有搜索结果
 function IfSearchResult(result){
 	if (result == 0) {

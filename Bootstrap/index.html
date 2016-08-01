@@ -103,8 +103,8 @@
 	<!-- 导航按钮 -->	
 
 
-	<div class="row col-lg-12">
-		<div class=" mt-10 col-lg-6">
+	<div class="row col-lg-12 col-xs-12">
+		<div class=" mt-10 col-lg-6 col-xs-6">
 			<ul class="nav nav-pills">
 				<li role="presentation" class="active">
 					<button type="button" class="btn  btn-default">图书列表</button>
@@ -121,7 +121,7 @@
 				
 			</ul>
 		</div>
-	  <div class="col-lg-6">
+	  <div class="col-lg-6 col-xs-6">
 	    <div class="input-group p_300">
 	      <input type="text" class="form-control w_300" placeholder="Search for..." id="searchInput">
 	      <span class="input-group-btn">
@@ -148,6 +148,19 @@
 			<tbody></tbody>
 		</table>
 	</div>
+
+	<!-- 分页 -->
+	<nav col-lg-12>
+	  <ul class="pagination pull-right mr-15" id="pagingUl">
+
+	  </ul>
+
+
+     <div class="pull-left pagWp">
+      <input type="text" class="pagInput">
+      <button class="pagBtn">Go</button>
+    </div>
+	</nav>
 
 	<!-- loading -->	
 
@@ -229,8 +242,8 @@
 				</div>
 				<!-- loading -->
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary" id="saveBooksBtn">&nbsp;&nbsp;Save Books</button>
+					<button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary " id="saveBooksBtn">&nbsp;&nbsp;Save Books</button>
 				</div>
 
 

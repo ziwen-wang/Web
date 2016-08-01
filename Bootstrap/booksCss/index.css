@@ -4,6 +4,9 @@
 .masker_wp{
 	display: none;
 }
+.mr-15{
+	    margin: -10px 15px
+}
 
 .mtop-10{
 	margin-top: 25px;
@@ -25,9 +28,10 @@
 }
 .asking{
 	background-image: url(../img/btnloading2.gif);
-	background-position: 2px center;
+	background-position: 0px center;
 	background-repeat: no-repeat;
-	background-size:15px 15px;
+	background-size:75px 34px;
+	opacity: 0.5
 }
 
 .masker_wp> .masker{
@@ -39,6 +43,18 @@
 	height: 100%;
 	opacity: .5;
 
+}
+.pagWp{
+	margin-left: 15px;
+	margin-top: -10px;
+}
+.pagWp .pagInput{
+	width: 30px;
+	border-radius: 5px;
+	text-align: center;
+}
+.pagWp .pagBtn{
+	border-radius: 5px;
 }
 /*****************/
 .th_first{
