@@ -1,0 +1,94 @@
+/**{
+	margin: 0;
+	padding: 0;
+}
+
+div{
+	text-align: center;
+	
+}
+.img{
+	width: 230px;
+    height: 230px;
+    background-color: #ecebde;
+    background-image: url(../img/box.png);
+    border-radius: 115px;
+    background-repeat: no-repeat;
+    background-position: 55px 40px;
+    margin: 150px auto 30px;
+}
+ div span{
+	color: red;
+}
+.success{
+	font-size: 17px;
+	font-weight: bolder;
+	margin-bottom: 10px;
+}
+.share{
+	font-size: 14px;
+}
+.share_btn{
+	width: 200px;
+    height: 45px;
+    font-size: 16px;
+    margin: 10px auto 10px;
+    background-color: red;
+    line-height: 45px;
+    color: #fff;
+    border-radius: 25px;
+}
+.footer{
+	font-size: 13px;
+	color: #999;
+}
+*/
+html{
+	font-size: 20px;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+
+div{
+	text-align: center;
+	
+}
+.img{
+	width: 5.75rem;
+	height: 5.75rem;
+    background-color: #ecebde;
+    background-image: url(../img/box.png);
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    margin: 7.5rem auto 1.5rem;
+}
+ div span{
+	color: red;
+}
+.success{
+	font-size: 0.85rem;
+	font-weight: bolder;
+	margin-bottom: 0.5rem;
+}
+.share{
+	font-size: 0.7rem;
+}
+.share_btn{
+	width: 10rem;
+    height: 2.25rem;
+    font-size: 0.8rem;
+    margin: 0.5rem auto 0.5rem;
+    background-color: red;
+    line-height: 2.25rem;
+    color: #fff;
+    border-radius: 1.25rem;
+}
+.footer{
+	font-size: 0.65rem;
+	color: #999;
+	margin-bottom: 7.5rem;
+}

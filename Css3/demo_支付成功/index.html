@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>支付成功</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	
+		<div class="img"></div>
+		<div class="success">
+			您已经成功购买 <span>2</span>份礼物
+		</div>
+		<div class="share">快分享到微信让大家来领取礼物吧</div>
+		<div class="share_btn">快喊好友来领取礼物吧</div>
+		<div class="footer">对方受到礼物后，会短信通知您</div>
+
+
+	<script>
+		(function (doc, win) {
+          var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+            };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+	</script>
+</body>
+</html>

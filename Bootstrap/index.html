@@ -103,8 +103,8 @@
 	<!-- 导航按钮 -->	
 
 
-	<div class="row col-lg-12 col-xs-12">
-		<div class=" mt-10 col-lg-6 col-xs-6">
+	<div class="col-lg-12 col-xs-12">
+		<div class=" mt-10 col-lg-6 col-xs-6" style="padding-left:0">
 			<ul class="nav nav-pills">
 				<li role="presentation" class="active">
 					<button type="button" class="btn  btn-default">图书列表</button>
@@ -118,12 +118,15 @@
 				<li role="presentation">
 					<button type="button" class="btn btn-danger" id="deleteBooksBtn">删除图书</button>
 				</li>
-				
 			</ul>
 		</div>
-	  <div class="col-lg-6 col-xs-6">
-	    <div class="input-group p_300">
-	      <input type="text" class="form-control w_300" placeholder="Search for..." id="searchInput">
+
+
+	  <div class="col-lg-6 col-xs-6 pull-rigth asd" style="margin-left:15px,
+    padding-right:0">
+	  	<div class="col-lg-8"></div>
+	    <div class="input-group col-lg-4" >
+	      <input type="text" class="form-control" placeholder="Search for..." id="searchInput">
 	      <span class="input-group-btn">
 	        <button class="btn btn-default" type="button" id="searchBtn">Go!</button>
 	      </span>
@@ -155,7 +158,7 @@
 
 	  </ul>
 
-
+	<!-- 跳转 -->
      <div class="pull-left pagWp">
       <input type="text" class="pagInput">
       <button class="pagBtn">Go</button>
@@ -212,9 +215,9 @@
 									<input type="text" class="form-control " id="booksPublisher" placeholder="出版社"  name="booksPublisher"></div>
 
 								<div class="form-group col-lg-4 mtop-10">
-									<label for="exampleInputEmail1">上架</label>
+									<label for=>上架</label>
 									<input type="radio"  checked="" name="status" value="0">	
-									<label for="exampleInputEmail1">下架</label>
+									<label for=>下架</label>
 									<input type="radio" name="status" value="1"></div>
 							</div>
 
@@ -231,16 +234,16 @@
 									
 
 								<div class="form-group col-lg-4 mtop-10">
-									<label for="exampleInputEmail1">未借出</label>
+									<label for=>未借出</label>
 									<input type="radio"  checked="" name="b_status" value="0">	
-									<label for="exampleInputEmail1">已借出</label>
+									<label for=>已借出</label>
 									<input type="radio" name="b_status" value="1"></div>
 							</div>
 						</fieldset>
 					</form>
 
 				</div>
-				<!-- loading -->
+				
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-primary " id="saveBooksBtn">&nbsp;&nbsp;Save Books</button>

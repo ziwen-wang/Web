@@ -1,8 +1,15 @@
 .mt-10{
 	margin-bottom: 20px;
 }
+.asd{
+    padding-right:0;
+}
 .masker_wp{
 	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 9999;
 }
 .mr-15{
 	    margin: -10px 15px
