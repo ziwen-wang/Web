@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<title>当当</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/taobao.css"/>
+		<script src="js/lib/angular/angular.min.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/lib/jquery/dist/jquery.min.js"></script>
+	</head>
+	<body  ng-app="bookApp" ng-controller="bookCtrl" >
+		<header>
+			<a href="" class="fanhui_btn"></a>
+			<input type="text" />
+			<a href="" class="shaixuan_btn">筛选</a>
+		</header>
+		<section class="tishi">
+			<p>您是不是要找：</p>
+			<ul>
+				<li><a href="">测试文字测试文字</a></li>
+				<li><a href="">测试文字测试文字</a></li>
+				<li><a href="">测试文字测试文字</a></li>
+				<li><a href="">测试文字测试文字</a></li>
+				<li><a href="">测试文字测试文字</a></li>
+				<li><a href="">测试文字测试文字</a></li>
+			</ul>
+		</section>
+		<nav>
+			<ul>
+				<li class="active"><a href="">默认</a></li>
+				<li><a href="">销量</a></li>
+				<li><a href="">价格</a></li>
+				<li><a href="">好评</a></li>
+				<li><a href="">出版时间</a></li>
+			</ul>
+		</nav>
+		<section class="books_body" >
+			<ul>
+				<li ng-repeat="book in bookData">
+					<img src="img/22862056-1_h_1.jpg" alt="" />
+					<div class="book-intro">
+						<span>{{book.name}}</span>
+						<p>{{book.author}} 编著</p>
+						<i class="xianjia">￥{{book.price}}</i>
+						<i class="yuanjia">￥73.33</i>
+						<i>7.5折</i>
+						<div><span>当当自营</span></div>
+						<em>98.0%好评(2888人)</em>
+						<div class="heart-shaped"></div>
+					</div>
+				</li>
+
+			</ul>
+			<div class="space" ng-show="menuState.show">{{qwe}}</div>
+		</section>
+		
+		
+	<script>
+		(function (doc, win) {
+          var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              docEl.style.fontSize = 100 * (clientWidth / 320) + 'px';
+            };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+	</script>
+	</body>
+</html>
