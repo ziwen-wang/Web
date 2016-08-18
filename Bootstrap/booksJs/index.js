@@ -1,4 +1,4 @@
-var booksAllArray = {},booksAsk = {page:0,size:8},allTotal,allSize;
+var booksAllArray = {},booksAsk = {page:0,size:8},allTotal,allSize,upLoadms;
 !function($){
 	
 	addBtnClick();
@@ -14,10 +14,7 @@ var booksAllArray = {},booksAsk = {page:0,size:8},allTotal,allSize;
 	searchInputClick();
 	SeacherViewClose();
 	pageLeftClick();
-
-	
-
-	
+	inputChange();
 }(jQuery);
 
 //模态框中 radio的逻辑
@@ -35,7 +32,32 @@ function radioClick(){
 
 }
 
+//上传图片
+function inputChange(){
+	var $uploadBtn = $('#uploadBtn'),
+		$uploadForm = $('#uploadForm'),
+		$uploadIframe = $('#uploadIframe'),
+		timer,ms;
 
+	$uploadBtn.on('change',function(){
+		$uploadForm.submit();
+		
+		timer = setInterval(function(){
+			ms = $uploadIframe.contents().find('body').text();
+			if (ms != '') {
+				clearInterval(timer);
+				ms= $.parseJSON(ms);
+				console.log(ms);
+				$uploadIframe.contents().find('body').html('');
+				upLoadms = ms
+			}
+		},100)
+
+
+
+
+	})
+}
 //导航栏增加按钮 显示隐藏模态框
 function addBtnClick() {
 	$('#addBooksBtn').on('click', function() {
@@ -251,17 +273,21 @@ function SeacherViewClose(){
 }
 //保存数据
 function upLoad(){
+	console.log(upLoadms.fileName)
 	var data = {
-		name: $('#booksName').val(),
-		author: $('#booksAuthor').val(),
-		price: $('#booksPrice').val(),
-		publisher: $('#booksPublisher').val(),
-		p_date: $('#booksDate').val(),
-		classify: $('#booksClassify').val(),
-		status: $('input[name = status]:checked').val(),
-		borrow_status:$('input[name = b_status]:checked').val()},
+			name: $('#booksName').val(),
+			author: $('#booksAuthor').val(),
+			price: $('#booksPrice').val(),
+			publisher: $('#booksPublisher').val(),
+			p_date: $('#booksDate').val(),
+			classify: $('#booksClassify').val(),
+			status: $('input[name = status]:checked').val(),
+			borrow_status:$('input[name = b_status]:checked').val(),
+			p_photo: upLoadms.fileName
+		},
 		$saveBooksBtn = $('#saveBooksBtn'),
 		url;
+		console.log(data)
 		if ($saveBooksBtn.hasClass('asking')) {
 			return;
 		}

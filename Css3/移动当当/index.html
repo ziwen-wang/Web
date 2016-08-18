@@ -39,7 +39,8 @@
 		<section class="books_body" >
 			<ul>
 				<li ng-repeat="book in bookData">
-					<img src="img/22862056-1_h_1.jpg" alt="" />
+					<!-- <img src="{{'../../Bootstrap/uploadImgs/'+book.p_photo}}" /> -->
+					<img ng-src="../../Bootstrap/uploadImgs/{{book.p_photo}}" >
 					<div class="book-intro">
 						<span>{{book.name}}</span>
 						<p>{{book.author}} 编著</p>

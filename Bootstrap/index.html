@@ -237,22 +237,40 @@
 									<label for=>未借出</label>
 									<input type="radio"  checked="" name="b_status" value="0">	
 									<label for=>已借出</label>
-									<input type="radio" name="b_status" value="1"></div>
+									<input type="radio" name="b_status" value="1">
+								</div>
 							</div>
+							
 						</fieldset>
 					</form>
 
+
 				</div>
-				
+			
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary " id="saveBooksBtn">&nbsp;&nbsp;Save Books</button>
+					
+						<div class="photo-wp">
+							<span type="button" class="btn  btn-default">上传图片 
+								<form id="uploadForm" action="step1.php" method="post" enctype="multipart/form-data" target="iframe_ds">
+									<input type="file" id="uploadBtn" name="pic">
+								</form>
+							</span>
+						</div>
+					
+					
+						<button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary " id="saveBooksBtn">&nbsp;&nbsp;Save Books</button>
+					
 				</div>
 
 
 			</div>
 		</div>
-	</div>
+	</div>		
+
+
+				<!-- ifarme 实现图片上传无刷新 -->
+				<iframe name="iframe_ds"  id="uploadIframe" style="display:none"></iframe>
 
 				<!-- 未找到搜索图书 模态 -->
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" style="display:none"  id="seacherBtn_1">Small modal</button>

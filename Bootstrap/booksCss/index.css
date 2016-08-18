@@ -77,3 +77,19 @@ input.w_300{
 .text{
 	font-size: 20px;
 }
+.photo-wp span{
+	position: relative;
+}
+
+.photo-wp input{
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 82px;
+	height: 34px;
+	opacity: 0;
+
+}
+.photo-wp{
+	float: left;
+}

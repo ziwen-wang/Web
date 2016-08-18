@@ -12,6 +12,7 @@
     $classify = $_GET["classify"];
     $status = $_GET["status"];
 	$borrow_status = $_GET["borrow_status"];
+    $p_photo = $_GET["p_photo"];
 
 	// $now = date("Y-m-d h:i:s");
 
@@ -23,7 +24,8 @@
         "price" => $price,
         "classify" => $classify,
         "status" => $status,
-        "borrow_status" => $borrow_status
+        "borrow_status" => $borrow_status,
+        "p_photo" => $p_photo
     );
 
     $id = $db->insert ('books', $data);

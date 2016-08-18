@@ -1,0 +1,21 @@
+.masker-wp{
+
+}
+
+.masker{
+	position: fixed;
+	background-color: #000;
+	width: 100%;
+	height: 100%;
+	opacity: 0.4;
+	filter:alpha(opacity=40);
+}
+.dialog{
+	width: 400px;
+	height: 250px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -125px 0 0 -200px;
+	background-color: #fff;
+}
