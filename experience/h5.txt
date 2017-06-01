@@ -1,0 +1,11 @@
+表单元素  <form action="demo-form.php" autocomplete="on"> 自动填充功能  单个表单元素可以关闭此功能 	<form action="demo-form.php" novalidate> 取消表单验证
+	autofocus 自动获得焦点
+
+移动端跳转可能 有300ms延迟
+fastclick.js 解决
+$(function() {  
+    FastClick.attach(document.body);  
+});  
+
+
+移动端touchstart会触发其他元素的click事件、e.preventDefault();阻止默认事件

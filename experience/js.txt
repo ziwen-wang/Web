@@ -1,0 +1,35 @@
+用0补全位数：
+function prefixInteger(num, length) {
+  return (num / Math.pow(10, length)).toFixed(length).substr(2);
+}
+
+将一个数组插入另一个数组的指定位置：
+var a = [1,2,3,7,8,9];
+
+var b = [4,5,6];
+
+var insertIndex = 3;
+
+a.splice.apply(a, Array.concat(insertIndex, 0, b));
+
+// a: 1,2,3,4,5,6,7,8,9
+
+
+
+快速取数组最大和最小值
+
+Math.max.apply(Math, [1,2,3]); //3
+Math.min.apply(Math, [1,2,3]); //1
+
+合并数组：
+var a = [1,2,3];
+var b = [4,5,6];
+Array.prototype.push.apply(a, b);
+console.log(a); //[1,2,3,4,5,6]
+
+数组去重
+function removeRepeat(arr){
+  return arr.filter(function(elem, pos) {
+    return arr.indexOf(elem) == pos;
+  });
+}

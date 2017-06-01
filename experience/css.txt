@@ -1,0 +1,3 @@
+获取最终样式 window.getComputedStyle （‘el’,'伪类'） 此方法只可获取无法更改
+IE获取最终样式 el.currentStyle
+详细 http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/

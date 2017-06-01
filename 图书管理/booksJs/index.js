@@ -341,8 +341,8 @@ function renderSelect(){
 		data_2 = ['<option value="','-1','">','请选择分类','</option>'];
 	$.each(data_1,function(i, obj) {
 		data_2.push(
-			'<option value="',obj.id,'">',obj.name,'</option>'
-			)
+		'<option value="',obj.id,'">',obj.name,'</option>'
+		)
 	});
 
 	$('#booksClassify').html(data_2.join(''));
