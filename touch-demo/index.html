@@ -20,6 +20,7 @@
 	</style>
 </head>
 <body>
+	<div style="width: 200px; height: 100px; position: fixed; z-index: 9; background: url('http://img2.imgtn.bdimg.com/it/u=1456744636,163218460&fm=26&gp=0.jpg');"></div>
 	<div class="masker">
 		<img src="img/timg.jpg" id="targetObj"/>
 	</div>
@@ -71,18 +72,6 @@
 	    })
 	    //拖拽
 	    var dx = 0,dy=0;
-//	    touch.on('#targetObj', 'drag', function (ev) {
-//		        var offx = dx + ev.x + "px";
-//		        var offy = dy + ev.y + "px";
-//		        target.style.webkitTransition = 'all ease 0.05s';
-//		        this.style.webkitTransform = "translate3d(" + offx + "," + offy + ",0)";
-//		    
-//		
-//		});
-//		touch.on('#targetObj', 'dragend', function (ev) {
-//		    dx += ev.x;
-//		    dx += ev.x;
-//		});
 		touch.on('#targetObj', 'swipe', function (ev) {
 	            dx = dx || 0;
 	            dy = dy || 0;
@@ -100,14 +89,15 @@
 	    touch.on('#targetObj', 'swipeleft swiperight swipeup swipedown', function (ev) {
 	        
 	        
-	        
 	        if (ev.type == 'swipeleft') {
-	            if ($targetObj.offset().left + targetWidth * currentScale > windowWid) {
-	                console.log('1')
+	            if ($targetObj.offset().left-ev.distance + targetWidth * currentScale > windowWid) {
+	                console.log('漏黑边了')
 	            }
 	        }
 	        if (ev.type == 'swiperight') {
-	        
+	        	if($targetObj.offset().right+ev.distance < 0){
+	        		 console.log('漏黑边了')
+	        	}
 	            console.log('swiperight')
 	        }
 	        if (ev.type == 'swipeup') {
@@ -120,7 +110,10 @@
 	        //alert(ev.position.left, ev.position.right)
 	    })
 	    touch.on('#targetObj', 'swipeend', function (ev) {
-	
+	    	
+			$targetObj = $('#targetObj');
+	        var a = $targetObj.position().left;
+	        console.log(ev.distance,a)
 	        targetWidth = $("#targetObj").width();
 	
 	        //console.log("line436:" + $("#targetObj").width());

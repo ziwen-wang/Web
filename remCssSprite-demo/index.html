@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh" style="font-size: 100px;">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>rem使用雪碧图</title>
+	<script src="js/jquery-1.11.0.js"></script>
+	<script src="js/size.js"></script>
+	<style type="text/css">
+		div{
+			background: url(img/img.png);
+			width: .24rem;
+			height:.3rem;
+			background-size: 3.38rem 1.1rem;
+		}
+		.div1{
+			background-position-x: -.25rem;
+		}
+	</style>
+</head>
+<body>
+	<img src="img/img.png"/>
+	<div></div>
+	<div class="div1"></div>
+</body>
+</html>
