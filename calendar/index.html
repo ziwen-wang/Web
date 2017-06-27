@@ -3,6 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<style type="text/css">
+			.date-tab *{
+				border: none;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="date-tab" id="dateTab"></div>
@@ -37,7 +42,7 @@
 		  		date_str=idx-firstday+1; //计算日期
 		  		(date_str<=0 || date_str>m_days[mnow]) ? date_str="&nbsp;" : date_str=idx-firstday+1; //过滤无效日期（小于等于零的、大于月总天数的）
 		  		//打印日期：今天底色为红
-		   		date_str == dnow ? dateTxt+= "<td align='center' bgcolor='red'>" + date_str + "</td>" : dateTxt += "<td align='center'>" + date_str + "</td>";
+		   		date_str == dnow ? dateTxt+= "<td align='center' bgcolor='yellow'>" + date_str + "</td>" : dateTxt += "<td align='center'>" + date_str + "</td>";
 		   }
 			dateTxt += "</tr>";
 		}

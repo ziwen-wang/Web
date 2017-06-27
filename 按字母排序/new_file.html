@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<style type="text/css">
+		input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{                
+			-webkit-appearance: icon !important;
+        } 
+	</style>
+</head>
+<body>
+	<input type="number" name="" id="" value="" />
+	<script src="js/pinyin_dict_firstletter.js"></script>
+	<script src="js/pinyinUtil.js"></script>
+	<script type="text/javascript">
+		var a = ['小明','小天','黄鳝','皮皮虾','张景瑞','张一乳'];
+		function compare(property){
+			return function(a,b){
+				var val1 = a[property],val2 = b[property];
+				
+				if(val1 > val2){
+					return 1
+				}else{
+					return -1
+				}
+			}
+		}
+		function chineseToPinYin(chinese){
+			var c = [];
+
+			for(var i = 0 ; i<chinese.length;i++){
+				var pinyin = pinyinUtil.getFirstLetter(chinese[i]).toString().toUpperCase().split('')[0];
+				var jihe = {chinese:chinese[i],pinyin:pinyin}
+				c.push(jihe)
+				
+			}
+			return c.sort(compare('pinyin'))
+			
+		}
+		
+		
+	</script>
+</body>
+</html>
