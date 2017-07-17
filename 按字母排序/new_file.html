@@ -85,7 +85,11 @@
 //			console.log('1111')
 //		})
 		$('#qqq').on('touchstart',function(){
-			document
+			if($('#adasdas').is(':focus')){
+				console.log('jiaodian')
+			}else{
+				console.log('funct')
+			}
 		})
 		$('#adasdas').focus(function(){
 			console.log('11211')
