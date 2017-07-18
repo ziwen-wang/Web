@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+		<title></title>
+	
+	<script type="text/javascript" src="../js/vue.min.js" ></script>
+	<script src="../js/jquery-1.111.3.min.js" type="text/javascript" charset="utf-8"></script>	
+	<style type="text/css">
+		.num{
+			width: 100%;
+			height: 300px;
+			display: inline-block;
+		}
+		.pos{
+		    width: 50px;
+		    height: auto;
+		    position: fixed;
+		    right: 30px;
+		    top: 50px;
+		    background: #fff;
+		    text-align: center;
+		}
+		.pos a{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+		}
+		.pos i{
+			position: absolute;
+		    height: 50px;
+		    line-height: 50px;
+		    width: 50px;
+		    background: #006979;
+		    left: -50px;
+		    bottom: -10px;
+		    color: #fff;
+		    display: none;
+		}
+	</style>
+	</head>		
+	<body style="padding: 0; margin: 0;" >			
+	<div class="list">
+		<div id="A" class="num" style="background-color: #f00;">
+			<h1>A</h1>
+		</div>
+		<div class="num" style="background-color:yellow;"  id="B">
+			<h1>B</h1>
+		</div>
+		<div class="num" style="background-color: #f00;"  id="C">
+			<h1>C</h1>
+		</div>
+		<div class="num" style="background-color:yellow;"  id="D">
+			<h1>D</h1>
+		</div>
+		<div class="num" style="background-color: #f00;"  id="E">
+			<h1>E</h1>
+		</div>
+		<div class="num" style="background-color:yellow;"  id="F">
+			<h1>F</h1>
+		</div>
+		<div class="num" style="background-color: #f00;"  id="G">
+			<h1>G</h1>
+		</div>		
+		<div class="num" style="background-color: #f00;"  id="H">
+			<h1>H</h1>
+		</div>
+		<div class="num" style="background-color:yellow;"  id="J">
+			<h1>J</h1>
+		</div>
+		<div class="num" style="background-color: #f00;" id="K">
+			<h1>K</h1>
+		</div>
+	</div>
+	<div class="pos" id="pos">
+		 
+        <a href="#A">A</a>
+        <a href="#B">B</a>
+        <a href="#C">C</a>
+         <a href="#D">D</a>
+        <a href="#E">E</a>
+        <a href="#F">F</a>
+         <a href="#G">G</a>
+        <a href="#H">H</a>
+        <a href="#J">J</a>
+         <a href="#K">K</a>
+       	<i id="navSlip" ></i>
+    
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		var b = null;
+		$('#pos').get(0).addEventListener('touchstart',function(event){
+			$('#navSlip').show()
+			var a = document.elementFromPoint(event.touches[0].clientX,event.touches[0].clientY);
+			navTopAnimate($('#navSlip'),$(a))
+			$('#navSlip').text(a.innerHTML)
+		})
+		$('#pos').get(0).addEventListener('touchmove',function(event){
+			event.preventDefault();
+			
+			 var a = document.elementFromPoint(event.touches[0].clientX,event.touches[0].clientY);
+			 console.log(a,b)
+			 if(!(a == b)){
+			 	a.click();
+			 }
+			
+			b = a;
+			
+			
+		})
+		$('#pos').on('touchend',function(){
+			$('#navSlip').hide()
+		})
+		$('.pos a').click(function(){
+			navTopAnimate($('#navSlip'),$(this))
+			$('#navSlip').text($(this).text())
+		})
+		function navTopAnimate(navSlip,that){
+			navSlip.stop().animate({
+				top: parseInt(that.position().top) +'px'
+			},100);						
+		}
+	</script>
+	</body>
+
+
+</html>

@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>简单卡牌翻页效果</title>
 		<style type="text/css">
 			ul,li {
@@ -67,20 +68,20 @@
 			    -webkit-transform:rotateY(180deg);
 			    -moz-transform:rotateY(180deg);
 			}
-			#content ul li a:hover div:first-child{
+			#content ul li.animation a div:first-child{
 			    -webkit-transform:rotateY(-180deg);
 			    -moz-transform:rotateY(-180deg);
 			}
-			#content ul li a:hover div:last-child{
+			#content ul li.animation a div:last-child{
 			    -webkit-transform:rotateY(0);
 			    -moz-transform:rotateY(0);
 			}
 		</style>
 	</head>
 	<body>
-		<div id="content">
+		<div id="content" class="a b c">
 		    <ul>
-		        <li>
+		        <li @touchstart='_touchstart' @touchmove= '_touchMove($event)'>
 		            <a href="#" >
 		                <div>
 		                    <h3>测试正面1</h3>
@@ -95,4 +96,50 @@
 		    </ul>
 		</div
 	</body>
+	<script src="js/vue.js"></script>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#content',
+			data:{
+				starX : 0,
+				moveX : 0
+			},
+			methods:{
+				_touchstart:function(e){
+					starX = e.touches[0].clientX;
+					console.log(this.starX)
+				},
+				_touchMove:function(e){
+					moveX= e.touches[0].clientX;
+					if(moveX - starX >0){
+//						$(e.currentTarget).addClass('animation')
+						if(this.hasClass(e.currentTarget,'animation')){
+							return
+						}else{
+							this.addClass(e.currentTarget,'animation')
+						}
+					}else{
+						if(this.hasClass(e.currentTarget,'animation')){
+							this.removeClass(e.currentTarget,'animation')
+						}
+//						$(e.currentTarget).removeClass('animation')
+					}
+					
+				},
+				hasClass:function(obj, cls) {  
+			    	return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+				},
+				addClass:function(obj, cls) {  
+					if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+				},
+				removeClass:function (obj, cls) {  
+				    if (this.hasClass(obj, cls)) {  
+				        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
+				        obj.className = obj.className.replace(reg, ' ');  
+				    }  
+				}
+			}
+		})
+	</script>
 </html>
