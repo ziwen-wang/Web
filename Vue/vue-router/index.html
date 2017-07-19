@@ -1,9 +1,219 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<body>
+
+<div id = "app">
+    <div class="app" >
+        <a class="width"  ><router-link to="/tax">急速免税</router-link> </a>
+        <a  class="width" ><router-link to="/classify"> 分类</router-link> </a>
+        <a  class="width" > <router-link to ="/cart">购物车</router-link></a>
+        <a  class="width" ><router-link to ="/my">我的</router-link> </a>
+
+    </div>
+    <router-view></router-view>
+</div>
+</body>
+
+<template id = "tax">
+    <div >
+        <tax-child1></tax-child1>
+        <div v-for="name in names">
+            {{name}}
+        </div>
+        <span v-for="item in movies" >
+            <img  style="width: 150px;height:150px;" v-bind:src="item.avatars.large" alt="">
+            <span>{{item.name}}</span>
+        </span>
+       <div>
+           <ul style="float: left;margin-right: 50px;margin-left: 50px">
+               <li>
+                   <router-link :to="{path:'/tax/taxchild1',query:{id:12312313}}">route1</router-link>
+               </li>
+               <li>
+                   <router-link :to="{path:'/tax/taxchild2',query:{id:345353}}">route2</router-link>
+               </li>
+           </ul>
+
+           <router-view></router-view>
+
+       </div>
+    </div>
+</template>
+
+<script type="text/x-template" id = "classify">
+    <div>
+        <div>我是分类</div>
+        <button @click ="goCar">跳到购物车</button>
+    </div>
+
+</script>
+<script type="text/x-template" id = "cart">
+    <div>我是购物车</div>
+</script>
+<script type="text/x-template" id = "my">
+   <div>
+       <span>我的资料</span>
+   </div>
+ </script>
+
+<template id ="tax-child1">
+    <div>
+        <ul>
+            <li>tax-child1 01</li>
+            <li>tax-child1 02</li>
+            <li>tax-child1 03</li>
+        </ul>
+    </div>
+</template>
+
+<template id ="tax-child2">
+
+    <ul>
+        <li>tax-child2 01</li>
+        <li>tax-child2 02</li>
+        <li>tax-child2 03</li>
+    </ul>
+
+</template>
+
+
+<script type="text/javascript" src = "../src/js/vue.js"></script>
+<script type="text/javascript" src = "../src/js/vue-router.min.js"></script>
+<!--<script type="text/javascript" src = "vue_js/resoure.js"></script>-->
+<script>
+
+    /*import Vue from './vue_js/vue.js';
+    import Router from './vue_router/vue_router.js';
+    import resoure from './vue_js/resoure.js';*/
+    const testTax = Vue.component("test-tax",{
+        template:"#tax",
+        replace:true,
+        props:{
+
+        },
+        data:function(){
+            return {
+                movies:[],
+                names:["赌神","四面楚歌"]
+            }
+        },
+        mounted:function () {
+            console.log(this);
+            let that = this;
+            var url = "https://api.douban.com/v2/movie/subject/1764796";
+            this.$http.jsonp(url, {}, {
+            }).then(function(response) {
+                that.movies = response.body.casts;
+                console.log(that.movies);
+            }, function(response) {
+                // 这里是处理错误的回调
+                console.log(response);
+            });
+        }
+    });
+    const testClassify =  Vue.component("test-classify",{
+        template:"#classify",
+        data:function(){
+            return {
+
+            }
+
+        },
+        methods:{
+            goCar:function (){
+                /*  route.go("/cart");*/
+                this.$router.push({ path: 'cart', query: { id: 12312312313 } });
+                /*this.$router.go({path:"cart"});拿不到值*/
+            }
+        }
+    });
+    const testCart  = Vue.component("test-cart",{
+        template:"#cart",
+        props:[],
+        data:function(){
+            return {
+            }
+        },
+        mounted:function(){
+            console.log(this.$route.query.id);
+        }
+
+    });
+    const testMy =  Vue.component("test-my",{
+        template:"#my",
+        props:[],
+        data:function(){
+            return {
+
+            }
+
+        },
+        mounted:function(){
+
+        }
+    });
+
+    const taxChild1 =  Vue.component("tax-child1",{
+        template:"#tax-child1",
+        data:function(){
+            return {
+
+            }
+
+        },
+        mounted:function(){
+            console.log(this.$route.query.id);
+        }
+    });
+
+    const taxChild2 =  Vue.component("tax-child2",{
+        template:"#tax-child2",
+        data:function(){
+            return {
+
+            }
+
+        }
+    });
+
+
+    const router = new VueRouter({
+        routes: [
+            {
+                path: '/tax',
+                component: testTax,
+                children:[
+                    {path:'/tax/taxchild1',component:taxChild1},
+                    {path:'/tax/taxchild2',component:taxChild2}
+                ]
+
+            },
+            {
+                path: '/classify',
+                component: testClassify
+            },
+            {
+                path: '/cart',
+                component: testCart
+            },
+            {
+                path: '/my',
+                component: testMy
+            },
+            { path: "", redirect: '/tax' }
+        ]
+
+    });
+
+
+    const app = new Vue({router}).$mount('#app')
+
+
+</script>
+
 </html>
