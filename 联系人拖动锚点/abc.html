@@ -40,58 +40,64 @@
 		    color: #fff;
 		    display: none;
 		}
+		.list div{
+			height: 150px;
+		}
+		.list div:nth-child(odd){
+			background: #F0AD4E;
+		}
 	</style>
 	</head>		
-	<body style="padding: 0; margin: 0;" >			
-	<div class="list">
-		<div id="A" class="num" style="background-color: #f00;">
-			<h1>A</h1>
+	<body style="padding: 0; margin: 0;" >		
+		<div id="app">
+			<div class="list" id="app">
+				<div  v-for="linkMan in linkMans":id="linkMan">
+					<h1>{{linkMan}}</h1>
+				</div>
+			</div>
+			<div class="pos" id="pos" @touchmove='posTouchM($event)'>
+				 
+		        <a v-for="linkMan in linkMans":herf="herfHandle(linkMan)" @click="aClick($event)">{{linkMan}}</a>
+		       	<i id="navSlip" ></i>
+	    
+			</div>	
 		</div>
-		<div class="num" style="background-color:yellow;"  id="B">
-			<h1>B</h1>
-		</div>
-		<div class="num" style="background-color: #f00;"  id="C">
-			<h1>C</h1>
-		</div>
-		<div class="num" style="background-color:yellow;"  id="D">
-			<h1>D</h1>
-		</div>
-		<div class="num" style="background-color: #f00;"  id="E">
-			<h1>E</h1>
-		</div>
-		<div class="num" style="background-color:yellow;"  id="F">
-			<h1>F</h1>
-		</div>
-		<div class="num" style="background-color: #f00;"  id="G">
-			<h1>G</h1>
-		</div>		
-		<div class="num" style="background-color: #f00;"  id="H">
-			<h1>H</h1>
-		</div>
-		<div class="num" style="background-color:yellow;"  id="J">
-			<h1>J</h1>
-		</div>
-		<div class="num" style="background-color: #f00;" id="K">
-			<h1>K</h1>
-		</div>
-	</div>
-	<div class="pos" id="pos">
-		 
-        <a href="#A">A</a>
-        <a href="#B">B</a>
-        <a href="#C">C</a>
-         <a href="#D">D</a>
-        <a href="#E">E</a>
-        <a href="#F">F</a>
-         <a href="#G">G</a>
-        <a href="#H">H</a>
-        <a href="#J">J</a>
-         <a href="#K">K</a>
-       	<i id="navSlip" ></i>
-    
-	</div>
+		<a href="">adasdasdasd</a>
+		
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
 	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#app',
+			data:{
+				linkMans:['A','B','C','D','E','F','G','H','J','K'],
+				windowLocation:'',
+				eventWrap:null
+			},
+			methods:{
+				herfHandle:function(val){
+					return '#'+val;
+				},
+				aClick:function(e){
+					if(this.windowLocation == ''){
+						this.windowLocation = window.location.href;
+					}
+					window.location=this.windowLocation + $(e.target).attr('herf')
+				},
+				posTouchM:function(event){
+					event.preventDefault();
+					var a = document.elementFromPoint(event.touches[0].clientX,event.touches[0].clientY);
+					if(!(a == this.eventWrap)){
+					 	a.click();
+					 	console.log('chufa')
+					}
+					this.eventWrap = a;
+				}
+			}
+		})
+		
+	</script>
+	<!--<script>
 		var b = null;
 		$('#pos').get(0).addEventListener('touchstart',function(event){
 			$('#navSlip').show()
@@ -124,7 +130,7 @@
 				top: parseInt(that.position().top) +'px'
 			},100);						
 		}
-	</script>
+	</script>-->
 	</body>
 
 
