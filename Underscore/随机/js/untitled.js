@@ -11,17 +11,17 @@ function asd() {
 
 
 	start.onclick = function() {
-		if (timer == undefined) {
+		if (timer == undefined || timer == null) {
 			timer = setInterval(function() {
 				var a = _.shuffle(left),
 					b = _.shuffle(right);
 //				 效率低
-//				 for (var i = 0; i < lisLeft.length; i++) {
-//				 	lisLeft[i].innerHTML = a[i]
-//				 	lisRight[i].innerHTML = b[i]
-//				 }
-				_.map(lisLeft,function(num){return '<li>'+num+'</li>';});
-				_.map(lisRight,function(num){return '<li>'+num+'</li>';});
+				 for (var i = 0; i < lisLeft.length; i++) {
+				 	lisLeft[i].innerHTML = a[i]
+				 	lisRight[i].innerHTML = b[i]
+				 }
+//				_.map(lisLeft,function(num){return '<li>'+num+'</li>';});
+//				_.map(lisRight,function(num){return '<li>'+num+'</li>';});
 				lisRight.innerHTML = lisRight
 			}, 10)
 		}
