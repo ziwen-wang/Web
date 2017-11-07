@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<ul v-for="msg in msgs">
+				<li>{{msg}}</li>
+			</ul>
+		</div>
+		<script src="../src/js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../src/js/vue-resource.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					msgs:[1,2,3]
+				},
+				methods:{
+					httpCont:function(){
+						this.$http.get('地址','参数').then(function(response){
+							//200
+							
+						},function(response){
+							//报错
+						})
+					},
+					asd:function(){
+						console.log(123)
+					}
+				},
+				mounted: function(){  
+			        this.asd()             
+			    }  
+			})
+		</script>
+	</body>
+</html>

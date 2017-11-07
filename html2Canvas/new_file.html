@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				height: 100px;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="background: red;"></div>
+		<div id='wzw' style="height: auto;">
+			<div style="background: #0000FF;"></div>
+			<div style="background: #0000F2;"></div>
+		</div>
+		
+		<div style="background: #006979;"></div>
+		<div style="background: #008000;"></div>
+		<div style="background: #00367A;"></div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/html2canvas.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// http://html2canvas.hertzen.com/
+			html2canvas(document.getElementById('wzw'), {
+			    allowTaint: true,
+			    taintTest: false,
+			    onrendered: function(canvas) {
+			        canvas.id = "mycanvas";
+			        //document.body.appendChild(canvas);
+			        //生成base64图片数据
+			        var dataUrl = canvas.toDataURL();
+			        var newImg = document.createElement("img");
+			        newImg.src =  dataUrl;
+			        document.body.appendChild(newImg);
+			    }
+			});
+		</script>
+	</body>
+</html>
