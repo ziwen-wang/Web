@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<html xmlns:v="urn:schemas-microsoft-com:vml"  
+			xmlns:o="urn:schemas-microsoft-com:office:office"  
+			xmlns:w="urn:schemas-microsoft-com:office:word"  
+			xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"  
+			xmlns="http://www.w3.org/TR/REC-html40">  
+		<meta charset="UTF-8">
+		<title>导出模板</title>
+		<link rel="stylesheet" type="text/css" href="css/demo.css"/>
+		<!--<style type="text/css">
+			@page WordSection1{  
+			    size:595.3pt 841.9pt;  
+			    margin:72.0pt 90.0pt 72.0pt 90.0pt;//默认margin值表示的页边距为 上下边距2.54厘米、左右边距3.17厘米  
+			    mso-header-margin:42.55pt;  
+			    mso-footer-margin:49.6pt;  
+			    mso-paper-source:0;  
+			}  
+			@page WordSection1{  
+			    size:595.3pt 841.9pt;  
+			    margin:36.0pt 36.0pt 36.0pt 36.0pt;//该margin值表示的页边距为 上下左右边距都为1.27厘米  
+			    mso-header-margin:42.55pt;  
+			    mso-footer-margin:49.6pt;  
+			    mso-paper-source:0;  
+			}
+		</style>-->
+	</head>
+	<body>
+		<div id="export">
+			<h1>综合检查汇报</h1>
+			<table border="1" cellspacing="1" cellpadding="1" width="100%">
+				<thead>
+					<tr><td>项目名称</td><td colspan="5">项目名称</td></tr>
+					<tr><td>项目名称</td><td colspan="5">项目名称</td></tr>
+					<tr>
+						<td>报告人</td>
+						<td>报告人</td>
+						<td>提交报告</td>
+						<td>提交报告</td>
+						<td>报告周期</td>
+						<td>报告周期</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="7" style="min-height: 660px;">
+							<div style="line-height: 20px; text-align: left;">
+								<p>汇报相同</p>
+								<p>惺惺惜惺惺想寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻寻少时诵诗书所所所所所所所所所所所所所所所所顶顶顶顶顶顶顶顶顶多多多多多多少时诵诗书所所所所所所所所</p>
+								<img src="img/1.jpg" alt=""/>
+								<img src="img/1.jpg" alt=""/>
+								<p>1、条目名称</p>
+								<p style="margin-left: 23px;">条目说明</p>
+								<p style="margin-left: 23px;">条目说明</p>
+								<p style="margin-left: 23px;">条目说明</p>
+								<p style="margin-left: 23px;">条目说明</p>
+								<p style="margin-left: 23px;">条目说明</p>
+								<p>2、条目说明</p>
+								<p style="margin-left: 23px;">条目说dddddddddddddd明</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="7" style="height: 80px; line-height: 20px;">
+							<div style="float: right; text-align: right;">
+								<p>导出人：<span>ddddddddd</span></p>
+								<p>导出时间：222222222</p>
+								
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				
+				
+			</table>
+		</div>
+		<button id="exBtn">导出</button>
+		
+		
+		<script src="js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/FileSaver.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.wordexport.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('#exBtn').click(function(){
+				$('#export').wordExport()
+			})
+		</script>
+	</body>
+</html>

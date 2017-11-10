@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		function getBase64(url){
+			var canvas=document.createElement("canvas"),//获取canvas
+				ctx = canvas.getContext("2d"), //对应的CanvasRenderingContext2D对象(画笔)
+				img = new Image(),//创建新的图片对象
+				base64 = '' ;//base64 
+//			img.src = 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3825796278,736506652&fm=27&gp=0.jpg';
+			img.sre = url
+			img.setAttribute("crossOrigin",'Anonymous')
+			img.onload = function(){//图片加载完，再draw 和 toDataURL
+		       ctx.drawImage(img,0,0);    
+		       base64 = canvas.toDataURL("image/png"); 
+		       return base64
+		  };
+		  
+		}
+    
+      
+      getBase64('https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3825796278,736506652&fm=27&gp=0.jpg')
+      
+	  
+	  
+	  
+		</script>
+	</body>
+</html>
