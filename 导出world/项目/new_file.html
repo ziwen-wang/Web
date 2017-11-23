@@ -1,0 +1,1198 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <script src="@(VeiShi.Common.ConfigExt.JsSiteDomain)/size.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="@(VeiShi.Common.ConfigExt.CssSiteDomain)/css/wenti-list.css" />
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <style>
+        @@font-face {
+            font-family: 'xiti';
+            src: url('file:///android_asset/fonts/font_light.ttf');
+        }
+
+        @@font-face {
+            font-family: 'cuti';
+            src: url('file:///android_asset/fonts/font_nor.ttf');
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+    <style>
+        .xuanzhuan {
+            transform: rotate(180deg);
+        }
+
+        .loading-wp {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0,0,0,.5);
+            display: none;
+            z-index: 9999;
+        }
+
+        .load {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 150px;
+            height: 15px;
+        }
+
+            .load span {
+                display: inline-block;
+                width: 15px;
+                height: 100%;
+                margin-right: 5px;
+                background: #ccc;
+                -webkit-transform-origin: right bottom;
+                -webkit-animation: load 1s ease infinite;
+            }
+
+                .load span:last-child {
+                    margin-right: 0px;
+                }
+
+        @@-webkit-keyframes load {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                -webkit-transform: rotate(90deg);
+            }
+        }
+
+        .load span:nth-child(1) {
+            -webkit-animation-delay: 0.13s;
+        }
+
+        .load span:nth-child(2) {
+            -webkit-animation-delay: 0.26s;
+        }
+
+        .load span:nth-child(3) {
+            -webkit-animation-delay: 0.39s;
+        }
+
+        .load span:nth-child(4) {
+            -webkit-animation-delay: 0.52s;
+        }
+
+        .load span:nth-child(5) {
+            -webkit-animation-delay: 0.65s;
+        }
+
+        .loading-wp p {
+            margin-top: .2rem;
+            color: #fff;
+            font-size: .3rem;
+        }
+        nav.sen {
+            position: absolute;
+            top: .9rem;
+            right: .2rem;
+            background: #fff;
+            padding: 0;
+            z-index: 9;
+            box-shadow: 0px 3px 30px -13px rgba(0, 0, 0, 0.5);
+            border-radius: 6px;
+        }
+            nav.sen li {
+                padding: 0 .7rem;
+                color: #666;
+                border-bottom: 1px solid #e5e5e5;
+                height: .8rem;
+                line-height: .8rem;
+                font-size: .3rem;
+                text-align:center
+            } 
+            nav.sen img {
+                width: .4rem;
+                vertical-align: middle;
+            }
+    </style>
+</head>
+<body>
+    <div id="att" class="main" v-cloak>
+        <div class="showTitle" v-show="titleViewRemind" style="z-index:9;"><img  src="~/img/closefff.png" @@click="titleViewRemind = false"/>取消部分已选数据，将改变统计图表</div>
+        <div class="hclick" style="position:fixed;">
+            <strong class="fl">
+                <em v-show="removebtn" @@click="Screen">
+                    <img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/loudou@2x.png" class="loudou"/ >
+                    {{textall}}：{{selectAllNub}}
+                </em>
+                <em v-show="!removebtn">
+                    <i class="selectimg" @@click.stop="slectAllClick" :class="{'selectimgok':selectAllBtn}" style="margin-left: .1rem;"></i>
+                    <i>已选择：{{selectNub}}/{{selectAllNub}}</i>
+                </em>
+             
+             </strong>
+            <div class="clearBtn fl" style="position:relative;height:100%;" @@click="clearScreen()">
+                <img src="~/img/clearBtn.png" style="height: .3rem;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;"/>
+            </div>
+            <img src="~/img/home.png" style="width:.4rem; float:right; margin-top:.2rem;margin-left:.4rem;" @@click="nav1Judge = !nav1Judge"/>
+            <span v-show="removebtn" @@click="toggleremove" class="tzBtn">调整</span>
+
+            <span v-show="!removebtn">
+                <i @@click.stop="toggleremove">取消</i>
+                <i @@click.stop="toggleremoveok">{{okbut}}</i>
+            </span>
+            <nav v-show="nav1Judge" class="sen">
+                <ul>
+                    <li @@click="ForwardFun(index)" style="height: .9rem;line-height: .9rem;" v-for="(nav,index) in navListText">@*<img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/forWard@2x.png" alt="Alternate Text" style="margin-right:.3rem;" />*@<span>{{nav}}</span></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="data-information" style="margin-top:1rem">
+
+            <div class="Inspection-result">
+                <div class="list-msg">
+                    <ul id="content">
+
+                        <li @@touchstart='touchstart' @@touchmove='touchMove($event)' v-for="item in items" @@click="selectList(item)" class="heightl">
+                            <div v-show="imgselect" class="imgselect">
+                                <span :class="{'isactive':item.select}"></span>
+                            </div>
+                            <a href="javascript:;">
+                                <div class="list-contet" :class="{'left-m':!removebtn}" style="position:relative;">
+                                    <p class="miaoshu"><span>{{item.RIP_Name}}</span></p>
+                                    <p class="weizhi">{{item.RIP_Position}}</p>
+                                    <p class="biaoqian" :class="{'left-b':!removebtn}">
+                                        <span style="font-size:.22rem;" class="baoy" v-if="item.ResultName">{{item.ResultName}}</span>
+                                        <span style="font-size:.22rem;" class="zhil" v-if="item.TopPB_Name">{{item.TopPB_Name}}</span>
+                                        <span style="font-size:.22rem;" class="pub" v-if="item.RIP_SeverityName">{{item.RIP_SeverityName}}</span>
+                                        <span style="font-size:.22rem;" class="pub" v-else-if="item.PlanDegree_Name">{{item.PlanDegree_Name}}</span>
+                                        <span style="font-size:.22rem;" class="yanz" v-if="item.RIP_Distribut_Name">{{item.RIP_Distribut_Name}}</span>
+                                        <span style="font-size:.22rem;" class="yanz" v-else-if="item.CompletionRatio">{{item.CompletionRatio}}</span>
+                                    </p>
+                                    <p class="daojishi">
+                                        <strong @@click="toggleunit(item,$event)" class="btnunit">
+                                            已知晓：{{item.KnowCPNums}}家单位
+                                            <img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/xia@2x.png" v-show="unit" /> <img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/shang@2x.png" v-show="!unit" />
+                                        </strong>
+                                        <strong v-if="item.RIP_Time>0 || item.BaseLineEndTime">
+                                            <i v-if="item.RIP_Time>0">整改期限：{{item.RIP_Time}}日</i><br />
+                                            <i v-if="item.overTime">超时计时：{{ChangeDateFormat(item.BaseLineEndTime,item)}}</i>
+                                            <i v-else-if="item.BaseLineEndTime||item.overTime == false">整改倒计时：{{ChangeDateFormat(item.BaseLineEndTime,item)}}</i>
+
+                                        </strong>
+                                    </p>
+                                    <span class="biaoqianone" class="{'left-b':!removebtn}" style="font-size:.22rem;">{{item.QuestionStateName}}</span>
+
+                                </div>
+                                <strong class="know-unit" v-show="item.click">
+                                    <p v-for="child in item.childPage"><span v-if="child.CP_Name" style="color:#fff;">{{child.CP_Name}}</span><span v-if="child.SR_Name">{{child.SR_Name}}</span><span v-if="child.UserName">{{child.UserName}}</span></p>
+                                </strong>
+                                <div class="fanmian">
+                                    <p>检查人：&nbsp;&nbsp;{{item.Role_Name}}&nbsp;&nbsp;{{item.ProlemUser_Name}}</p>
+                                    <p>检查时间：&nbsp;&nbsp;{{DateFormat(item.Actual_CreatedTime)}}</p>
+                                    <p v-if="item.QuestionStateName=='未发送'">首上传时间：&nbsp;&nbsp;{{DateFormat(item.LastStateChangeTime)}}</p>
+                                    <p v-else>首次发送时间：&nbsp;&nbsp;{{DateFormat(item.LastStateChangeTime)}}</p>
+                                    <p>
+                                        <i v-for="items in item.OperaNames"><img :src="imgCao(items)" /><br />{{items}}</i>
+                                        @*<i><img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/chukifj@2x.png" /><br />复检</i>
+                                            <i><img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/dun@2x (3).png" /><br />审核</i>
+                                            <i><img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/yan@2x (1).png" /><br />忽略</i>
+                                            <i> <img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/jia@2x (2).png" /><br />加入事件</i>*@
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="reportSelect" v-if="reportSelectView">
+            <div class="center">
+                <h1>您共选择{{selectNub}}个检查结果</h1>
+                <p>请选择导出模板</p>
+                <ul>
+                    <li @@click="reportSelectLi(text,index)" v-for="(text,index) in reportSelectText">{{text.txt}}
+                        <img src="~/img/selectActive.png" v-show="text.select"/></li>
+                </ul>
+                <div class="btn-wp">
+                    <span @@touchstart="hoverAnmiate($event,'active')" @@touchend="hoverAnmiateEnd($event,'active')" @@click="reportSelectView=false">取消</span>
+                    <span @@touchstart="hoverAnmiate($event,'active')" @@touchend="hoverAnmiateEnd($event,'active')" @@click="reportSubmit()">确定</span>
+                </div>
+            </div>
+        </div>
+        @* v-show="isMask" *@
+        <div class="tabmask"  style="z-index:9;" v-show="isMask">
+            <div class="yiyou-mask" style=" width:5.4rem; height:7.4rem;">
+                <h5 style="height:1.1rem;width:5.4rem;color:#333;font-size:.3rem;line-height:1.1rem;padding:0;margin:0;border-bottom:1px solid #e5e5e5">发现候选数量变化&nbsp;请确认</h5>
+                <div class="masker-center">
+                    <span>"综合验收"图表将按以下数据进行改变，如需调整请返回列表重新选择：</span>
+                    <p>当前已选&nbsp;<em>{{selectNub}}</em>&nbsp;个检查结果</p>
+                    <h2>图标默认全选数据：&nbsp;{{selectAllNub}}</h2>
+                    <div class="remind-view">本次修改仅为临时操作，页面重新载入后，恢复默认统计结果。</div>
+                </div>
+                <p><span @@click="isMask = false">返回</span><span @@click="SubmitForm()">确认调整</span></p>
+            </div>
+        </div>
+        @*<section class="loading" v-show="loadView" style="line-height:.3rem;text-align:center;">
+            <img src="@(VeiShi.Common.ConfigExt.ImgSiteDomain)/loading-txt.png" v-show="loadTxt == '加载中...'" style="vertical-align: middle;height: .3rem;animation: rotate 2s infinite linear;" />
+            {{loadTxt}}
+        </section>*@
+    </div>
+    <div class="loading-wp">
+        <div class="load">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <p>正在导出,请等待</p>
+        </div>
+    </div>
+    @* word模板 *@
+    @if (Request["allInspect"] != null)
+    {
+        <script id="tmpl" type="text/html">
+            <xdoc version="11.3.1">
+                <meta modifyDate="2017-11-20 19:04:24" author="7" id="36ieg3umynccdgrowups7v765q" createDate="2017-11-16 15:58:08" />
+                <body>
+                    <para align="center" lineSpacing="4">
+                        <text fontStyle="bold" fontSize="18">表C.0.1监理工作联系单</text>
+                    </para>
+                    <para lineSpacing="4">
+                        <text> </text>
+                    </para>
+                    <para lineSpacing="4">
+                        <text>工程名称：<%=P_Name%>                                 </text>
+                    </para>
+                    <para lineSpacing="4">
+                        <text>编号：<%=MaxStr%></text>
+                    </para>
+                    <para lineSpacing="4">
+                        <table merge="false" name="x23812" sheet="true" cols="313,289" rows="750,52,40,27,24,36<%=tmplStr%>" width="602">
+                            <cell col="1" name="x4638" row="1" rowSpan="2" colSpan="2">
+                                <para>
+                                    <text>致：</text>
+                                </para>
+                                <para />
+                                <para>
+                                    <text>事由:</text>
+
+                                </para>
+                                <%for(var v=0;v<RIP_Names.length;v++){%>
+                                    <para>
+                                        <text>    <%=RIP_Names[v]%></text>
+
+                                    </para>
+                                <%}%>
+                                <para />
+                                <para>
+                                    <text>内容：</text>
+
+
+                                </para>
+                                <para />
+                                <%for(var i = 0;i<center.length;i++){%>
+                                    <para indent="28">
+                                        <text><%=center[i].txt%></text>
+                                    </para>
+                                    <%}%>
+
+                                    <para />
+                                    <para />
+
+                                    <para />
+                                    <para />
+                                    <para />
+
+                                    <para />
+                                    <para />
+                                    <para>
+                                        <text>    填写要求：</text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para indent="333" align="distribute">
+                                        <text>  单位 </text>
+                                        <text fontStyle="underline"> <%=CP_Name%></text>
+                                    </para>
+                                    <para indent="333" align="distribute" />
+                                    <para indent="333" align="">
+                                        <text>  负责人 </text>
+                                        <text fontStyle="underline">                              </text>
+                                    </para>
+                                    <para indent="333" align="distribute" />
+                                    <para indent="333" align="distribute">
+                                        <text>  日期 </text>
+                                        <text fontStyle="underline">  <%=newTime%> </text>
+                                    </para>
+                            </cell>
+                            <cell col="1" name="x4642" row="3" colSpan="2">
+                                <para align="left" lineSpacing="4">
+                                    <text fontStyle="bold" fontSize="18">注：附件中显示的顺序与内容中显示的顺序一致。</text>
+                                </para>
+                            </cell>
+                            <cell col="1" name="x41049" row="4" colSpan="2">
+                                <para>
+                                    <text fontSize="18">附件：</text>
+                                </para>
+                            </cell>
+                            <!--  jindu-->
+                            <cell col="1" name="x43454" row="5" colSpan="2">
+                                <para>
+                                    <text fontSize="18">进度</text>
+                                </para>
+                            </cell>
+                            <%for(var i =0;i
+                            <jindu.length;i++){%>
+                                <cell col="1" name="x27579" row="<%=6+4*i%>" rowSpan="4">
+                                    <para>
+                                        <text><%=i+1%>、</text>
+                                        <img height="200" src="<%=jindu[i].PF_Url%>" name="x31964" width="200" />
+                                    </para>
+                                </cell>
+                                <cell col="2" row="<%=6+4*i%>">
+                                    <para lineSpacing="4">
+                                        <text>问题名称：<%=jindu[i].RIP_Name%></text>
+                                    </para>
+                                </cell>
+                                <cell col="2" row="<%=9+4*i%>">
+                                    <para>
+                                        <text>记录时间：<%=jindu[i].HCIC_AddDate%></text>
+                                    </para>
+                                </cell>
+                                <cell col="2" row="<%=8+4*i%>">
+                                    <para lineSpacing="4">
+                                        <text>问题位置：<%=jindu[i].RIP_Position%></text>
+                                    </para>
+                                </cell>
+                                <cell col="2" row="<%=7+4*i%>">
+                                    <para lineSpacing="4">
+                                        <text>严重程度：<%=jindu[i].RIP_Severity%></text>
+                                    </para>
+                                </cell>
+
+                                <%}%>
+
+                                <!--zhiliang-->
+                                <cell col="1" name="x43454" row="<%=jindu.length*4+6;%>" colSpan="2">
+                                    <para>
+                                        <text fontSize="18">质量</text>
+                                    </para>
+                                </cell>
+                                <%for(var j=1;j<zhiliang.length+1;j++){%>
+
+                                    <%if(j==1){%>
+                                    <cell col="1" row="<%=jindu.length*4+7;%>" rowSpan="4">
+                                        <para>
+                                            <text><%=j%>、</text>
+                                            <img height="200" src="<%=zhiliang[j-1].PF_Url%>" name="x31964" width="200" />
+
+                                        </para>
+                                    </cell>
+                                    <rect col="2" row="<%=jindu.length*4+9;%>">
+                                        <para lineSpacing="4">
+                                            <text>问题位置：<%=zhiliang[j-1].RIP_Position%></text>
+                                        </para>
+                                    </rect>
+                                    <cell col="2" row="<%=jindu.length*4+10;%>">
+                                        <para>
+                                            <text>记录时间：<%=zhiliang[j-1].HCIC_AddDate%></text>
+                                        </para>
+                                    </cell>
+                                    <cell col="2" row="<%=jindu.length*4+8;%>">
+                                        <para lineSpacing="4">
+                                            <text>严重程度：<%=zhiliang[j-1].RIP_Severity%></text>
+                                        </para>
+                                    </cell>
+                                    <cell col="2" row="<%=jindu.length*4+7;%>">
+                                        <para lineSpacing="4">
+                                            <text>问题名称：<%=zhiliang[j-1].RIP_Name%></text>
+                                        </para>
+                                    </cell>
+                                    <%}else{%>
+                                    <cell col="1" row="<%=(jindu.length+1)*4+7+j*4-8;%>" rowSpan="4">
+                                        <para>
+                                            <text><%=j%>、</text>
+                                            <img height="200" src="<%=zhiliang[j-1].PF_Url%>" name="x31964" width="200" />
+
+                                        </para>
+                                    </cell>
+                                    <rect col="2" row="<%=(jindu.length+1)*4+9+j*4-8;%>">
+                                        <para lineSpacing="4">
+                                            <text>问题位置：<%=zhiliang[j-1].RIP_Position%></text>
+                                        </para>
+                                    </rect>
+                                    <cell col="2" row="<%=(jindu.length+1)*4+10+j*4-8;%>">
+                                        <para>
+                                            <text>记录时间：<%=zhiliang[j-1].HCIC_AddDate%></text>
+                                        </para>
+                                    </cell>
+                                    <cell col="2" row="<%=(jindu.length+1)*4+8+j*4-8;%>">
+                                        <para lineSpacing="4">
+                                            <text>严重程度：<%=zhiliang[j-1].RIP_Severity%></text>
+                                        </para>
+                                    </cell>
+                                    <cell col="2" row="<%=(jindu.length+1)*4+7+j*4-8;%>">
+                                        <para lineSpacing="4">
+                                            <text>问题名称：<%=zhiliang[j-1].RIP_Name%></text>
+                                        </para>
+                                    </cell>
+                                    <%}%>
+                                    <%}%>
+
+
+
+
+
+
+
+
+
+
+                                    <!--安全-->
+                                    <cell col="1" name="x43454" row="<%=jindu.length*4+6+zhiliang.length*4+1;%>" colSpan="2">
+                                        <para>
+                                            <text fontSize="18">安全</text>
+                                        </para>
+                                    </cell>
+                                    <%for(var q=0;q<anquan.length;q++){%>
+                                        <cell col="1" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4;%>" rowSpan="4">
+                                            <para>
+                                                <text><%=q+1%>、</text>
+                                                <img height="200" src="<%=anquan[q].PF_Url%>" name="x31964" width="200" />
+                                            </para>
+                                        </cell>
+                                        <cell col="2" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4+1;%>">
+                                            <para lineSpacing="4">
+                                                <text>严重程度：<%=anquan[q].RIP_Severity%></text>
+                                            </para>
+                                        </cell>
+
+                                        <cell col="2" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4;%>">
+                                            <para lineSpacing="4">
+                                                <text>问题名称：<%=anquan[q].RIP_Name%></text>
+                                            </para>
+                                        </cell>
+                                        <cell col="2" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4+3;%>">
+                                            <para>
+                                                <text>记录时间：<%=anquan[q].HCIC_AddDate%></text>
+                                            </para>
+                                        </cell>
+                                        <rect col="2" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4+2;%>">
+                                            <para lineSpacing="4">
+                                                <text>问题位置：<%=anquan[q].RIP_Position%></text>
+                                            </para>
+                                        </rect>
+                                        <%}%>
+                                        <!--wufenlei-->
+                                        <cell col="1" name="x43454" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2;%>" colSpan="2">
+                                            <para>
+                                                <text fontSize="18">无分类</text>
+                                            </para>
+                                        </cell>
+                                        <%for(var t=0;t<wu.length;t++){%>
+                                            <cell col="1" name="x27579" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+1;%>" rowSpan="4">
+                                                <para>
+                                                    <text><%=t+1%>、</text>
+                                                    <img height="200" src="<%=wu[t].PF_Url%>" name="x31964" width="200" />
+                                                </para>
+                                            </cell>
+                                            <cell col="2" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+3;%>" name="x46760">
+                                                <para lineSpacing="4">
+                                                    <text>问题位置：<%=wu[t].RIP_Position%></text>
+                                                </para>
+                                            </cell>
+                                            <cell col="2" name="x30187" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+2;%>">
+                                                <para lineSpacing="4">
+                                                    <text>严重程度：<%=wu[t].RIP_Severity%></text>
+                                                </para>
+                                            </cell>
+                                            <cell col="2" name="x27580" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+1;%>">
+                                                <para lineSpacing="4">
+                                                    <text>问题名称：<%=wu[t].RIP_Name%></text>
+                                                </para>
+                                            </cell>
+                                            <cell col="2" name="x44990" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+4;%>">
+                                                <para lineSpacing="4">
+                                                    <text>记录时间：<%=wu[t].HCIC_AddDate%></text>
+                                                </para>
+                                            </cell>
+                                        <%}%>
+
+                        </table>
+                    </para>
+                </body>
+            </xdoc>
+        </script>
+        <script type="text/html" id="jianliriji">
+            <xdoc version="11.3.0">
+                <meta modifyDate="2017-11-16 16:45:50" author="7" id="mpmksbv44zeabculdkofqy2w74" createDate="2017-11-16 16:34:55" />
+                <body>
+                    <para align="center" lineSpacing="4">
+                        <text fontSize="25">监理日记</text>
+                    </para>
+                    <para align="center" lineSpacing="4">
+                        <table merge="false" height="888" name="x89316" header="1" cols="108,96,92,92,100,98" rows="36,68,684,98" width="588">
+                            <cell col="1" name="x89319" row="1">
+                                <para lineSpacing="4">
+                                    <text>单位工程名称</text>
+                                </para>
+                            </cell>
+                            <rect col="2" row="1" colSpan="5" name="x89421">
+                                <para lineSpacing="4">
+                                    <text><%=P_Name%></text>
+                                </para>
+                            </rect>
+                            <cell col="1" align="center" name="x89325" row="2">
+                                <para align="center">
+                                    <text valign="center">天气</text>
+                                </para>
+                            </cell>
+                            <cell col="2" name="x89326" row="2" />
+                            <cell col="3" align="center" name="x89327" row="2">
+                                <para align="center">
+                                    <text>最高气温</text>
+                                </para>
+                            </cell>
+                            <cell col="4" name="x89328" row="2" />
+                            <cell col="5" align="center" name="x89329" row="2">
+                                <para align="center">
+                                    <text>最低气温</text>
+                                </para>
+                            </cell>
+                            <cell col="6" name="x89330" row="2" />
+                            <cell col="1" name="x89331" row="3" colSpan="6">
+                                <para lineSpacing="4">
+                                    <text>监理工作情况</text>
+                                </para>
+                                <para indent="28" lineSpacing="4">
+                                    <text>1、进度</text>
+                                </para>
+                                <%for(var i=0;i<conter.jindu.length;i++){%>
+                                    <para indent="28" lineSpacing="8">
+                                        <text><%=conter.jindu[i]%></text>
+                                    </para>
+                                    <%}%>
+                                    <para indent="28" lineSpacing="4">
+                                        <text>2、质量</text>
+                                    </para>
+                                    <%for(var i=0;i<conter.zhiliang.length;i++){%>
+                                        <para indent="28" lineSpacing="8">
+                                            <text><%=conter.zhiliang[i]%></text>
+                                        </para>
+                                        <%}%>
+                                    <para indent="28" lineSpacing="4">
+                                        <text>3、安全</text>
+                                    </para>
+                                 <%for(var i=0;i<conter.qita.length;i++){%>
+                                            <para indent="28" lineSpacing="8">
+                                                <text><%=conter.anquan[i]%></text>
+                                            </para>
+                                            <%}%>
+                                        <para indent="28" lineSpacing="4">
+                                            <text>3、无分类</text>
+                                        </para>
+                                        <%for(var i=0;i<conter.qita.length;i++){%>
+                                            <para indent="28" lineSpacing="8">
+                                                <text><%=conter.qita[i]%></text>
+                                            </para>
+                                            <%}%>
+                                            <para indent="28" lineSpacing="4" />
+                                            <para indent="28" lineSpacing="4" />
+                                            <para indent="28" lineSpacing="4" />
+                                            <para indent="28" lineSpacing="4" />
+                                            <para indent="28" lineSpacing="4" />
+                                            <para indent="28" lineSpacing="4" />
+                                            <para indent="28" lineSpacing="4" />
+                                            <para indent="28" lineSpacing="4">
+                                                <text fontStyle="bold">其他：</text>
+                                            </para>
+                            </cell>
+                            <cell col="1" name="x89337" row="4" colSpan="6">
+                                <para align="left" />
+                                <para align="left" />
+                                <para indent="2" align="left">
+                                    <text>记录人：<%=MB_Name%>                                        总监理工程师（签章）</text>
+                                </para>
+                                <para align="left" />
+                                <para align="left">
+                                    <text><%=newTime%>                                             <%=newTime%></text>
+                                </para>
+                            </cell>
+                        </table>
+                    </para>
+                </body>
+            </xdoc>
+
+        </script>
+
+        <script type="text/html" id="rizhi">
+            <xdoc version="11.3.0">
+                <meta modifyDate="2017-11-16 17:22:58" author="7" id="iokc2zy4l5eyhlj5mkhzcamh7m" createDate="2017-11-16 16:54:35" />
+                <body>
+                    <para align="center" lineSpacing="4">
+                        <text fontStyle="bold" fontSize="21">监理日志</text>
+                        <text> </text>
+                    </para>
+                    <para lineSpacing="4">
+                        <text>日期：<%=newTime%>                                       天气：</text>
+                    </para>
+                    <para lineSpacing="4">
+                        <text>星期：<%=newTimeDate%>                               气温：</text>
+                    </para>
+                    <para lineSpacing="4">
+                        <table merge="false" height="769" name="x90914" header="1" cols="95,503" rows="24,72,72,60,52,408,30,49" width="600">
+                            <cell col="1" name="x90917" row="1">
+                                <para>
+                                    <text>工程名称:</text>
+                                </para>
+                            </cell>
+                            <cell col="2" align="center" name="x90918" row="1" >
+                                <%=P_name%>
+                            </cell>
+                            <cell col="1" align="center" name="x90919" row="2" rowSpan="2">
+                                <para align="center">
+                                    <text> 滞后的</text>
+                                </para>
+                                <para align="center">
+                                    <text>形象进度</text>
+                                </para>
+                            </cell>
+                            <cell col="2" align="center" name="x90920" row="2">
+                                <para>
+                                    <text>在施中记录：</text>
+                                </para>
+                                <%if(zhihou1.length>0){%>
+                                <%for(var i=0;i<zhihou1.length;i++){%>
+                                    <para indent="28">
+                                        <text><%=zhihou1[i]%></text>
+                                    </para>
+                                    <%}%>
+                                <%}else{%>
+                                    <para indent="28">
+                                        <text>无</text>
+                                    </para>
+                                <%}%>
+                            </cell>
+                            <cell col="2" align="center" name="x90922" row="3">
+                                <para>
+                                    <text>已完成记录：</text>
+                                </para>
+                                <%if(zhihou2.length>0){%>
+                                <%for(var i=0;i<zhihou2.length;i++){%>
+                                    <para indent="28">
+                                        <text><%=zhihou2[i]%></text>
+                                    </para>
+                                    <%}%>
+                                <%}else{%>
+                                    <para indent="28">
+                                        <text>无</text>
+                                    </para>
+                                <%}%>
+                            </cell>
+                            <cell col="1" align="center" name="x90923" row="4">
+                                <para align="center" lineSpacing="4">
+                                    <text>正常的</text>
+                                </para>
+                                <para align="center" lineSpacing="4">
+                                    <text>形象进度</text>
+                                </para>
+                            </cell>
+                            <cell col="2" align="center" name="x90924" row="4">
+
+                                <%for(var i=0;i<zhengchang.length;i++){%>
+                                    <para indent="28">
+                                        <text><%=zhengchang[i]%></text>
+                                    </para>
+                                    <%}%>
+                            </cell>
+                            <cell col="1" align="center" name="x90925" row="5">
+                                <para align="center">
+                                    <text>未判定的</text>
+                                </para>
+                                <para align="center">
+                                    <text>形象进度</text>
+                                </para>
+                            </cell>
+                            <cell col="2" align="center" name="x90926" row="5">
+                                <%for(var i=0;i<weipanding.length;i++){%>
+                                    <para indent="28">
+                                        <text><%=weipanding[i]%></text>
+                                    </para>
+                                    <%}%>
+                            </cell>
+                            <cell col="1" align="center" name="x90927" row="6">
+                                <para indent="28">
+                                    <text>监理工作情况</text>
+                                </para>
+                            </cell>
+                            <cell col="2" name="x90928" row="6">
+                                <para>
+                                    <text>一、巡视记录:</text>
+                                </para>
+                                <para>
+                                    <text>1、安全记录</text>
+                                </para>
+                                <%for(var i=0;i<anquan.length;i++){%>
+                                    <para indent="28">
+                                        <text><%=anquan[i]%></text>
+                                    </para>
+                                    <%}%>
+                                    <para>
+                                        <text>2、质量记录</text>
+                                    </para>
+                                    <%for(var i=0;i<zhiliang.length;i++){%>
+                                        <para indent="28">
+                                            <text><%=zhiliang[i]%></text>
+                                        </para>
+                                        <%}%>
+                                        <para>
+                                            <text>3、无分类记录</text>
+                                        </para>
+                                        <%for(var i=0;i<wu.length;i++){%>
+                                            <para indent="28">
+                                                <text><%=wu[i]%></text>
+                                            </para>
+                                            <%}%>
+                                            <para>
+                                                <text>二、其他记录</text>
+                                            </para>
+                            </cell>
+                            <cell col="1" align="center" name="x90929" row="7">
+                                <para align="center">
+                                    <text>监理人员</text>
+                                </para>
+                            </cell>
+                            <cell col="2" name="x90930" row="7">
+                                <para lineSpacing="4">
+                                    <text><%=mb_name%></text>
+                                </para>
+                            </cell>
+                            <cell col="1" align="center" name="x91893" row="8">
+                                <para align="center" lineSpacing="4">
+                                    <text>总监理工程师</text>
+                                </para>
+                            </cell>
+                            <cell col="2" name="x91894" row="8" />
+                        </table>
+                    </para>
+                </body>
+            </xdoc>
+
+        </script>
+        <script id="tongzhi" type="text/html">
+            <xdoc version="11.3.1">
+                <meta modifyDate="2017-11-20 19:04:24" author="7" id="36ieg3umynccdgrowups7v765q" createDate="2017-11-16 15:58:08" />
+                <body>
+                    <para align="center" lineSpacing="4">
+                        <text fontStyle="bold" fontSize="18">表C.0.1监理通知</text>
+                    </para>
+                    <para lineSpacing="4">
+                        <text> </text>
+                    </para>
+                    <para lineSpacing="4">
+                        <text>工程名称：<%=P_Name%>                                 </text>
+                    </para>
+                    <para lineSpacing="4">
+                        <text>编号：<%=MaxStr%></text>
+                    </para>
+                    <para lineSpacing="4">
+                        <table merge="false" name="x23812" sheet="true" cols="313,289" rows="750,52,40,27,24,36<%=tmplStr%>" width="602">
+                            <cell col="1" name="x4638" row="1" rowSpan="2" colSpan="2">
+                                <para>
+                                    <text>致：</text>
+                                </para>
+                                <para />
+                                <para>
+                                    <text>抄送：</text>
+                                </para>
+                                <para />
+                                <para>
+                                    <text>事由:</text>
+
+                                </para>
+                                <%for(var v=0;v<RIP_Names.length;v++){%>
+                                    <para>
+                                        <text><%=RIP_Names[v]%></text>
+
+                                    </para>
+                                <%}%>
+                                <para />
+                                <para>
+                                    <text>内容：</text>
+
+
+                                </para>
+                                <para />
+                                <%for(var i = 0;i<center.length;i++){%>
+                                    <para indent="28">
+                                        <text>	<%=center[i].index*1+1%>、<%=center[i].txt%></text>
+                                    </para>
+
+                                    <%}%>
+
+                                    <para />
+                                    <para />
+
+                                    <para />
+                                    <para />
+                                    <para />
+
+                                    <para />
+                                    <para />
+                                    <para>
+                                        <text>    填写要求：</text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para>
+                                        <text> </text>
+                                    </para>
+                                    <para indent="333" align="distribute">
+                                        <text>  单位 </text>
+                                        <text fontStyle="underline"> <%=CP_Name%></text>
+                                    </para>
+                                    <para indent="333" align="distribute" />
+                                    <para indent="333" align="">
+                                        <text>  负责人 </text>
+                                        <text fontStyle="underline">                              </text>
+                                    </para>
+                                    <para indent="333" align="distribute" />
+                                    <para indent="333" align="distribute">
+                                        <text>  日期 </text>
+                                        <text fontStyle="underline">  <%=newTime%> </text>
+                                    </para>
+                            </cell>
+                            <cell col="1" name="x4642" row="3" colSpan="2">
+                                <para align="left" lineSpacing="4">
+                                    <text fontStyle="bold" fontSize="18">注：附件中显示的顺序与内容中显示的顺序一致。</text>
+                                </para>
+                            </cell>
+                            <cell col="1" name="x41049" row="4" colSpan="2">
+                                <para>
+                                    <text fontSize="18">附件：</text>
+                                </para>
+                            </cell>
+                            <!--  jindu-->
+                            <cell col="1" name="x43454" row="5" colSpan="2">
+                                <para>
+                                    <text fontSize="18">进度</text>
+                                </para>
+                            </cell>
+                            <%for(var i =0;i
+                            <jindu.length;i++){%>
+                                <cell col="1" name="x27579" row="<%=6+4*i%>" rowSpan="4">
+                                    <para>
+                                        <text><%=i+1%>、</text>
+                                        <img height="200" src="<%=jindu[i].PF_Url%>" name="x31964" width="200" />
+                                    </para>
+                                </cell>
+                                <cell col="2" row="<%=6+4*i%>">
+                                    <para lineSpacing="4">
+                                        <text>问题名称：<%=jindu[i].RIP_Name%></text>
+                                    </para>
+                                </cell>
+                                <cell col="2" row="<%=9+4*i%>">
+                                    <para>
+                                        <text>记录时间：<%=jindu[i].HCIC_AddDate%></text>
+                                    </para>
+                                </cell>
+                                <cell col="2" row="<%=8+4*i%>">
+                                    <para lineSpacing="4">
+                                        <text>问题位置：<%=jindu[i].RIP_Position%></text>
+                                    </para>
+                                </cell>
+                                <cell col="2" row="<%=7+4*i%>">
+                                    <para lineSpacing="4">
+                                        <text>严重程度：<%=jindu[i].RIP_Severity%></text>
+                                    </para>
+                                </cell>
+
+                                <%}%>
+
+                                <!--zhiliang-->
+                                <cell col="1" name="x43454" row="<%=jindu.length*4+6;%>" colSpan="2">
+                                    <para>
+                                        <text fontSize="18">质量</text>
+                                    </para>
+                                </cell>
+                                <%for(var j=1;j<zhiliang.length+1;j++){%>
+
+                                    <%if(j==1){%>
+                                    <cell col="1" row="<%=jindu.length*4+7;%>" rowSpan="4">
+                                        <para>
+                                            <text><%=j%>、</text>
+                                            <img height="200" src="<%=zhiliang[j-1].PF_Url%>" name="x31964" width="200" />
+
+                                        </para>
+                                    </cell>
+                                    <rect col="2" row="<%=jindu.length*4+9;%>">
+                                        <para lineSpacing="4">
+                                            <text>问题位置：<%=zhiliang[j-1].RIP_Position%></text>
+                                        </para>
+                                    </rect>
+                                    <cell col="2" row="<%=jindu.length*4+10;%>">
+                                        <para>
+                                            <text>记录时间：<%=zhiliang[j-1].HCIC_AddDate%></text>
+                                        </para>
+                                    </cell>
+                                    <cell col="2" row="<%=jindu.length*4+8;%>">
+                                        <para lineSpacing="4">
+                                            <text>严重程度：<%=zhiliang[j-1].RIP_Severity%></text>
+                                        </para>
+                                    </cell>
+                                    <cell col="2" row="<%=jindu.length*4+7;%>">
+                                        <para lineSpacing="4">
+                                            <text>问题名称：<%=zhiliang[j-1].RIP_Name%></text>
+                                        </para>
+                                    </cell>
+                                    <%}else{%>
+                                    <cell col="1" row="<%=(jindu.length+1)*4+7+j*4-8;%>" rowSpan="4">
+                                        <para>
+                                            <text><%=j%>、</text>
+                                            <img height="200" src="<%=zhiliang[j-1].PF_Url%>" name="x31964" width="200" />
+
+                                        </para>
+                                    </cell>
+                                    <rect col="2" row="<%=(jindu.length+1)*4+9+j*4-8;%>">
+                                        <para lineSpacing="4">
+                                            <text>问题位置：<%=zhiliang[j-1].RIP_Position%></text>
+                                        </para>
+                                    </rect>
+                                    <cell col="2" row="<%=(jindu.length+1)*4+10+j*4-8;%>">
+                                        <para>
+                                            <text>记录时间：<%=zhiliang[j-1].HCIC_AddDate%></text>
+                                        </para>
+                                    </cell>
+                                    <cell col="2" row="<%=(jindu.length+1)*4+8+j*4-8;%>">
+                                        <para lineSpacing="4">
+                                            <text>严重程度：<%=zhiliang[j-1].RIP_Severity%></text>
+                                        </para>
+                                    </cell>
+                                    <cell col="2" row="<%=(jindu.length+1)*4+7+j*4-8;%>">
+                                        <para lineSpacing="4">
+                                            <text>问题名称：<%=zhiliang[j-1].RIP_Name%></text>
+                                        </para>
+                                    </cell>
+                                    <%}%>
+                                    <%}%>
+
+
+
+
+
+
+
+
+
+
+                                    <!--安全-->
+                                    <cell col="1" name="x43454" row="<%=jindu.length*4+6+zhiliang.length*4+1;%>" colSpan="2">
+                                        <para>
+                                            <text fontSize="18">安全</text>
+                                        </para>
+                                    </cell>
+                                    <%for(var q=0;q<anquan.length;q++){%>
+                                        <cell col="1" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4;%>" rowSpan="4">
+                                            <para>
+                                                <text><%=q+1%>、</text>
+                                                <img height="200" src="<%=anquan[q].PF_Url%>" name="x31964" width="200" />
+                                            </para>
+                                        </cell>
+                                        <cell col="2" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4+1;%>">
+                                            <para lineSpacing="4">
+                                                <text>严重程度：<%=anquan[q].RIP_Severity%></text>
+                                            </para>
+                                        </cell>
+
+                                        <cell col="2" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4;%>">
+                                            <para lineSpacing="4">
+                                                <text>问题名称：<%=anquan[q].RIP_Name%></text>
+                                            </para>
+                                        </cell>
+                                        <cell col="2" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4+3;%>">
+                                            <para>
+                                                <text>记录时间：<%=anquan[q].HCIC_AddDate%></text>
+                                            </para>
+                                        </cell>
+                                        <rect col="2" row="<%=jindu.length*4+6+zhiliang.length*4+2+q*4+2;%>">
+                                            <para lineSpacing="4">
+                                                <text>问题位置：<%=anquan[q].RIP_Position%></text>
+                                            </para>
+                                        </rect>
+                                        <%}%>
+                                        <!--wufenlei-->
+                                        <cell col="1" name="x43454" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2;%>" colSpan="2">
+                                            <para>
+                                                <text fontSize="18">无分类</text>
+                                            </para>
+                                        </cell>
+                                        <%for(var t=0;t<wu.length;t++){%>
+                                            <cell col="1" name="x27579" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+1;%>" rowSpan="4">
+                                                <para>
+                                                    <text><%=t+1%>、</text>
+                                                    <img height="200" src="<%=wu[t].PF_Url%>" name="x31964" width="200" />
+                                                </para>
+                                            </cell>
+                                            <rect col="2" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+3;%>" name="x46760">
+                                                <para lineSpacing="4">
+                                                    <text>问题位置：<%=wu[t].RIP_Position%></text>
+                                                </para>
+                                            </rect>
+                                            <cell col="2" name="x30187" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+2;%>">
+                                                <para lineSpacing="4">
+                                                    <text>严重程度：<%=wu[t].RIP_Severity%></text>
+                                                </para>
+                                            </cell>
+                                            <cell col="2" name="x27580" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+1;%>">
+                                                <para lineSpacing="4">
+                                                    <text>问题名称：<%=wu[t].RIP_Name%></text>
+                                                </para>
+                                            </cell>
+                                            <cell col="2" name="x44990" row="<%=jindu.length*4+6+zhiliang.length*4+anquan.length*4+2+t*4+4;%>">
+                                                <para>
+                                                    <text>记录时间：<%=wu[t].HCIC_AddDate%></text>
+                                                </para>
+                                            </cell>
+                                            <%}%>
+
+                        </table>
+                    </para>
+                </body>
+            </xdoc>
+        </script>
+    }
+    <script type="text/javascript" src="http://www.xdocin.com/xdoc.js"></script>
+    <script type="text/javascript" src="http://www.xdocin.com/baiduTemplate.js"></script>
+    <script src="http://cdn.staticfile.org/vue/2.2.5/vue.min.js"></script>
+    <script src="@(VeiShi.Common.ConfigExt.JsSiteDomain)/jquery-1.111.3.min.js"></script>
+    <script src="~/js/StatRIP.js"></script>
+    <script>
+
+    var oldonload = window.onload;
+        var url = "@(ViewBag.Url)";
+        var pfUrl = "@(ViewBag.ImageShow)";
+    window.onload = function () {
+
+        if(oldonload){
+            oldonload();
+        }
+
+        if (window.Android) {//关闭loading动画
+            window.Android.cancleLoadingAnim()
+        }
+    };
+    </script>
+</body>
+
+</html>
