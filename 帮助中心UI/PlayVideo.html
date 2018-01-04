@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+				<style type="text/css">
+			/*--------------------------------------------------------
+ * Fliename: 				PartyAStatistics.css
+ * Version: 				1.0.0 2017-12-19 YYYY-MM-dd
+ * Author: 					Wzw
+ * 
+ * ==SPRITE.CSS===========================================*/
+			/*==RESET====================================*/
+			
+			@charset "utf-8";
+			* {
+				box-sizing: border-box;
+				font-family: "xiti";
+				-webkit-overflow-scrolling: touch
+			}
+			
+			body {
+				margin: 0;
+				padding: 0 .3rem;
+				font-size: 14px;
+				color: #1c243b;
+				font-family: "xiti";
+			}
+			
+			div,
+			dl,
+			dt,
+			dd,
+			ul,
+			ol,
+			li,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			pre,
+			form,
+			fieldset,
+			input,
+			textarea,
+			p,
+			blockquote,
+			th,
+			td {
+				margin: 0;
+				padding: 0;
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}
+			
+			fieldset,
+			img,
+			abbr,
+			acronym {
+				border: 0;
+			}
+			
+			address,
+			caption,
+			cite,
+			code,
+			dfn,
+			em,
+			strong,
+			th,
+			i,
+			var {
+				font-style: normal;
+				font-weight: normal;
+			}
+			
+			ol,
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			caption,
+			th {
+				text-align: left;
+			}
+			
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-size: 100%;
+				font-weight: normal;
+			}
+			
+			button,
+			input,
+			select,
+			textarea {
+				font-size: 100%;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #1c243b;
+				display: block;
+			}
+			
+			.cle:after {
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}
+			h1 {
+				font-size: .46rem;
+				margin-top: .5rem;
+				font-weight: bold;
+				
+			}
+			p {
+				font-size: .24rem;
+				color: #999;
+				margin-top: .2rem;
+				margin-bottom: .4rem;
+			}
+			video{
+				height: 4.2rem;
+				width: 100%;
+			}
+			div p {
+				word-wrap : break-word ;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<h1>用户操作指南</h1>
+			<p>说明：您播放的视频需要网络支持，请尽量在Wi-Fi环境下观看</p>
+			<div class="warp">
+				<video controls>
+					<source src="hhttp://pgccdn.v.baidu.com/3544935389_3748077195_20170926110102.mp4?authorization=bce-auth-v1%2Fc308a72e7b874edd9115e4614e1d62f6%2F2017-09-26T03%3A01%3A13Z%2F-1%2F%2Fda618b755ec0f60861012c8de938198868dcc7c9cbcae6d94c6301e3cfda2b78&responseCacheControl=max-age%3D8640000&responseExpires=Thu%2C+04+Jan+2018+11%3A01%3A13+GMT&xcode=6c1219ae1ab42f7a4f374622cbbe3693e0daf194778d4e53&time=1513759965&_=1513673573017" type="video/mp4"></source>
+					<source src="http://pgccdn.v.baidu.com/3544935389_3748077195_20170926110102.mp4?authorization=bce-auth-v1%2Fc308a72e7b874edd9115e4614e1d62f6%2F2017-09-26T03%3A01%3A13Z%2F-1%2F%2Fda618b755ec0f60861012c8de938198868dcc7c9cbcae6d94c6301e3cfda2b78&responseCacheControl=max-age%3D8640000&responseExpires=Thu%2C+04+Jan+2018+11%3A01%3A13+GMT&xcode=6c1219ae1ab42f7a4f374622cbbe3693e0daf194778d4e53&time=1513759965&_=1513673573017" type="video/ogg"></source>
+					<source src="http://pgccdn.v.baidu.com/3544935389_3748077195_20170926110102.mp4?authorization=bce-auth-v1%2Fc308a72e7b874edd9115e4614e1d62f6%2F2017-09-26T03%3A01%3A13Z%2F-1%2F%2Fda618b755ec0f60861012c8de938198868dcc7c9cbcae6d94c6301e3cfda2b78&responseCacheControl=max-age%3D8640000&responseExpires=Thu%2C+04+Jan+2018+11%3A01%3A13+GMT&xcode=6c1219ae1ab42f7a4f374622cbbe3693e0daf194778d4e53&time=1513759965&_=1513673573017" type="video/webm"></source>
+					<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+						<param name="movie" value="myvideo.swf" />
+						<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+					</object>
+					当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+				</video>
+			</div>
+			<div style="margin-top: .7rem;">
+				<h1>什么叫检查</h1>
+				<p style="font-size: .28rem; color: #333;">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+			</div>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			 var vm = new Vue({
+	            el: '#app',
+	            data:{
+	            	textArr : ['如何新建检查','如何新建事项','怎样快速导出表格','项目管理助手到底有多赞'],
+	            },
+	            methods:{
+	            	CallPhone:function(){
+	            		//   判断是ios  还是安卓      
+	                    if (/(Android)/i.test(navigator.userAgent)) {
+	                        window.Android.callPhone('18911806264')
+	
+	                    } else {
+	                        var iphone = '189-1169-4636'
+	                        try {
+	                            ZPNativeHandler.callNativeFunction("callPhone:", iphone, null)
+	                        } catch (e) {
+	
+	                        }
+	                    }
+	            		
+	            	}
+	            },
+	            mounted: function () {
+	                if (window.Android) {//关闭loading动画
+	                    window.Android.cancleLoadingAnim()
+	                }
+	                document.addEventListener('DOMContentLoaded', function () {
+			
+			        var html = document.documentElement;
+			
+			        var windowWidth = html.clientWidth;
+			
+			        html.style.fontSize = windowWidth / 7.5 + 'px';
+			
+			        // 等价于html.style.fontSize = windowWidth / 640 * 100 + 'px';
+			
+			    }, false);
+	            }
+	        })
+			
+		</script>
+	</body>
+</html>

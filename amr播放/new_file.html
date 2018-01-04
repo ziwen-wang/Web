@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>amr播放</title>
+	</head>
+	<body>
+		<button value="播放" id="playId"></button>
+		<input type="file"  value="http://localhost:9999/audio/wzw.amr"/>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="new_file.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			RongIMLib.RongIMVoice.init();
+//			var fileReader = new File('http://localhost:9999/audio/wzw.amr')
+//			console.log(fileReader)
+//			document.getElementById("playId").onclick = function(){
+//			    RongIMLib.RongIMVoice.play(base64Str );
+//			};
+			 var url = "http://localhost:9999/audio/wzw.amr";           
+	      var xmlhttp = null;                 
+	      try {    
+	          xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");    
+	      } catch(e) {    
+	          try {    
+	              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");    
+	          } catch(e) {}    
+	      }    
+	  
+	      if (!xmlhttp) xmlhttp = new XMLHttpRequest();    
+	      
+	      xmlhttp.onreadystatechange = function() {    
+	          if (xmlhttp.readyState == 4) {    
+	    if(xmlhttp.status == 200){  
+	        var s = xmlhttp.responseText;   
+	        alert("XMLHttpRequest = " + s);                       
+	        s = s.replace(/</g, "<");    
+	        s = s.replace(/>/g, ">");    
+	         console.log(s)
+	        xmlhttp = null;   
+	        }                     
+	          }    
+	      };
+			
+		</script>
+	</body>
+</html>
