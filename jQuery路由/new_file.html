@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<ul> 
+		    <li><a href="#/">第一个页面</a></li> 
+		    <li><a href="#/2">第二个页面</a></li> 
+		    <li><a href="#/3">第三个页面</a></li> 
+		</ul> 
+		<script type="text/javascript">
+			function Router() {
+				this.routes = {};
+				this.currentUrl = '';
+			}
+			Router.prototype.route = function(path, callback) {
+				this.routes[path] = callback || function() {
+					console.log(32)
+				};
+			};
+			Router.prototype.refresh = function() {
+				this.currentUrl = location.hash.slice(1) || '/';
+				this.routes[this.currentUrl]();
+			};
+			Router.prototype.init = function() {
+				window.addEventListener('load', this.refresh.bind(this), false);
+				window.addEventListener('hashchange', this.refresh.bind(this), false);
+			}
+			window.Router = new Router();
+			window.Router.init();
+			
+			function changeBgColor(text) {
+			    console.log(text)
+			}
+			Router.route('/', function() {
+			    changeBgColor('1');
+			});
+			Router.route('/2', function() {
+			    changeBgColor('2');
+			});
+			Router.route('/3', function() {
+			    changeBgColor('3');
+			});
+		</script>
+	</body>
+
+</html>
