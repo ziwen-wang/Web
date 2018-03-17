@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>理解defineProperty</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var obj = {}
+			//value
+			
+//			Object.defineProperty(obj,'newVal',{
+//				value:'wzw'
+//			})
+//			console.log(obj.newVal)
+			//====================================
+//			writable 属性是否可被重写
+//			Object.defineProperty(obj,'newVal',{
+//				value:'wzw',
+////				writable:false
+//				writable:true
+//			})
+//			console.log(obj.newVal)
+//			obj.newVal = 'hello'
+//			console.log(obj.newVal)
+			//====================================	
+			//enumerable 是否可被枚举
+//			Object.defineProperty(obj,'newVal',{
+//				value:'wzw',
+//				enumerable:false
+//			})
+//			obj.oldVal = '可被枚举'
+//			for(val in obj){
+//				console.log(val)
+//			}
+			//configurable 是否可以删除目标属性或修改属性特性
+			//==========测试是否可删除============
+//			Object.defineProperty(obj,'newVal'{
+//				value:'wzw',
+//				writable:false,
+//				enumerable:false,
+//				configurable:false
+//			})
+//			delete obj.newVal
+//			console.log(obj.newVal)
+			//===========测试是否可从新设置特性===
+//			Object.defineProperty(obj,'newVal',{
+//				value:'wzw',
+//				configurable:false,
+//				writable:true
+//			})
+//			console.log(obj.newVal)//wzw
+//			obj.newVal = '已修改'
+//			console.log(obj.newVal)//已修改
+//			Object.defineProperty(obj,'newVal',{
+//				value:'wwww',
+//				writable:false
+//			})
+//			console.log(obj.newVal)//www
+			/*
+			 1、value属于写入 不属于配置 configurable不管束Value，writable管束Value属性
+			 2、configurable、enumerable、writable 默认值false
+			 * */
+			
+			//getter/setter
+			Object.defineProperty(obj,'newVal',{
+				get:function(){
+					console.log('get方法触发回调')
+				},
+				set:function(value){
+					console.log('set方法出发回调----值为'+ value)
+				}
+			})
+			/*
+			get、set不是必须成对出现、使用get\set方法则不允许使用writable和value这两个属性
+			 * */
+		</script>
+	</body>
+</html>
