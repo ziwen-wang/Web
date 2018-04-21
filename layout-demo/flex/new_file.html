@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>flex布局</title>
+		<style type="text/css">
+			.wp{
+				display: flex;
+				flex-direction: row;
+				height: 800px;
+			}
+			.left{
+				width: 200px;
+				background: darkcyan;
+			}
+			.main{
+				flex: 1;
+				background: darkgoldenrod;
+			}
+			.right{
+				width: 200px;
+				background: teal;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="wp">
+			<div class="left"></div>
+			<div class="main"></div>
+			<div class="right"></div>
+		</div>
+	</body>
+</html>

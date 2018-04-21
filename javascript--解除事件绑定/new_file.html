@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>测试事件按钮</h1>
+	<button onclick="clickTest()" id="clickTest">click me !</button>
+	<p></p>
+	<h2>删除事件按钮</h2>
+	<button onclick="removeTest()">删除上面事件</button>
+	
+	
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#clickTest').on('click',function(){
+			console.log($)
+		})
+		function clickTest(){
+			console.log('事件执行')
+		}
+		function removeTest(){
+			//$('#clickTest').unbind() //只删除jquery事件
+			$('#clickTest').replaceWith("<button id='clickTest'>click me !</button>");//删除所有事件
+		}
+		var str = '1234h112222abxczasd211h4321'
+		
+		//判断字符串两边对等
+		function judgeStrReciprocity(str){
+			var judge
+			for(var i = 0;i<str.length;i++){
+				if(str[i] == str[str.length-i-1]){
+					judge = true
+				}else{
+					judge = false
+				}
+			}
+			return judge
+		}
+		function judgeStrReciprocity1(str){
+			var len
+			if(str.length % 2 == 1){
+				len = Math.ceil(str.length/2)
+			}else{
+				len = str.length/2
+			}
+			console.log(len)
+			return str.startsWith(str.substring(len,str.length).split('').reverse().join(''))
+		}
+//		console.log(judgeStrReciprocity(str))
+		console.log(judgeStrReciprocity1(str))
+		
+		
+	</script>
+</body>
+</html>
