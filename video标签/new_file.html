@@ -7,7 +7,24 @@
 	</head>
 
 	<body>
-		<video src="http://103.41.141.243/youku/697400D89AD32792E86CC2668/03000A01005A37867470755119756D6B825580-DD29-3DC9-801A-B3B75834E5F6.mp4?sid=051359231224512002afa&ctype=12&ccode=0502&duration=331&expire=18000&psid=22cf1bc094e6874dc775a1a2e2dd34ee&ups_client_netip=79454366&ups_ts=1513592312&ups_userid=&utid=pXu%2BElnYkG8CAXaQhSShj7b1&vkey=A44a445c884aa03c0a780cd946f1533eb&vid=XMzI0MTk4Mzk5Mg%3D%3D" controls></video>
+		<video src="blob:http://127.0.0.1:8020/c6f40528-48b2-4d5a-8548-621c40b553bb" controls></video>
+		
+		<script type="text/javascript">
+			 var video = document.querySelector('video');
+					var mediaSource = new MediaSource;
+					video.src = URL.createObjectURL(mediaSource);
+					mediaSource.addEventListener('sourceopen', sourceOpen)
+					
+			function sourceOpen () {
+			  var mediaSource = this;
+			  var sourceBuffer = mediaSource.addSourceBuffer('video/mp4; codecs="avc1.42E01E, mp4a.40.2"');
+			  sourceBuffer.addEventListener('updateend', function () {
+			    mediaSource.endOfStream();
+			    video.play();
+			  });
+			  sourceBuffer.appendBuffer(buf); // buf is the arraybuffer to store the video data
+			};
+		</script>
 	</body>
-
+	
 </html>
