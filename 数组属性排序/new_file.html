@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数组按固定属性排序</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr = [
+				{name:'wzw',age:1},
+				{name:'wzw1',age:21},
+				{name:'wzw2',age:113},
+				{baneL:'wzw3',age:55}
+			]
+			function compare(propert){
+				return function (a,b){
+					var val1 = a[propert],
+						val2 = b[propert];
+					console.log(a[propert],b[propert])
+					return val1 - val2
+				}
+			}
+			console.log(arr.sort(compare('age')))
+		</script>
+	</body>
+</html>
