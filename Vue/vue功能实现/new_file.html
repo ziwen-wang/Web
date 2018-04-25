@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			const Observer = function(data) {
+				for(let key in data) {
+					defineReactive(data, key);
+				}
+			}
+
+			const defineReactive = function(obj, key) {
+				const dep = new Dep();
+				let val = obj[key];
+				Object.defineProperty(obj, key, {
+					enumerable: true,
+					configurable: true,
+					get() {
+						console.log('in get');
+						dep.depend();
+						return val;
+					},
+					set(newVal) {
+						if(newVal === val) {
+							return;
+						}
+						val = newVal;
+						dep.notify();
+					}
+				});
+			}
+
+			const observe = function(data) {
+				return new Observer(data);
+			}
+
+			const Vue = function(options) {
+				const self = this;
+				if(options && typeof options.data === 'function') {
+					this._data = options.data.apply(this);
+				}
+
+				this.mount = function() {
+					new Watcher(self, self.render);
+				}
+
+				this.render = function() {
+					with(self) {
+						_data.text;
+					}
+				}
+
+				observe(this._data);
+			}
+
+			const Watcher = function(vm, fn) {
+				const self = this;
+				this.vm = vm;
+				Dep.target = this;
+
+				this.addDep = function(dep) {
+					dep.addSub(self);
+				}
+
+				this.update = function() {
+					console.log('in watcher update');
+					fn();
+				}
+
+				this.value = fn();
+				Dep.target = null;
+			}
+
+			const Dep = function() {
+				const self = this;
+				this.target = null;
+				this.subs = [];
+				this.depend = function() {
+					if(Dep.target) {
+						Dep.target.addDep(self);
+					}
+				}
+
+				this.addSub = function(watcher) {
+					self.subs.push(watcher);
+				}
+
+				this.notify = function() {
+					for(let i = 0; i < self.subs.length; i += 1) {
+						self.subs[i].update();
+					}
+				}
+			}
+
+			const vue = new Vue({
+				data() {
+					return {
+						text: 'hello world'
+					};
+				}
+			})
+
+			vue.mount(); // in get
+			vue._data.text = '123'; // in watcher update /n in get
+			/*
+			vue将data初始化为一个Observer并对对象中的每个值，重写了其中的get、set，data中的每个key，都有一个独立的依赖收集器。
+			在get中，向依赖收集器添加了监听
+			在mount时，实例了一个Watcher，将收集器的目标指向了当前Watcher
+			在data值发生变更时，触发set，触发了依赖收集器中的所有监听的更新，来触发Watcher.update
+			 * */
+		</script>
+	</body>
+
+</html>
