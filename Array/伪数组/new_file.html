@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>伪数组</title>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		
+		<script type="text/javascript">
+			var lis = document.querySelectorAll('li')
+			
+			//for循环
+//			function test(lis){
+//				var arr = []
+//				for(var i=0;i<lis.length;i++){
+//					arr[i]=lis[i]
+//				}
+//				return arr
+//			}
+
+
+			//call apply
+//			function test(lis){
+//				return Array.prototype.slice.call(lis)
+//			}
+
+//			console.log(test(lis))
+//			var newArray = test(lis)
+//			newArray.push(123)
+//			console.log(newArray)
+
+
+			//原型继承
+			//元素push报错
+//			function test(lis){
+//				 console.log(lis.constructor === Array) //false
+//				lis.__proto__ = Array.prototype
+//				 console.log(lis.constructor === Array) //true
+//			}
+//			test(lis)
+
+			//arguments 可以使用
+//			function test(){
+//				arguments.__proto__ = Array.prototype;
+//				arguments.push(123)
+//				console.log(arguments)
+//			}
+//			test(1,2,3,4,5)
+
+			//es6
+			//arguments 可以使用
+//			function test(){
+//				var newArray = Array.from(arguments)
+//				newArray.push('wzw')
+//				console.log(newArray)
+//			}
+//			test(1,2,3)
+
+			//元素 可以使用
+//			function test(lis){
+//				var newArray = Array.from(lis)
+//				newArray.push('wzw')
+//				console.log(newArray)
+//			}
+//			test(lis)
+
+			//jquery toArray() 方法 实现原理：使用数组Slice方法
+			//jquery makeArray() 方法
+//			function makeArray(arr,results){
+//				var ret = results || []
+//				
+//				if(arr != null){
+//					if(isArraylike(Object(arr))){
+//						jQuery,merge(ret,typeof arr === 'string'?[arr]:arr)
+//					}else{
+//						core_push.call(ret,arr)
+//					}
+//				}
+//				return ret
+//			}
+
+		</script>
+	</body>
+</html>
