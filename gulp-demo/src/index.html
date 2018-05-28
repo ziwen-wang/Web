@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文件上传</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/drapUpLoad.css">
+</head>
+<body>
+    <div id="app">
+                    <div class="up-file">
+                        <!--<h1>上传文件</h1>-->
+                        <div class="up-center" >
+                            <div class="drag-view" id="dragView">将文件拖放到此</div>
+                            <div class="list-view" v-if='items.length>0'>
+                                <ul :class="{uploading:!upLoadView}">
+                                    <li v-for="(item,index) in items">
+                                        <span>{{item.file.name}}</span>
+                                        <div class="remove-btn" v-show='!upLoadView' @click="listRemove(item,index)" :class="{loading:item.uploading}"></div> 
+                                        <div class="remove-icon" v-show='!item.uploading && upLoadView'>
+                                            <div class="icon fl" v-show="!item.upload" @click="reUpLoad(item)"></div>
+                                            <p class="fl" v-text='bytesToSize(item.file.size)'></p>
+                                            <div class="icon fl" :class="{succcess:item.upload}"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="select-file-btn up-file-btn"><div class="btn-icon"></div>选择文件<input type="file" @change='selectFileUpLoad' multiple v-model="inputVal"></div>
+                            <div class="submit-btn up-file-btn" :class="{'submit-btn-ok':items.length>0}" @click="upLoadSubmit"><div class="btn-icon submit-icon"></div>开始上传</div>
+                        </div>
+                    </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/drapUpLoad.js"></script>
+</body>
+</html>

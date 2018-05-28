@@ -1,0 +1,201 @@
+.fl{
+    float: left;
+}
+.up-file{
+    width: 100%;
+    height: 100%;;
+}
+.up-file h1{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    background-color: #5b6273;
+}
+.up-file .up-center{
+    height: 450px;
+    background: #fff;
+    border: 1px solid transparent;
+    position: relative;
+}
+.up-center .drag-view{
+    height: 80px;
+    line-height: 80px;
+    width: 100%;
+    background: #f9f9f9;
+    color: rgba(0, 13, 42, 0.3);
+    border: solid 1px #d9d9d9;
+    margin-top: 10px;
+    text-align: center;
+}
+.up-file-btn{
+    width: 104px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 40px;
+    border-radius: 3px;
+    position: relative;
+}
+.up-file-btn input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.up-center .select-file-btn{
+    color: rgba(0, 13, 42, 0.77);
+    background-color: #f3f3f3;
+    border: solid 1px #d9d9d9;
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    cursor: pointer;
+}
+div.btn-icon{
+    width: 20px;
+    height: 20px;
+    background: url(../img/doc_btn.png) no-repeat;
+    background-position-x: 0;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+div.submit-icon{
+    background-position-x: -100px;
+}
+.up-center .submit-btn{
+    position: absolute;
+    top: 400px;
+    right:20px;
+    background-color: #9f998e;
+    color: #fff;
+    cursor: no-drop;
+}
+.up-center>div.submit-btn-ok{
+    background-color: #f5a700;
+    cursor: pointer;
+}
+.up-center .list-view {
+    width: 480px;
+    min-height: 130px;
+    max-height: 240px;
+    background-color: #f5f9fc;
+    border-radius: 6px;
+    border: solid 1px #d9d9d9;
+    position: absolute;
+    top: 140px;
+    left: 10px;
+    overflow: auto;
+}
+.list-view li{
+    height: 17px;
+    line-height: 17px;
+    margin-top: 13px;
+    color: rgba(0, 13, 42, 0.77);
+    padding-left: 10px;
+    position: relative;
+}
+.list-view li span{
+    display: inline-block;
+    width: 270px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+
+}
+.list-view ul.uploading li:hover{
+    color:#247BFF;
+    cursor: pointer;
+}
+.list-view li:hover .remove-btn{
+    display: inline-block;
+}
+.list-view li .remove-btn{
+    display: none;
+    width: 20px;
+    height: 20px;
+    background: url(../img/doc_btn.png) no-repeat;
+    background-position-x: -80px;
+    position: absolute;
+    top: -1px;
+    right: 10px;
+    cursor: pointer;
+
+}
+.list-view li .remove-icon{
+    width: 111px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+.list-view li .remove-icon .icon{
+    width: 20px;
+    height: 20px;
+    background: url(../img/doc_btn.png) no-repeat;
+    display: inline-block;
+}
+.list-view li .remove-icon .icon:nth-child(1){
+    background-position-x: -20px;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+
+}
+.list-view li .remove-icon p{
+    width: 100%;
+    padding: 0 30px 0 20px;
+    height: 100%;
+    line-height: 20px;
+    text-align: right;
+}
+.list-view li .remove-icon .icon:nth-child(3){
+    background-position-x: -60px;
+    position: absolute;
+    right: 0;
+}
+.list-view li .remove-icon .icon.fail{
+    background-position-x: -60px;
+}
+.list-view li .remove-icon .icon.succcess{
+    background-position-x: -40px;
+}
+.list-view li>.remove-btn.loading{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/btn_loading.png) no-repeat center;
+    position: absolute;
+    top: -1px;
+    right: 10px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+
+}
+@-webkit-keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
