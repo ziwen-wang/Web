@@ -1,0 +1,111 @@
+<div class="model-menu-up" [ngClass]="{'MobileDevice-model-menu-up':isMobileDevice}">
+  <div
+    [ngClass]="{'model-menu-button':!menuService.detailIsSelected, 'model-menu-button-select':menuService.detailIsSelected}"
+    (click)="menuService.detailClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-detail':menuService.detailIsSelected,'model-menu-button-detail':!menuService.detailIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.detailIsSelected}">
+      模型详情
+    </div>
+  </div>
+
+  <div
+    [ngClass]="{'model-menu-button':!menuService.modelIsDisplay, 'model-menu-button-select':menuService.modelIsDisplay}"
+    (click)="menuService.modelClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-model':menuService.modelIsDisplay,'model-menu-button-model':!menuService.modelIsDisplay}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.modelIsDisplay}">三维浏览
+    </div>
+  </div>
+
+  <div
+    [ngClass]="{'model-menu-button':!menuService.sheetIsSelected, 'model-menu-button-select':menuService.sheetIsSelected}"
+    (click)="menuService.sheetClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-2D':menuService.sheetIsSelected,'model-menu-button-2D':!menuService.sheetIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.sheetIsSelected}">2D
+    </div>
+  </div>
+
+  <div
+    [ngClass]="{'model-menu-button':!menuService.elementIsSelected, 'model-menu-button-select':menuService.elementIsSelected}"
+    (click)="menuService.elementClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-element':menuService.elementIsSelected,'model-menu-button-element':!menuService.elementIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.elementIsSelected}">构件
+    </div>
+  </div>
+  <div
+    [ngClass]="{'model-menu-button':!menuService.systemIsSelected, 'model-menu-button-select':menuService.systemIsSelected}"
+    (click)="menuService.systemClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-system':menuService.systemIsSelected,'model-menu-button-system':!menuService.systemIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.systemIsSelected}">系统
+    </div>
+  </div>
+  <div
+    [ngClass]="{'model-menu-button':!menuService.spaceIsSelected, 'model-menu-button-select':menuService.spaceIsSelected}"
+    (click)="menuService.spaceClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-space ':menuService.spaceIsSelected,'model-menu-button-space':!menuService.spaceIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.spaceIsSelected}">空间
+    </div>
+  </div>
+  <div
+    [ngClass]="{'model-menu-button':!menuService.viewpointIsSelected, 'model-menu-button-select':menuService.viewpointIsSelected}"
+    (click)="menuService.viewpointClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-viewpoint':menuService.viewpointIsSelected,'model-menu-button-viewpoint':!menuService.viewpointIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.viewpointIsSelected}">
+      视点
+    </div>
+  </div>
+  <div
+    [ngClass]="{'model-menu-button':!menuService.annotationIsSelected, 'model-menu-button-select':menuService.annotationIsSelected}"
+    (click)="menuService.annotationClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-annotation':menuService.annotationIsSelected,'model-menu-button-annotation':!menuService.annotationIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.annotationIsSelected}">
+      批注
+    </div>
+  </div>
+
+</div>
+
+<div class="model-menu-bottom" [ngClass]="{'MobileDevice-model-menu-bottom':isMobileDevice}">
+  <div
+    [ngClass]="{'model-menu-button':!menuService.animationIsSelected, 'model-menu-button-select':menuService.animationIsSelected}"
+    (click)="menuService.animationClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-4D':menuService.animationIsSelected,'model-menu-button-4D':!menuService.animationIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.animationIsSelected}">
+      4D
+    </div>
+  </div>
+  <div *ngIf="!isMobileDevice"
+       [ngClass]="{'model-menu-button':!menuService.documentIsSelected, 'model-menu-button-select':menuService.documentIsSelected}"
+       (click)="menuService.documentClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-document':menuService.documentIsSelected,'model-menu-button-document':!menuService.documentIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.documentIsSelected}">
+      文档
+    </div>
+  </div>
+  <div *ngIf="!isMobileDevice"
+       [ngClass]="{'model-menu-button':!menuService.shotIsSelected, 'model-menu-button-select':menuService.shotIsSelected}"
+       (click)="menuService.shotClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-shot':menuService.shotIsSelected,'model-menu-button-shot':!menuService.shotIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.shotIsSelected}">现场数据
+    </div>
+  </div>
+  <div *ngIf="!isMobileDevice"
+       [ngClass]="{'model-menu-button':!menuService.issueIsSelected, 'model-menu-button-select':menuService.issueIsSelected}"
+       (click)="menuService.issueClick($event)">
+    <div class="model-menu-button-icon"
+         [ngClass]="{'model-menu-button-select-issue':menuService.issueIsSelected,'model-menu-button-issue':!menuService.issueIsSelected}"></div>
+    <div class="model-menu-button-text" [ngClass]="{'model-menu-button-select-text':menuService.issueIsSelected}">问题
+    </div>
+  </div>
+
+</div>

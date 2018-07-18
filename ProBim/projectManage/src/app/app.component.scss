@@ -1,0 +1,16 @@
+.content {
+  width: calc(100% - 120px);
+  height: calc(100% - 40px);
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  left: 120px;
+  top: 40px;
+  background: #F6F9FC;
+  border: none;
+}
+
+.MobileDevice-content {
+  height: 100%;
+  top: 0px;
+}

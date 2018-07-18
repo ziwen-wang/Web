@@ -1,0 +1,22 @@
+<div *ngIf="!isMobileDevice">
+  <bim-header></bim-header>
+</div>
+<div>
+  <bim-menu></bim-menu>
+</div>
+
+<div class="content" [ngClass]="{'MobileDevice-content':isMobileDevice}">
+  <bim-model *ngIf="menuService.detailIsSelected"></bim-model>
+  <bim-member *ngIf="menuService.elementIsSelected"></bim-member>
+  <bim-space *ngIf="menuService.spaceIsSelected"></bim-space>
+  <bim-system *ngIf="menuService.systemIsSelected"></bim-system>
+  <bim-viewpoint *ngIf="menuService.viewpointIsSelected"></bim-viewpoint>
+  <bim-annotation *ngIf="menuService.annotationIsSelected"></bim-annotation>
+  <bim-sheet *ngIf="menuService.sheetIsSelected"></bim-sheet>
+  <bim-composer *ngIf="menuService.modelIsSelected" [isDisplay]="menuService.modelIsDisplay"
+                [src]="menuService.src"></bim-composer>
+  <bim-gantt *ngIf="menuService.animationIsSelected"></bim-gantt>
+  <bim-issue *ngIf="menuService.issueIsSelected"></bim-issue>
+  <bim-site *ngIf="menuService.shotIsSelected"></bim-site>
+  <bim-document *ngIf="menuService.documentIsSelected"></bim-document>
+</div>

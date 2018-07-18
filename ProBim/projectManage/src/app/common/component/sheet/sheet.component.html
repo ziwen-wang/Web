@@ -1,0 +1,14 @@
+<div class="sheet" (click)="click($event)">
+
+  <div class="sheet-left"></div>
+  <div class="sheet-img">
+    <img style="position: absolute"
+         [style.left]="left" [style.top]="top" [style.width]="width" [style.height]="height"
+         src={{picture}}>
+  </div>
+
+  <div class="sheet-content">
+    <div class="sheet-description">{{name}}</div>
+  </div>
+
+</div>

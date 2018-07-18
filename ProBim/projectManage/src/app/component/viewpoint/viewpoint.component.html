@@ -1,0 +1,16 @@
+<div class="bim-content">
+  <div class="viewpoint-list bim-raster bim-raster-left">
+
+    <div class="list-header">视点列表</div>
+    <template-viewpoint *ngFor="let row of viewpoint" [viewpoint]="row"
+                        (selectedViewpoint)="selectedViewpoint($event)" (moreEvent)="moreClick($event)"></template-viewpoint>
+  </div>
+  <div class="bim-raster bim-raster-right">
+    <div class="list-header">视点图片</div>
+    <img #img style="height: calc(100% - 30px); width: 100%; position: absolute" *ngIf="sanpShot !== ''" src={{sanpShot}}>
+  </div>
+</div>
+
+
+<p-contextMenu #contextMenu [model]="menu" appendTo="body"
+               [style]="{'width':'113px','text-align':'center'}"></p-contextMenu>

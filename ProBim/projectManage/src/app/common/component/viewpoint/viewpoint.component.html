@@ -1,0 +1,16 @@
+<div class="viewpoint" (click)="click($event)">
+
+  <div class="viewpoint-content">
+    <div class="viewpoint-left"></div>
+    <div class="viewpoint-img">
+      <img style="width: 100%;position: absolute" [style.top]="top" src={{viewpoint.Snapshot}}>
+    </div>
+    <div class="viewpoint-description-content">
+      <div class="viewpoint-name">{{viewpoint.Name}}</div>
+      <div class="viewpoint-description">{{viewpoint.Tag.description === '' ? noHaveDescription :
+        viewpoint.Tag.description}}
+      </div>
+      <div class="bim-more viewpoint-more" (click)="moreClick($event)"></div>
+    </div>
+  </div>
+</div>

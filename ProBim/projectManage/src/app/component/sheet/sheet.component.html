@@ -1,0 +1,34 @@
+<div class="sheet">
+  <div class="sheet-list" [ngClass]="{'bim-raster-left':!isMobileDevice}" [style.display]="isDisplaySheetList ? 'block' : 'none'">
+    <div class="list-header">2D列表</div>
+    <template-sheet *ngFor="let sheet of sheets" [name]="sheet.name" [sheetId]="sheet.id"
+                   [modelId]="sheet.modelId" [picture]="'data:image/png;base64,' + sheet.thumbnail" (changeClick)="show2D($event)"></template-sheet>
+  </div>
+  <div style="height: calc(100% - 2px)" class="row" [ngClass]="{'bim-raster-right' : !isMobileDevice}" [style.display]="isDisplayShowSheet ? 'block' : 'none'">
+    <div *ngIf="isMobileDevice" class="mobile-back" (click)="backSheetList()"></div>
+    <div class="sheet-content" [ngClass]="{'ui-g-9':!isMobileDevice,'ui-g-8':isMobileDevice}">
+      <div class="list-header">2D图纸</div>
+      <div #canvasContent class="sheet-canvas">
+        <canvas #canvas [attr.id]="'twodimensionScene'" style="width: 100%; height: calc(100% - 2px); background: none"
+                (wheel)="mousewheelevent($event)"
+                (onmousewheel)="mousewheelevent($event)" (contextmenu)="contextMenu($event)"></canvas>
+      </div>
+    </div>
+    <div class="element-property ui-g-3" [ngClass]="{'ui-g-3':!isMobileDevice, 'ui-g-4':isMobileDevice}">
+      <template-property [elementProperty]="elementProperty"></template-property>
+    </div>
+  </div>
+
+</div>
+
+<div class="popper" id="ViewpointPopper" style="display: none; z-index: 16; pointer-events: none;" data-info>
+  <p class="bold" align="left"
+     style="width: 100%;height: auto;word-wrap:break-word; word-break:break-all;overflow: hidden; "></p>
+  <div style="margin:0 auto;; border-top:1px solid #dd7822"></div>
+  <p class="thin" align="left"
+     style="width: 100%;height: auto;word-wrap:break-word; word-break:break-all;overflow: hidden; "></p>
+  <div class="popper__arrow" x-arrow></div>
+</div>
+
+<div id='pivotDiv' style="position: fixed;display: none; z-index: 1"></div>
+

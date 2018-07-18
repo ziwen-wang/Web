@@ -1,0 +1,62 @@
+<div #content class="content">
+  <div *ngIf="isMobileDevice" class="mobile-back" (click)="clickBack($event)"></div>
+  <div class="list-header">构件列表</div>
+  <p-dataTable #dataTable *ngIf="elementData.length !== 0" [value]="elementData"
+               (onRowSelect)="changeElementProperty($event)" (onFilter)="onFilter($event)"
+               [rows]="count" [paginator]="true" scrollable="true" [scrollHeight]="height" [(first)]="first"
+               selectionMode="single">
+    <p-column field="id" header="构件ID" [filter]="true" filterPlaceholder='' filterMatchMode="contains"></p-column>
+    <p-column field="name" header="构件名称" [filter]="true" filterPlaceholder="" filterMatchMode="contains"></p-column>
+    <p-column field="level" header="楼层" [filter]="true" filterMatchMode="equals">
+      <ng-template pTemplate="filter" let-col>
+        <p-dropdown [options]="searchLevelNames" [(ngModel)]="filterLevelName" dropdownIcon="dropdown"
+                    [style]="{'width':'100%', 'height':'22px'}" appendTo="body"
+                    (onChange)="dataTable.filter($event.value,col.field,col.filterMatchMode)"
+                    styleClass="ui-column-filter"></p-dropdown>
+      </ng-template>
+    </p-column>
+    <p-column field="type" header="类型" [filter]="true">
+      <ng-template pTemplate="filter" let-col>
+        <p-dropdown [options]="searchTypeNames" [(ngModel)]="filterTypeName" dropdownIcon="dropdown"
+                    [style]="{'width':'100%', 'height':'22px'}" appendTo="body"
+                    (onChange)="dataTable.filter($event.value,col.field,col.filterMatchMode)"
+                    styleClass="ui-column-filter"></p-dropdown>
+      </ng-template>
+    </p-column>
+    <p-column field="category" header="类型" [filter]="true">
+      <ng-template pTemplate="filter" let-col>
+        <p-dropdown [options]="searchCategories" [(ngModel)]="filterCategory" dropdownIcon="dropdown"
+                    [style]="{'width':'100%', 'height':'22px'}" appendTo="body"
+                    (onChange)="dataTable.filter($event.value,col.field,col.filterMatchMode)"
+                    styleClass="ui-column-filter"></p-dropdown>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+  <div class="footer" *ngIf="elementData.length !== 0">
+    <div class="footer-left">{{leftContent}}</div>
+    <div class="footer-center" *ngIf="!isMobileDevice">
+      <span>每页显示:</span>
+      <p-dropdown [options]="pageCount"
+                  [style]="{'width':'60px', 'height':'20px', 'position': 'absolute','top': '5px','left': '55px'}"
+                  styleClass="bim-dropDown" placeholder="50" dropdownIcon="dropdown"
+                  appendTo="body" [showClear]="true" [(ngModel)]="selectedPage"
+                  (onChange)="changePageCount($event)"></p-dropdown>
+    </div>
+    <div class="footer-right">
+      <div style="width: 46px; height: 100%; line-height: 30px; font-size: 12px; text-align: center; ">跳转至:
+      </div>
+      <input style="width: 36px; height: 20px; position: absolute; left: 45px; top: 5px;" type="text" size="30"
+             pInputText [(ngModel)]="changeToPage" (blur)="onblur()">
+      <button class="bim-button" style=" position: absolute; left: 115px; top: 5px;"
+              (click)="lessPage()" [disabled]="currentPage === 1">上一页
+      </button>
+      <div style="width: 20px; height: 20px; font-size: 12px; position: absolute; left: 180px; top: 0px;">
+        {{currentPage}}
+      </div>
+      <button class="bim-button" style="position: absolute; left: 205px; top: 5px;"
+              (click)="addPage()" [disabled]="currentPage === allPage">下一页
+      </button>
+    </div>
+  </div>
+</div>
+

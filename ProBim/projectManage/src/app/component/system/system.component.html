@@ -1,0 +1,18 @@
+<div class="bim-content row">
+  <div class="bim-raster" [ngClass]="{'ui-g-2':!isMobileDevice}" [style.display]="isDisplaySystem ? 'block' : 'none'">
+    <div class="list-header">系统列表</div>
+    <p-dataTable *ngIf="system.length !== 0" [value]="system" selectionMode="single" class="ui-datatable-no-header"
+                 (onRowSelect)="changeSystem($event)">
+      <p-column field="name"></p-column>
+    </p-dataTable>
+  </div>
+  <div class="bim-raster ui-g-8" [style.display]="isDisplayTopology ? 'block' : 'none'">
+    <div class="list-header">拓扑图</div>
+    <div *ngIf="isMobileDevice" class="mobile-back" (click)="backTopologyList()"></div>
+    <bim-topology *ngIf="systemInfo !== null" [modelId]="modelId" [systemInfo]="systemInfo"
+                  [systemElementId2Info]="systemElementId2Info" (selectedNode)="changeElementProperty($event)"></bim-topology>
+  </div>
+  <div class="bim-raster" [ngClass]="{'ui-g-2':!isMobileDevice, 'ui-g-4':isMobileDevice}" [style.display]="isDisplayTopology ? 'block' : 'none'">
+    <template-property [elementProperty]="elementProperty"></template-property>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="bim-content row">
+  <div class="bim-raster" [ngClass]="{'ui-g-2':!isMobileDevice}" [style.display]="isDisplayView ? 'block' : 'none'">
+    <div class="list-header">视图列表</div>
+    <div class="datagrid-section">
+      <!--</ul>-->
+      <p-dataTable *ngIf="views.length !== 0" [value]="views" selectionMode="single" [(selection)]="selectedView"
+                   styleClass="ui-datatable-no-header"
+                   (onRowSelect)="changeView($event)">
+        <p-column field="Name"></p-column>
+        <p-column [style]="{'width':'40px'}">
+          <ng-template let-view="rowData" pTemplate="body">
+            <div class="bim-more" (click)="moreClick($event, view)"></div>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </div>
+  </div>
+
+  <div class="bim-raster ui-g-8" [style.display]="isDisplayElement ? 'block' : 'none'">
+    <template-element [element]="elements" [modelId]="modelId"
+                      (changeSelected)="changeProperty($event)" (backEvent)="back($event)"></template-element>
+  </div>
+
+  <div class="bim-raster" [ngClass]="{'ui-g-2':!isMobileDevice, 'ui-g-4':isMobileDevice}"
+       [style.display]="isDisplayElement ? 'block' : 'none'">
+    <template-property [elementProperty]="elementProperty"></template-property>
+  </div>
+</div>
+
+<p-contextMenu #contextMenu [model]="menu" appendTo="body"
+               [style]="{'width':'113px','text-align':'center'}"></p-contextMenu>

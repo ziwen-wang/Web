@@ -1,0 +1,55 @@
+<div class="content" style="overflow: auto">
+  <div class="bim-raster bim-raster-left">
+    <div style="width: 100%; height: 370px; overflow-x: hidden; overflow-y: auto">
+      <div class="version-header">版本</div>
+      <div *ngFor="let model of modelInfo">
+        <div class="version-information">
+          <span class="version-information-hover" style="position: relative; left: 0px; font-size: 12px; text-decoration: underline"
+                [style.color]="model.isActive ? '#f7a500' : '#666666'"
+                (click)="openVersionModel($event, model.realVersion)">{{model.version}}</span>
+          <span style="position: relative; left: 30px; font-size: 12px"
+                [style.color]="model.isActive ? '#f7a500' : '#999999'">{{model.date}}</span>
+          <span style="position: relative; left: 150px; font-size: 14px; color: #f7a500">{{model.isActive ? '当前版本' : ''}}</span>
+          <!--<span style="position: relative; left: 0px; font-size: 12px">v1.5</span>-->
+        </div>
+      </div>
+      <div
+        style="position:absolute; top : 370px; left: 25px; width: 300px; height: 1px; background:  #e5e5e5;display: inline-block"></div>
+    </div>
+    <div style="width: 100%; height: calc(100% - 370px); position: absolute; top: 370px">
+      <div class="version-header">基础信息</div>
+      <div class="version-information" *ngFor="let baseInfo of modelBasicInformation">
+        <span style="position: relative; left: 0px; font-size: 12px">{{baseInfo.key}}</span>
+        <span style="position: relative; left: 30px; font-size: 12px">{{baseInfo.value}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="bim-raster bim-raster-right">
+    <div #summaryContent class="model-summary-content">
+      <div
+        style="height: 21px; width: 72px; font-size: 16px; font-family:'微软雅黑', MicrosoftYaHei-Bold; position: absolute;left: 30px; top: 30px; color: #000d2a;clear: both">
+        统计信息
+      </div>
+      <div
+        style="height: 20px; width: 32px; font-size: 14px; font-family:'微软雅黑', MicrosoftYaHei-Bold; position: absolute;left: 50px; top: 80px; color: #666666;clear: both">
+        模型
+      </div>
+      <div #summaryData class="model-summary-data">
+        <template-summary *ngFor="let summary of modelSummary" [name]="summary.name"
+                          [backgroundColor]="summary.color" [summaryCount]="summary.count"
+                          [imageClass]="summary.className" (clickEvent)="changeMenu($event)"></template-summary>
+      </div>
+    </div>
+    <div class="model-base-summary-content" *ngIf="!isMobileDevice">
+      <div
+        style="height: 20px; width: 32px; font-size: 14px; font-family:'微软雅黑', MicrosoftYaHei-Bold; position: absolute;left: 50px; top: 0px; color: #666666">
+        数据
+      </div>
+      <div class="model-base-summary">
+        <template-summary *ngFor="let summary of modelData" [name]="summary.name"
+                          [backgroundColor]="summary.color" [summaryCount]="summary.count"
+                          [imageClass]="summary.className" (clickEvent)="changeMenu($event)"></template-summary>
+      </div>
+    </div>
+  </div>
+</div>

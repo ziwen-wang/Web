@@ -1,0 +1,106 @@
+@import "/assets/css/config";
+
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: '微软雅黑', Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: '微软雅黑', Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0px;
+  height: 0px;
+  //overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  //height: 100%;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+
+}
+
+td {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 2px;
+  height: 6px;
+  background-color: #F5F5F5;
+  /*display: none;*/
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  background-color: #F6F9FC;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0);
+  background-color: #5b6273;
+}
+
+.summary-level {
+  background: url($filePath + "/images/BIMSystem/summary/level_normal.png");
+}
+
+.summary-element {
+  background: url($filePath + "/images/BIMSystem/summary/member_normal.png");
+}
+
+.summary-space {
+  background: url($filePath + "/images/BIMSystem/summary/space_normal.png");
+}
+
+.summary-system {
+  background: url($filePath + "/images/BIMSystem/summary/topology_normal.png");
+}
+
+.summary-viewpoint {
+  background: url($filePath + "/images/BIMSystem/summary/position_normal.png");
+}
+
+.summary-annotation {
+  background: url($filePath + "/images/BIMSystem/summary/comment_normal.png");
+}
+
+.summary-2d {
+  background: url($filePath + "/images/BIMSystem/summary/2d_drawing_normal.png");
+}
+
+.summary-document {
+  background: url($filePath + "/images/BIMSystem/summary/documents_normal.png");
+}
+
+.summary-task {
+  background: url($filePath + "/images/BIMSystem/summary/task_normal.png");
+}
+
+.summary-spot {
+  background: url($filePath + "/images/BIMSystem/summary/spot_normal.png");
+}
+
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeng/resources/themes/omega/theme.css";
+@import "/assets/css/theme";
+@import "/assets/css/bim";
+@import "/assets/css/gantt";
+@import "/assets/css/popper";

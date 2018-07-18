@@ -1,0 +1,14 @@
+<div class="list-header">属性</div>
+<p-dataTable *ngIf="propertyData.length !== 0" scrollable="true" [scrollHeight]="height"
+             [value]="propertyData" styleClass="ui-datatable-no-header">
+  <p-column field="Name" header="">
+    <ng-template let-property="rowData" pTemplate="body">
+      <span [style.font-weight]="property.isGroup === true ? 700 : 400" [attr.title]="property.Name">{{property.Name}}</span>
+    </ng-template>
+  </p-column>
+  <p-column field="Value" header="">
+    <ng-template let-property="rowData" pTemplate="body">
+      <span [attr.title]="property.Value">{{property.Value}}</span>
+    </ng-template>
+  </p-column>
+</p-dataTable>

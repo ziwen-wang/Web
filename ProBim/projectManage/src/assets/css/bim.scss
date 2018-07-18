@@ -1,0 +1,385 @@
+@import "config";
+
+.bim-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0px;
+}
+
+.bim-raster {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  background: none;
+  border-right: solid 1px #d9d9d9;
+}
+
+.bim-raster-left {
+  width: 350px;
+  position: absolute;
+  background: #f9f9f9;
+}
+
+.bim-raster-right {
+  width: calc(100% - 352px);
+  position: absolute;
+  left: 351px;
+  top: 0px;
+  background: #F6F9FC;
+}
+
+.list-header {
+  width: 100%;
+  height: 30px;
+  border-top: solid 1px #d9d9d9;
+  border-bottom: solid 1px #d9d9d9;
+  color: #000d2a;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 30px;
+  background-color: #f4f4f4;
+}
+
+.list-resize {
+  width: 0.1em;
+  height: 30px;
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  &:hover {
+    cursor: e-resize;
+  }
+}
+
+.bim-more {
+  width: 20px;
+  height: 20px;
+  background: url($filePath + "/images/BIMSystem/more/icon_more.png");
+}
+
+.model-menu-up {
+  border: none;
+  height: 380px;
+  width: 120px;
+  position: fixed;
+  background-color: #5b6173;
+  left: 0px;
+  top: 40px;
+  z-index: 2;
+}
+
+.MobileDevice-model-menu-up {
+  top: 0px;
+}
+
+.model-menu-bottom {
+  width: 120px;
+  height: calc(100% - 420px);
+  background-color: #525868;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  z-index: 2;
+}
+
+.MobileDevice-model-menu-bottom {
+  height: calc(100% - 380px);
+}
+
+.model-menu-button-select {
+  position: relative;
+  width: calc(100% - 4px);
+  height: 20px;
+  padding: 12.5px 0px 12.5px 0px;
+  background: #434d5e;
+  color: #FFFFFF;
+  border-left: 4px solid #f7a500;
+  &:hover {
+    color: #f7a500;
+    cursor: pointer;
+    background: #434d5e;
+    border-left: 4px solid #f7a500;
+    .model-menu-button-detail {
+      background: url($filePath + "/images/BIMSystem/menu/select/details_select.png");
+    }
+    .model-menu-button-element {
+      background: url($filePath + "/images/BIMSystem/menu/select/member_select.png");
+    }
+    .model-menu-button-system {
+      background: url($filePath +"/images/BIMSystem/menu/select/topology_select.png");
+    }
+    .model-menu-button-space {
+      background: url($filePath +"/images/BIMSystem/menu/select/space_select.png");
+    }
+    .model-menu-button-viewpoint {
+      background: url($filePath +"/images/BIMSystem/menu/select/position_select.png");
+    }
+    .model-menu-button-annotation {
+      background: url($filePath +"/images/BIMSystem/menu/select/comment_select.png");
+    }
+    .model-menu-button-2D {
+      background: url($filePath +"/images/BIMSystem/menu/select/2d_drawing_select.png");
+    }
+    .model-menu-button-4D {
+      background: url($filePath +"/images/BIMSystem/menu/select/4d_select.png");
+    }
+    .model-menu-button-document {
+      background: url($filePath +"/images/BIMSystem/menu/select/documents_select.png");
+    }
+    .model-menu-button-shot {
+      background: url($filePath +"/images/BIMSystem/menu/select/spot_select.png");
+    }
+    .model-menu-button-issue {
+      background: url($filePath +"/images/BIMSystem/menu/select/task_select.png");
+    }
+    .model-menu-button-model {
+      background: url($filePath +"/images/BIMSystem/menu/select/model_select.png");
+    }
+  }
+}
+
+.model-menu-button {
+  position: relative;
+  width: calc(100% - 4px);
+  height: 20px;
+  padding: 12.5px 0px 12.5px 0px;
+  background: none;
+  color: #FFFFFF;
+  border-left: 4px solid rgba(0, 0, 0, 0);
+  &:hover {
+    color: #f7a500;
+    cursor: pointer;
+    background: #434d5e;
+    border-left: 4px solid #f7a500;
+    .model-menu-button-detail {
+      background: url($filePath + "/images/BIMSystem/menu/select/details_select.png");
+    }
+    .model-menu-button-element {
+      background: url($filePath + "/images/BIMSystem/menu/select/member_select.png");
+    }
+    .model-menu-button-system {
+      background: url($filePath +"/images/BIMSystem/menu/select/topology_select.png");
+    }
+    .model-menu-button-space {
+      background: url($filePath +"/images/BIMSystem/menu/select/space_select.png");
+    }
+    .model-menu-button-viewpoint {
+      background: url($filePath +"/images/BIMSystem/menu/select/position_select.png");
+    }
+    .model-menu-button-annotation {
+      background: url($filePath +"/images/BIMSystem/menu/select/comment_select.png");
+    }
+    .model-menu-button-2D {
+      background: url($filePath +"/images/BIMSystem/menu/select/2d_drawing_select.png");
+    }
+    .model-menu-button-4D {
+      background: url($filePath +"/images/BIMSystem/menu/select/4d_select.png");
+    }
+    .model-menu-button-document {
+      background: url($filePath +"/images/BIMSystem/menu/select/documents_select.png");
+    }
+    .model-menu-button-shot {
+      background: url($filePath +"/images/BIMSystem/menu/select/spot_select.png");
+    }
+    .model-menu-button-issue {
+      background: url($filePath +"/images/BIMSystem/menu/select/task_select.png");
+    }
+    .model-menu-button-model {
+      background: url($filePath +"/images/BIMSystem/menu/select/model_select.png");
+    }
+  }
+}
+
+.model-menu-button-icon {
+  position: absolute;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.model-menu-button-text {
+  position: absolute;
+  left: 40px;
+  height: 100%;
+  padding: 2px 0px 2px 0px;
+  font-family: '微软雅黑', MicrosoftYaHei-Bold;
+  font-size: 12px;
+}
+
+.model-menu-button-select-text {
+  color: #f7a500;
+}
+
+.model-menu-button-detail {
+  background: url($filePath +"/images/BIMSystem/menu/normal/details_normal.png");
+}
+
+.model-menu-button-select-detail {
+  background: url($filePath +"/images/BIMSystem/menu/select/details_select.png");
+}
+
+.model-menu-button-element {
+  background: url($filePath +"/images/BIMSystem/menu/normal/member_normal.png");
+}
+
+.model-menu-button-select-element {
+  background: url($filePath +"/images/BIMSystem/menu/select/member_select.png");
+}
+
+.model-menu-button-system {
+  background: url($filePath +"/images/BIMSystem/menu/normal/topology_normal.png");
+}
+
+.model-menu-button-select-system {
+  background: url($filePath +"/images/BIMSystem/menu/select/topology_select.png");
+}
+
+.model-menu-button-space {
+  background: url($filePath +"/images/BIMSystem/menu/normal/space_normal.png");
+}
+
+.model-menu-button-select-space {
+  background: url($filePath +"/images/BIMSystem/menu/select/space_select.png");
+}
+
+.model-menu-button-viewpoint {
+  background: url($filePath +"/images/BIMSystem/menu/normal/position_normal.png");
+}
+
+.model-menu-button-select-viewpoint {
+  background: url($filePath +"/images/BIMSystem/menu/select/position_select.png");
+}
+
+.model-menu-button-annotation {
+  background: url($filePath +"/images/BIMSystem/menu/normal/comment_normal.png");
+}
+
+.model-menu-button-select-annotation {
+  background: url($filePath +"/images/BIMSystem/menu/select/comment_select.png");
+}
+
+.model-menu-button-2D {
+  background: url($filePath +"/images/BIMSystem/menu/normal/2d_drawing_normal_.png");
+}
+
+.model-menu-button-select-2D {
+  background: url($filePath +"/images/BIMSystem/menu/select/2d_drawing_select.png");
+}
+
+.model-menu-button-4D {
+  background: url($filePath +"/images/BIMSystem/menu/normal/4d_normal.png");
+}
+
+.model-menu-button-select-4D {
+  background: url($filePath +"/images/BIMSystem/menu/select/4d_select.png");
+}
+
+.model-menu-button-document {
+  background: url($filePath +"/images/BIMSystem/menu/normal/documents_normal.png");
+}
+
+.model-menu-button-select-document {
+  background: url($filePath +"/images/BIMSystem/menu/select/documents_select.png");
+}
+
+.model-menu-button-shot {
+  background: url($filePath +"/images/BIMSystem/menu/normal/spot_normal.png");
+}
+
+.model-menu-button-select-shot {
+  background: url($filePath +"/images/BIMSystem/menu/select/spot_select.png");
+}
+
+.model-menu-button-issue {
+  background: url($filePath +"/images/BIMSystem/menu/normal/task_normal.png");
+}
+
+.model-menu-button-select-issue {
+  background: url($filePath +"/images/BIMSystem/menu/select/task_select.png");
+}
+
+.model-menu-button-model {
+  background: url($filePath +"/images/BIMSystem/menu/normal/model_normal.png");
+}
+
+.model-menu-button-select-model {
+  background: url($filePath +"/images/BIMSystem/menu/select/model_select.png");
+}
+
+.model-header-content {
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  background-color: #f5f9fc;
+  box-shadow: 0px 1px 5px 0px #c4d0ed;
+  line-height: 40px;
+  text-align: center;
+  color: #666666;
+  font-family: '微软雅黑', MicrosoftYaHei-Bold;
+  z-index: 1;
+}
+
+.model-header-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  height: 20px;
+  width: 20px;
+  background: url($filePath + "/images/BIMSystem/header/normal/close_b_normal.png");
+  &:hover {
+    background: url($filePath + "/images/BIMSystem/header/hover/close_hover.png");
+    cursor: pointer;
+  }
+}
+
+.model-header-share {
+  position: absolute;
+  right: 65px;
+  top: 10px;
+  height: 20px;
+  width: 20px;
+  background: url($filePath + "/images/BIMSystem/header/normal/share_b_normal.png");
+  &:hover {
+    background: url($filePath + "/images/BIMSystem/header/hover/share_hover.png");
+    cursor: pointer;
+  }
+}
+
+.mobile-back {
+  width: 20px;
+  height: 20px;
+  background: red;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  background: url($filePath + "/images/BIMSystem/mobile/call_back.png");
+}
+
+.bim-dropDown {
+  .ui-dropdown-label {
+    display: block;
+    border: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: normal;
+    width: 100%;
+    height: 100%;
+    line-height: 18px;
+    padding-right: 1.5em;
+  }
+}
+
+.bim-button {
+  //width: 60px;
+  height: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 12px;
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  border-radius: 3px;
+  box-sizing: border-box;
+}

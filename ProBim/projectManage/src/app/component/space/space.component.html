@@ -1,0 +1,35 @@
+<div class="bim-content row">
+  <div class="bim-raster" [ngClass]="{'ui-g-1':!isMobileDevice}" [style.display]="isDisplayLevel ? 'block' : 'none'">
+    <div class="list-header">标高列表</div>
+    <p-dataTable *ngIf="spaceLevel.length !== 0" [value]="spaceLevel" selectionMode="single"
+                 styleClass="ui-datatable-no-header" scrollable="true" [scrollHeight]="height"
+                 (onRowSelect)="changeSpaceLevel($event)">
+      <p-column field="text"></p-column>
+    </p-dataTable>
+  </div>
+
+  <div class="bim-raster ui-g-1" [ngClass]="{'ui-g-1':!isMobileDevice}"
+       [style.display]="isDisplaySpace ? 'block' : 'none'">
+    <div *ngIf="isMobileDevice" class="mobile-back"
+         (click)="backLevel()"></div>
+    <div class="list-header">空间列表</div>
+    <p-dataTable *ngIf="spaces.length !== 0" [value]="spaces" selectionMode="single" scrollable="true"
+                 [scrollHeight]="height"
+                 (onRowSelect)="changeSpace($event)"
+                 styleClass="ui-datatable-no-header">
+      <p-column field="text"></p-column>
+    </p-dataTable>
+  </div>
+
+  <div class="bim-raster ui-g-8"
+       [style.display]="isDisplayElement ? 'block' : 'none'">
+    <template-element [element]="spaceElement" [modelId]="modelId"
+                      (changeSelected)="changeElementProperty($event)" (backEvent)="backSpace()"></template-element>
+  </div>
+
+  <div class="bim-raster ui-g-2" [ngClass]="{'ui-g-2':!isMobileDevice, 'ui-g-4':isMobileDevice}"
+       [style.display]="isDisplayElement ? 'block' : 'none'">
+    <template-property [elementProperty]="elementProperty"></template-property>
+  </div>
+
+</div>
