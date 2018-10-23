@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My first Three.js app</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        canvas{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <script src="./node_modules/three/build/three.js"></script>
+    <script>
+        let scene = new THREE.Scene();
+        let camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,.1,1000)
+        let renderer = new THREE.WebGLRenderer()
+
+        renderer.setSize(window.innerWidth,window.innerHeight)
+        document.body.appendChild(renderer.domElement)
+        
+        let geometry = new THREE.BoxGeometry(1,1,1)
+        let material = new THREE.MeshBasicMaterial({color:0x00ff00,wireframe:0xeeefff}) //材质
+        let cube = new THREE.Mesh(geometry,material)
+        scene.add(cube)
+        camera.position.z = 5;
+        render = () => {
+            requestAnimationFrame( render );
+            cube.rotation.x += 0.1;
+            cube.rotation.y += 0.1;
+            renderer.render( scene, camera );
+        }
+        render();
+    </script>
+</body>
+
+</html>
